@@ -547,13 +547,13 @@
             $(".bigbox").empty();
             var its
             console.log(its)
-            if (its != "" && its != null && its != undefined) {
+            // if (its != "" && its != null && its != undefined) {
                 for (let j = 0; j < r.its.length + 1 / 4 + 1; j++) {
                     $(".bigbox").append(`<div class="row ${j}"></div>`);
                     for (let i = 0; i < ((r.itps.length + 1) / 4) > j ? 4 : (r.itps.length); i++) {
 
                         //商品圖片
-                        let src = r.itps[0][i + j * 4].picture_url;
+                        let src = r.itps[i+j*4][0].picture_url;
                         //                     console.log(src);
                         let newsItem = r.its[i + j * 4];
 
@@ -609,7 +609,7 @@
                     }
                 })
             })
-        }
+
         $("#itemName").on("input", function () {
             $("#itemTag").val("");
             $("#minPrice").val("");

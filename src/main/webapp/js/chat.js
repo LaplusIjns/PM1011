@@ -1,8 +1,23 @@
 var ChatroomIDnow
 var userid = AjaxgetRegister()["responseJSON"]["member_id"]
-
-console.log(userid)
+console.log(AjaxgetRegister()["responseJSON"]["member_icon"])
+//userid_img 當前使用者頭像
+userid_img="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+if(AjaxgetRegister()["responseJSON"]["member_icon"]!=null){
+	userid_img ="../img/"+ AjaxgetRegister()["responseJSON"]["member_icon"]
+}
+console.log(userid_img)
 var ChatroomList=[]
+function getuserid(memberid){
+	return $.ajax({
+		url:"/findmember_id/"+memberid,
+		type:"POST",
+		async:!1,
+		success:function(res){},
+		error:function(err){console.log(err)},
+		});
+}
+
 function getchatroom(userid){
 	return $.ajax({
 		url:"/api/chat/ALLchatrooms/"+userid,
@@ -108,7 +123,6 @@ function newchatlist(){
 			//抓聊天室資料
 			//console.log("===")
 			var lastMessage = getchatroommessages(ChatroomList[i]['chatroom_id'])['responseJSON'];
-			
 			//console.log(lastMessage[lastMessage.length-1])
 			if(lastMessage[lastMessage.length-1]!=undefined){
 				var lastMessageContent = lastMessage[lastMessage.length-1]['message_content']
@@ -119,6 +133,7 @@ function newchatlist(){
 				talkWHO = (userid==ChatroomList[i]['chatroom_member_id1'])?ChatroomList[i]['chatroom_member_id2'] :ChatroomList[i]['chatroom_member_id1']
 				//console.log(talkWHO)
 				//console.log("===")
+				nickname = (getuserid(talkWHO)["responseJSON"][0]["member_nickname"]==null)?getuserid(talkWHO)["responseJSON"][0]["member_account"]:getuserid(talkWHO)["responseJSON"][0]["member_nickname"]
 				compareDay = Math.floor( (nowDate - lastMessageTime)/1000/60/60/24);
 				compareHour = Math.floor((nowDate - lastMessageTime)/1000/60/60 - compareDay*24);
 				compareMin = Math.floor( (nowDate - lastMessageTime)/1000/60 - (compareDay*24+compareHour)*60);
@@ -131,15 +146,27 @@ function newchatlist(){
 				else{lastTimeTag = compareSec;DateTag="秒"}
 				//console.log(lastTimeTag+DateTag+"之前")
 				//更新會員列表
-				
+				var member_icon
+				if(getuserid(talkWHO)["responseJSON"][0]["member_icon"]!=null){
+					member_icon ="../img/"+getuserid(talkWHO)["responseJSON"][0]["member_icon"]
+					}else{
+					member_icon= "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+				}
 				var $li=$("<li></li>").addClass("p-1");
-				$li.append('<a href="#" class="fs-5 card " user='+ChatroomList[i]['chatroom_id']+'><div class="card-body"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="fs-5 text-truncate mb-0 me-auto">'+talkWHO+'</h6><p class="fs-5 small font-weight-bold text-dark">'+lastMessageContent+'</p></div><div class="pt-1"><p class="fs-5 small font-weight-bold mb-1 text-success">'
+				$li.append('<a href="#" class="fs-5 card " user='+ChatroomList[i]['chatroom_id']+'><div class="card-body"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="'+member_icon+'" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="fs-5 text-truncate mb-0 me-auto">'+nickname+'</h6><p class="fs-5 small font-weight-bold text-dark">'+lastMessageContent+'</p></div><div class="pt-1"><p class="fs-5 small font-weight-bold mb-1 text-success">'
 				+lastTimeTag+DateTag+"之前"+'</p></div></div></div></a>');
 				$li.appendTo("#chatroomlist");
 			}else{
 				//從沒聊天過
 				//console.log(ChatroomList[i])
 				talkWHO = (userid==ChatroomList[i]['chatroom_member_id1'])?ChatroomList[i]['chatroom_member_id2'] :ChatroomList[i]['chatroom_member_id1']
+				nickname = (getuserid(talkWHO)["responseJSON"][0]["member_nickname"]==null)?getuserid(talkWHO)["responseJSON"][0]["member_account"]:getuserid(talkWHO)["responseJSON"][0]["member_nickname"]
+				var member_icon
+				if(getuserid(talkWHO)["responseJSON"][0]["member_icon"]!=null){
+					member_icon ="../img/"+getuserid(talkWHO)["responseJSON"][0]["member_icon"]
+					}else{
+					member_icon= "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+				}
 				lastMessageTime =new Date( ChatroomList[i]['chatroom_create_time'])
 				compareDay = Math.floor( (nowDate - lastMessageTime)/1000/60/60/24);
 				compareHour = Math.floor((nowDate - lastMessageTime)/1000/60/60 - compareDay*24);
@@ -153,10 +180,10 @@ function newchatlist(){
 				else if(compareDay==0&&compareHour==0&&compareMin!=0){lastTimeTag=compareMin;DateTag="分"}
 				else{lastTimeTag = compareSec;DateTag="秒"}
 				$li=$("<li></li>").addClass("p-1");
-				$li.append('<a href="#" class="fs-5 card" user='+ChatroomList[i]['chatroom_id']+'><div class="card-body"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="fs-5 text-truncate mb-0 me-auto">'+talkWHO+'</h6><p class="fs-5 small font-weight-bold text-dark"></p></div><div class="pt-1"><p class="fs-5 small font-weight-bold mb-1 text-success">'
+				$li.append('<a href="#" class="fs-5 card" user='+ChatroomList[i]['chatroom_id']+'><div class="card-body"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="'+member_icon+'" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="fs-5 text-truncate mb-0 me-auto">'+nickname+'</h6><p class="fs-5 small font-weight-bold text-dark"></p></div><div class="pt-1"><p class="fs-5 small font-weight-bold mb-1 text-success">'
 				+lastTimeTag+DateTag+"之前創立"+'</p></div></div></div></a>');
 				$li.appendTo("#chatroomlist");
-				
+			//有bug!!	
 			}
 		}
 			
@@ -178,7 +205,7 @@ function rightsidechat(){
 	$("#MessageBoard").empty();
 		var messagelist =[] 
 		messagelist=getchatroommessages(ChatroomIDnow)['responseJSON']
-		//console.log(messagelist)
+		console.log(messagelist)
 		for(var j=0;j<messagelist.length;j++){
 //			console.log(messagelist[j])
 			var MessageDate =new Date(messagelist[j]["message_sent_time"]);
@@ -187,8 +214,14 @@ function rightsidechat(){
 			//console.log(TimeTag)
 			//對方訊息
 			if(messagelist[j]['member_id']!=userid){
+				var member_icon
+				if(getuserid(messagelist[j]['member_id'])["responseJSON"]["member_icon"]!=null){
+					member_icon ="../img/"+getuserid(messagelist[j]['member_id'])["responseJSON"]["member_icon"]}
+				else{
+					member_icon= "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+				}
 				$div=$("<div></div>").addClass("d-flex flex-row justify-content-start");
-				$div.append('<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"alt="avatar 1" style="width: 45px; height: 100%;">'
+				$div.append('<img src="'+member_icon+'"alt="avatar 1" style="width: 45px; height: 100%;">'
 				+'<div>'
                 +' <p class="small fs-3 ms-3 mb-1 rounded-3 text-center" style="background-color: #f5f6f7;">'+messagelist[j]["message_content"]+'</p>'
                 +'<p class="fs-4 small ms-3 mb-3 rounded-3 text-muted float-end">'+TimeTag+'</p>'
@@ -200,7 +233,7 @@ function rightsidechat(){
 				+'<p class="small fs-3 me-3 mb-1 text-white rounded-3 bg-primary text-center">'+messagelist[j]["message_content"]+'</p>'
 				+'<p class="fs-4 small me-3 mb-3 rounded-3 text-muted">'+TimeTag+'</p>'
 				+'</div>'
-				+'<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp" alt="avatar 1" style="width: 45px; height: 100%;">'
+				+'<img src="'+userid_img+'" alt="avatar 1" style="width: 45px; height: 100%;">'
 				);
 				$div.appendTo("#MessageBoard")
 			}
@@ -208,7 +241,7 @@ function rightsidechat(){
 		}
 	
 }
-
+//及時接收訊息
 function onMessageReceived(payload) {
     var message = JSON.parse(payload.body);
 	// console.log(message["message_content"])
@@ -216,8 +249,15 @@ function onMessageReceived(payload) {
 	TimeTag = timeparse(MessageDate)
 	
 	if(message['member_id']!=userid){
+				var member_icon
+				console.log((getuserid(messagelist[j]['member_id'])["responseJSON"]))
+				if(getuserid(messagelist[j]['member_id'])["responseJSON"]["member_icon"]!=null){
+					member_icon ="../img/"+getuserid(messagelist[j]['member_id'])["responseJSON"]["member_icon"]}
+				else{
+					member_icon= "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+				}
 				$div=$("<div></div>").addClass("d-flex flex-row justify-content-start");
-				$div.append('<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"alt="avatar 1" style="width: 45px; height: 100%;">'
+				$div.append('<img src="'+member_icon+'"alt="avatar 1" style="width: 45px; height: 100%;">'
 				+'<div>'
                 +' <p class="small fs-3 ms-3 mb-1 rounded-3 text-center " style="background-color: #f5f6f7;">'+message["message_content"]+'</p>'
                 +'<p class="small ms-3 mb-3 rounded-3 text-muted float-end">'+TimeTag+'</p>'
@@ -229,7 +269,7 @@ function onMessageReceived(payload) {
 				+'<p class="small fs-3 me-3 mb-1 text-white rounded-3 bg-primary text-center">'+message["message_content"]+'</p>'
 				+'<p class="fs-4 small me-3 mb-3 rounded-3 text-muted">'+TimeTag+'</p>'
 				+'</div>'
-				+'<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp" alt="avatar 1" style="width: 45px; height: 100%;">'
+				+'<img src="'+userid_img+'" alt="avatar 1" style="width: 45px; height: 100%;">'
 				);
 				$div.appendTo("#MessageBoard")
 			}

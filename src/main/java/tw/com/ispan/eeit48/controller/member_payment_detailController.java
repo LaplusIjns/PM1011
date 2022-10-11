@@ -31,8 +31,7 @@ membersRepository membersRepository ;
 @Autowired
 membersController mc;
 
-@Autowired
-private ServerProperties serverProperties;
+
 
 //memeber_payment 增加信用卡
 	@RequestMapping(path = {"/addPaymentInformation"})	

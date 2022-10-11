@@ -12,12 +12,14 @@ import javax.servlet.http.HttpSession;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +31,8 @@ import tw.com.ispan.eeit48.controller.membersController.getRate;
 import tw.com.ispan.eeit48.dao.itemsRepository;
 import tw.com.ispan.eeit48.dao.membersRepository;
 import tw.com.ispan.eeit48.dao.rate_listRepository;
+import tw.com.ispan.eeit48.model.ChatroomBean;
+import tw.com.ispan.eeit48.model.MessagesBean;
 import tw.com.ispan.eeit48.model.items;
 import tw.com.ispan.eeit48.model.members;
 import tw.com.ispan.eeit48.model.rate_list;
@@ -57,8 +61,19 @@ public class membersController {
 	@Autowired
 	private ServerProperties serverProperties;
 
-//查看他人檔案
-	
+//查看特定人id檔案
+	@PostMapping(path = {"/findmember_id/{memberid}"})
+    public ResponseEntity<?> findBymember_id(@PathVariable(name="memberid") Integer id) {
+	    //獲得特定使用者資料
+	    members bean = new members();
+        bean.setMember_id(id);
+        List<members> result = membersRepository.findBymember_id(bean.getMember_id());
+        if(result!=null && !result.isEmpty()) {
+            return ResponseEntity.ok(result);
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+    }	
 	
 	
 //members表新增銀行帳戶只能有一筆
