@@ -3,6 +3,7 @@ package tw.com.ispan.eeit48.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 //import tw.com.ispan.eeit48.dao.chatroomRepository;
@@ -30,13 +31,17 @@ public class RoutingController {
 //		return "/index";
 		return "/index.html";
 	}
+//	   @RequestMapping(path = {"/html/product.html/{accountname}"})
+//	    public String method5(@PathVariable String accountname) {
+//	        return "/index.html";
+//	    }
 	@RequestMapping(path = {"/secure/login.page"})
 	public String method2() {
 		return "/secure/login";
 	}
 	@RequestMapping(path = {"/pages/product.page"})
 	public String method3() {
-		return "/pages/product";
+		return "/WEB-INF/views/pages/product.jsp";
 	}
 	@RequestMapping(path = {"/pages/display.page"})
 	public String method4() {

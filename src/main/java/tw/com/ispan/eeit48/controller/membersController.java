@@ -74,8 +74,49 @@ public class membersController {
             return ResponseEntity.notFound().build();
         }
     }	
-	
-	
+	//查看特定人account檔案
+    @PostMapping(path = {"/findmember_account/{accountname}"})
+    public ResponseEntity<?> findBymember_account(@PathVariable(name="accountname") String id) {
+        //獲得特定使用者資料
+        members bean = new members();
+        bean.setMember_account(id);
+        List<members> result = membersRepository.findBymember_account(bean.getMember_account());
+        if(result!=null && !result.isEmpty()) {
+            return ResponseEntity.ok(result);
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+    }	
+  //搜尋特定人評價列表
+    @CrossOrigin
+    @PostMapping(path = {"/getRate/{accountid}"})
+    public getRate getRate2(@PathVariable(name="accountid") Integer id) {
+        members member = new members();
+        getRate gr=new getRate();
+        member.setMember_id(id);
+        member = membersRepository.getById(id);
+        LinkedList<members> lm = new LinkedList<members>();
+        LinkedList<items> li = new LinkedList<items>();
+        if(member==null) {
+            return null;
+        }
+            Integer rated_id = member.getMember_id();   
+            List<rate_list> rate = rateRepository.queryByrated_member(rated_id);
+            System.out.println(rate);
+            rate.forEach((e)->{ 
+                lm.add(membersRepository.queryByrate_id(e.getRate_member_id()));
+                li.add(itemsRepository.queryByrated_item_id(e.getRated_item_id()));
+                System.out.println(membersRepository.queryByrate_id(e.getRate_id()));
+            });
+            gr.setLinkedListmembers(lm);
+            gr.setListrate_list(rate);
+            gr.setLinkedListitems(li);
+            System.out.println(gr);
+             return gr;
+    }
+    
+    
+    
 //members表新增銀行帳戶只能有一筆
 	  @CrossOrigin
     @PostMapping(path = {"/addNewBankAccount"})

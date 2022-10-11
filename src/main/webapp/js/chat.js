@@ -147,11 +147,14 @@ function newchatlist(){
 				//console.log(lastTimeTag+DateTag+"之前")
 				//更新會員列表
 				var member_icon
+				// console.log("icon "+getuserid(talkWHO)["responseJSON"][0]["member_icon"])
 				if(getuserid(talkWHO)["responseJSON"][0]["member_icon"]!=null){
 					member_icon ="../img/"+getuserid(talkWHO)["responseJSON"][0]["member_icon"]
+					// console.log(member_icon)
 					}else{
 					member_icon= "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
 				}
+				
 				var $li=$("<li></li>").addClass("p-1");
 				$li.append('<a href="#" class="fs-5 card " user='+ChatroomList[i]['chatroom_id']+'><div class="card-body"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="'+member_icon+'" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="fs-5 text-truncate mb-0 me-auto">'+nickname+'</h6><p class="fs-5 small font-weight-bold text-dark">'+lastMessageContent+'</p></div><div class="pt-1"><p class="fs-5 small font-weight-bold mb-1 text-success">'
 				+lastTimeTag+DateTag+"之前"+'</p></div></div></div></a>');
@@ -205,7 +208,7 @@ function rightsidechat(){
 	$("#MessageBoard").empty();
 		var messagelist =[] 
 		messagelist=getchatroommessages(ChatroomIDnow)['responseJSON']
-		console.log(messagelist)
+		// console.log(messagelist)
 		for(var j=0;j<messagelist.length;j++){
 //			console.log(messagelist[j])
 			var MessageDate =new Date(messagelist[j]["message_sent_time"]);
@@ -215,8 +218,8 @@ function rightsidechat(){
 			//對方訊息
 			if(messagelist[j]['member_id']!=userid){
 				var member_icon
-				if(getuserid(messagelist[j]['member_id'])["responseJSON"]["member_icon"]!=null){
-					member_icon ="../img/"+getuserid(messagelist[j]['member_id'])["responseJSON"]["member_icon"]}
+				if(getuserid(messagelist[j]['member_id'])["responseJSON"][0]["member_icon"]!=null){
+					member_icon ="../img/"+getuserid(messagelist[j]['member_id'])["responseJSON"][0]["member_icon"]}
 				else{
 					member_icon= "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
 				}
@@ -250,7 +253,7 @@ function onMessageReceived(payload) {
 	
 	if(message['member_id']!=userid){
 				var member_icon
-				console.log((getuserid(messagelist[j]['member_id'])["responseJSON"]))
+				// console.log((getuserid(messagelist[j]['member_id'])["responseJSON"]))
 				if(getuserid(messagelist[j]['member_id'])["responseJSON"]["member_icon"]!=null){
 					member_icon ="../img/"+getuserid(messagelist[j]['member_id'])["responseJSON"]["member_icon"]}
 				else{

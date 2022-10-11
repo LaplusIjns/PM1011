@@ -142,6 +142,10 @@ function rateUI() {
 		}
 }
 $(function() {
+	
+
+
+
 	userData = AjaxgetRegister()
 //	console.log(userData["responseJSON"]["member_rank"])
 	if(userData["responseJSON"]["member_rank"]=="管理者"){
@@ -221,9 +225,9 @@ $(function() {
 		alert(eval(result).responseText);
 	})
 
-	//        $("#formBtn").on("click", function () {
-	//        editmodal.style.display = "none";
-	//        })
+	       $("#formBtn").on("click", function () {
+	       window.location.reload()
+	       })
 
 
 })

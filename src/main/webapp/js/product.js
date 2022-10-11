@@ -36,8 +36,18 @@ $(function(){
     }
     $("#contactposter").click(function () {
         console.log(poster+" "+viewer)
+        if(viewer!=0){
         var p = creatchatroom(poster,viewer)
         console.log(p)
+        // window.location.href="chat.html";
+        window.open("chat.html");
+    }else{
+        alert("請先登入")}
+        })
+    $("#rentfile").click(function () {
+        poster = getproduct()["responseJSON"]["member"]["member_account"]
+        console.log(poster)
+        window.open("rentfile.html?account="+poster);
     })
     
 })
