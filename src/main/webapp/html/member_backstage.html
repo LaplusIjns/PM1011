@@ -1,0 +1,514 @@
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> -->
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="../bootstrap5/css/bootstrap.css" rel="stylesheet">
+		<!-- <link href="../css/index.css" rel="stylesheet"> -->
+		<script src="../bootstrap5/js/bootstrap.js"></script>
+		<script src="../js/jquery.js"></script>
+		<script src="../bootstrap5/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.toast.js"></script>
+		<link rel="stylesheet" href="../css/jquery.toast.css">
+		<script src="../js/logIn.js"></script>
+		<!-- <script src = "../js/profiles.js"></script> -->
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div class="container-fluid">
+			<div class="row justify-content-center">
+				<div class="col-11" >
+				<!-- top-navbar navbar navbar-expand-sm navbar-dark bg-dark -->
+				<nav class="navbar navbar-expand bg-info text-white">
+					<div class="container-fluid">
+						<a class="navbar-brand" href="../index.html">
+							<img src="../img/LOGO03.png" style="height:30px; width:auto;">
+						</a>
+						<ul class="nav nav-pills me-auto te mx-1">
+							<!-- nav nav-pills -->
+							<!-- data-bs-toggle="pill" -->
+							<li class="nav-item">
+							<a class="nav-link text-white" href="../index.html">首頁</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-white" href="./rentflow.html">租借流程</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-white" href="./chat.html">聊天室</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-white" href="./wishpool.html">許願池</a>
+							</li>
+							<li class="nav-item">
+							<a class="nav-link text-white active"  href="./member.html">會員</a>
+							</li>                
+							<li class="nav-item">
+							<a class="nav-link text-white"  href="./cart.html">購物車</a>
+							</li>
+						</ul>
+						<!-- 靠右 -->
+						<div class="d-flex">
+                            <div class="btn-group" role="group">
+                                <!-- 第一顆按鈕 -->
+                                <button id="loginBtn" type="button" class="btn btn-primary " data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop">登入</button>
+                                <button id="logoutBtn" type="submit" style="display:none" class="btn btn-primary "
+                                    data-bs-target="#staticBackdrop">登出</button>
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-dark" id="staticBackdropLabel">登入</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <form class="text-dark">
+                                                <div class="modal-body" id="loginBox">
+                                                    <label class="mx-2 my-1">帳號</label>
+                                                    <input class="mx-2 my-1" type="text" id="loginAccountTextBox"
+                                                        placeholder="請輸入大小寫英數字"><br>
+                                                    <label class="mx-2 my-1">密碼 </label>
+                                                    <input class="mx-2 my-1" type="password" id="loginPasswordMTextBox"
+                                                        placeholder="請輸入大小寫英數字"><br>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn" id="forgetBtn">忘記密碼？</button>
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">關閉</button>
+                                                    <button type="button" id="loginMember" class="btn btn-primary"
+                                                        data-bs-dismiss="modal">送出</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 第二顆按鈕 -->
+                                <button id="createBtn" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop2">註冊</button>
+                                <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-dark" id="staticBackdropLabel2">註冊</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+
+                                            <form class="text-dark">
+                                                <div class="modal-body">
+                                                    <label class="mx-2 my-1">帳號</label>
+                                                    <input class="mx-2 my-1" type="text" id="createAccountTextBox"
+                                                        placeholder="請輸入大小寫英數字"><br>
+                                                    <label class="mx-2 my-1">密碼</label>
+                                                    <input class="mx-2 my-1" type="password" id="createPasswordMTextBox"
+                                                        placeholder="請輸入大小寫英數字"><br>
+                                                    <label class="mx-2 my-1">信箱</label>
+                                                    <input class="mx-2 my-1" type="text" id="createMailTextBox"
+                                                        placeholder=""><br>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">關閉</button>
+                                                    <button type="button" id="createMember" class="btn btn-primary"
+                                                        data-bs-dismiss="modal">送出</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+					</div>
+				</nav>
+					<!-- main-body -->
+					<div class="row justify-content-center" >
+						<!-- 左側導覽列 -->
+						<div class="col-2 ">
+							<div class="mx-3 my-3 px-3 py-3 border border-3 border-dark" style="border-radius: 15px;">
+								<ul class="nav flex-column nav-pills nav-fill">
+									<li class="nav-item ">
+										<a class="nav-link" id="nav-member-tab" aria-controls="tab1" href="./member_profile.html"
+											aria-selected="true">會員資料</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link " href="./member_payment.html">付款資訊</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link " href="./member_traderecord.html" aria-selected="false">交易紀錄</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link " href="./member_wishlist.html" aria-selected="false">許願清單</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="./member_myproduct.html" aria-selected="false">我的商品</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="./member_uploadproduct.html" aria-selected="false">上架商品</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="./member_receiveorder.html" aria-selected="false">已接收訂單</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="./member_myorder.html" aria-selected="false">下訂訂單</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link active" href="./member_backstage.html" aria-selected="false">管理者後台</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- 標籤內容 -->
+						<div class="col-9 ">
+							<div class="mx-3 my-3 px-3 py-3" id="myTab">
+								<div class="mx-3 my-3 px-3 py-3 text-dark" id="myTab">
+									<!-- 管理者後台 -->
+									<div class="text-dark " id="tab2">
+										<h1>管理者後台</h1>
+									</div>
+									<!-- <form class="my-2"> -->
+
+									<label>會員管理</label>
+									<input type="text" placeholder="以帳號搜尋" id="searchAcc">
+									<input type="text" placeholder="以暱稱搜尋" id="searchName">
+
+									<button class="btn btn-danger border-3 border-dark mx-3" id="searchMember">確定</button>
+									<div id="divMember"></div>
+									<!-- </form> -->
+
+									<!-- <form class="my-2"> -->
+									<label>商品管理</label>
+									<input type="text" placeholder="以品名搜尋" id="searchItemName">
+									<button class="btn btn-danger border-3 border-dark mx-3" id="searchItem">確定</button>
+									<div id="divItem"></div>
+									<!-- </form> -->
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- foot -->
+					<a href="javascript:window.scrollTo(0,0)">
+						<footer class="footer bg-secondary text-center text-white mt-auto fixed-bottom">
+							<div class="container-fluid">
+								<span class="">2022 EEIT48 </span>
+							</div>
+						</footer>
+					</a>
+				</div>
+			</div>
+		</div>
+		<!-- function 區域 -->
+		<script>
+
+			// 使用方式:
+			// showToast("標題", "提示文字") 例如:
+			// showToast("Hint", "請點一下正確的圖案");
+			function showToast(heading, message) {
+				$.toast({
+					text: message, // Text that is to be shown in the toast
+					heading: heading, // Optional heading to be shown on the toast
+					icon: 'warning', // Type of toast icon
+					showHideTransition: 'fade', // fade, slide or plain
+					allowToastClose: true, // Boolean value true or false
+					hideAfter: 3000, // false to make it sticky or number representing the miliseconds as time after which toast needs to be hidden
+					stack: 5, // false if there should be only one toast at a time or a number representing the maximum number of toasts to be shown at a time
+					position: 'top-right', // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values
+					textAlign: 'left',  // Text alignment i.e. left, right or center
+					loader: true,  // Whether to show loader or not. True by default
+					loaderBg: '#9ec600',  // Background color of the toast loader
+					beforeShow: function () { }, // will be triggered before the toast is shown
+					afterShown: function () { }, // will be triggered after the toat has been shown
+					beforeHide: function () { }, // will be triggered before the toast gets hidden
+					afterHidden: function () { }  // will be triggered after the toast has been hidden
+				});
+			}
+			$("#searchAcc").on("input", function () {
+				$("#searchName").val("");
+				$("#searchItemName").val("");
+			})
+
+			$("#searchName").on("input", function () {
+				$("#searchAcc").val("");
+				$("#searchItemName").val("");
+			})
+
+			$("#searchItemName").on("input", function () {
+				$("#searchAcc").val("");
+				$("#searchName").val("");
+			})
+
+			$("#searchMember").click(
+
+				async function () {
+					if ($("#searchAcc").val() != "") {
+
+						$.get("/api/manage/account/"
+							+ $("#searchAcc").val(),
+							function (e) {
+								$("#divMember").empty();
+								$("#divMember").append(
+									"<h1 id='memberID'>會員ID: " + e.mb.member_id + "</h1><br>" +
+									"<h1>會員帳號: " + e.mb.member_account + "</h1><br>" +
+									"<h1>會員暱稱: " + e.mb.member_nickname + "</h1><br>" +
+									"<h1>目前權限: " + e.mb.member_rank + "</h1><br>" +
+									"<select name='rank' id='rank'>" +
+									"<option value='一般'>一般權限</option>" +
+									"<option value='停權'>停權</option>" +
+									"</select>" +
+									"<div id='inputBanDate'>" +
+									"<button class='memberConfirm'>確認更改</button><hr>" +
+									"</div>" +
+									"<h1>會員商品</h1><br>");
+
+								for (var i = 0; i < e.it.length; i++) {
+									$("#divMember").append(
+										"<h2>商品" + (i + 1) + "</h2><br>" +
+										"<h2>商品ID: " + e.it[i].item_id + "</h2><br>" +
+										"<h2>商品名稱: " + e.it[i].item_name + "</h2><br>" +
+										"<h2>商品狀態: " + e.it[i].item_state + "</h2><br>" +
+										"<select class='state' id='state" + e.it[i].item_id + "'>" +
+										"<option value='上架中'>上架中</option>" +
+										"<option value='準備上架'>準備上架</option>" +
+										"<option value='已刪除'>已刪除</option>" +
+										"</select>" +
+										"<div id='inputResellDate" + e.it[i].item_id + "'>" +
+										"<button class='itemConfirm' id='iConfirm" + e.it[i].item_id +
+										"'>確認更改</button><hr>" +
+										"</div>"
+									)
+								}
+
+								// $("#divMember").append(
+								// 	"<h1>會員訂單</h1>"
+								// )
+
+								// 	for (var i = 0; i < e.od.length; i++) {
+								// 		$("#divMember").append(
+								// 			"<h2>訂單" + (i + 1) + "</h2><br>" +
+								// 			"<h2>訂單ID: " + e.od[i].order_id + "</h2><br>" +
+								// 			"<h2>下訂日期: " + e.od[i].order_date + "</h2><br>" +
+								// 			"<h2>訂單總價: " + e.od[i].order_total_price + "</h2><br>" +
+								// 			"<h2>訂單狀態: " + e.od[i].order_state + "</h2><hr>"
+								// 		)
+								// 	}
+								// 	
+								// 
+								$("#searchAcc").val("");
+							})
+					} else if ($("#searchName").val() != "") {
+
+						$.get("/api/manage/nickname/"
+							+ $("#searchName").val(),
+							function (e) {
+								$("#divMember").empty();
+								for (var i = 0; i < e.mbs.length; i++) {
+									$("#divMember").append(
+										"<div id='divID" + e.mbs[i].member_id + "'>" +
+										"<h1>會員ID: " + e.mbs[i].member_id + "</h1><br>" +
+										"<h1>會員帳號: " + e.mbs[i].member_account + "</h1><br>" +
+										"<h1>會員暱稱: " + e.mbs[i].member_nickname + "</h1><br>" +
+										"<h1>目前權限: " + e.mbs[i].member_rank + "</h1><br>" +
+										"<button id='btnID" + i +
+										"' class='selectbtn'>選擇</button>" +
+										"</div>"
+									);
+								}
+
+								$("#divMember").on("click", ".selectbtn", async function () {
+									var index = parseInt(this.id.substr(-1));
+
+									$("#divMember").empty();
+									$("#divMember").append(
+										"<h1 id='memberID'>會員ID: " + e.mbs[index].member_id + "</h1><br>" +
+										"<h1>會員帳號: " + e.mbs[index].member_account + "</h1><br>" +
+										"<h1>會員暱稱: " + e.mbs[index].member_nickname + "</h1><br>" +
+										"<h1>目前權限: " + e.mbs[index].member_rank + "</h1><br>" +
+										"<select name='rank' id='rank'>" +
+										"<option value='一般'>一般權限</option>" +
+										"<option value='停權'>停權</option>" +
+										"</select>" +
+										"<div id='inputBanDate'>" +
+										"<button class='memberConfirm'>確認更改</button><hr>" +
+										"</div>" +
+										"<h1>會員商品</h1><br>" +
+										"<h2>數量:" + e.its[index].length + "</h2><br>");
+
+									for (var i = 0; i < e.its[index].length; i++) {
+										$("#divMember").append(
+											"<h2>商品" + (i + 1) + "</h2><br>" +
+											"<h2>商品ID: " + e.its[index][i].item_id + "</h2><br>" +
+											"<h2>商品名稱: " + e.its[index][i].item_name + "</h2><br>" +
+											"<h2>商品狀態: " + e.its[index][i].item_state + "</h2><hr>" +
+											"<select class='state' id='state" + e.it[i].item_id + "'>" +
+											"<option value='上架中'>上架中</option>" +
+											"<option value='準備上架'>準備上架</option>" +
+											"<option value='已刪除'>已刪除</option>" +
+											"</select>" +
+											"<div id='inputResellDate" + e.it[i].item_id + "'>" +
+											"<button class='itemConfirm' id='iConfirm" + e.it[i].item_id +
+											"'>確認更改</button><hr>" +
+											"</div>"
+										)
+									}
+
+									// $("#divMember").append(
+									// 	"<h1>會員訂單</h1>" +
+									// 	"<h2>數量:" + e.ods[index].length + "</h2><br>"
+									// )
+
+									// for (var i = 0; i < e.ods[index].length; i++) {
+									// 	$("#divMember").append(
+									// 		"<h2>訂單" + (i + 1) + "</h2><br>" +
+									// 		"<h2>訂單ID: " + e.ods[index][i].order_id + "</h2><br>" +
+									// 		"<h2>下訂日期: " + e.ods[index][i].order_date + "</h2><br>" +
+									// 		"<h2>訂單總價: " + e.ods[index][i].order_total_price + "</h2><br>" +
+									// 		"<h2>訂單狀態: " + e.ods[index][i].order_state + "</h2><hr>"
+									// 	)
+									// }
+								}
+								)
+								$("#searchName").val("");
+							}
+						)
+					}
+				})
+
+			$("#searchItem").click(
+
+				async function () {
+					if ($("#searchItemName").val) {
+						var postdata = {
+							item_name: $("#searchItemName").val()
+						}
+						var temp = $.ajax({
+							type: "post",
+							url: "/api/manage/itemNameManager",
+							// contentType:"text/html",
+							data: postdata
+						})
+						var r = await temp;
+						console.log(r);
+						$("#divItem").empty();
+						for (var i = 0; i < r.length; i++) {
+							$("#divItem").append(
+								"<h2>商品" + (i + 1) + "</h2><br>" +
+								"<h2>商品ID: " + r[i].item_id + "</h2><br>" +
+								"<h2>商品名稱: " + r[i].item_name + "</h2><br>" +
+								"<h2>商品狀態: " + r[i].item_state + "</h2><br>" +
+								"<select class='state' id='state" + r[i].item_id + "'>" +
+								"<option value='上架中'>上架中</option>" +
+								"<option value='準備上架'>準備上架</option>" +
+								"<option value='已刪除'>已刪除</option>" +
+								"</select>" +
+								"<div id='inputResellDate" + r[i].item_id + "'>" +
+								"<button class='itemConfirm' id='iConfirm" + r[i].item_id +
+								"'>確認更改</button><hr>" +
+								"</div>"
+							);
+						}
+					}
+				})
+
+			$("#myTab").on("change", "#rank", function () {
+				if ($("#rank").val() == "停權") {
+					$("#inputBanDate").empty();
+					$("#inputBanDate").append(
+						"<label>停權結束日期:<input type='date' id='banDate'></label><br>" +
+						"<button class='memberConfirm'>確認更改</button><hr>"
+					);
+				} else {
+					$("#inputBanDate").empty();
+					$("#inputBanDate").append(
+						"<button class='memberConfirm'>確認更改</button><hr>"
+					)
+				}
+			})
+
+			$("#myTab").on("change", ".state", function () {
+				// console.log("GG");
+				var ID = parseInt(this.id.slice(5));
+				$("#inputResellDate" + ID).empty();
+				if ($("#state" + ID).val() == "準備上架") {
+					$("#inputResellDate" + ID).append(
+						"<label>重新上架日期:<input type='date' id='resellDate" + ID +
+						"'></label><br>" +
+						"<button class='itemConfirm' id='iConfirm" + ID +
+						"'>確認更改</button><hr>"
+					);
+				} else {
+					$("#inputResellDate" + ID).append(
+						"<button class='itemConfirm' id='iConfirm" + ID +
+						"'>確認更改</button><hr>"
+					)
+				}
+			})
+
+			$("#myTab").on("click", ".memberConfirm", async function () {
+				var newRank = $("#rank").val();
+				var rankedMemberID = parseInt($("#memberID").text().slice(6));
+				var banDate;
+
+				switch (newRank) {
+					case "一般":
+						banDate = "";
+						break;
+					case "停權":
+						banDate = $("#banDate").val();
+						break;
+				}
+				var rankData = {
+					rank: newRank,
+					bDate: banDate,
+					ID: rankedMemberID
+				}
+				console.log(rankData);
+				var temp = $.ajax({
+					type: "put",
+					url: "/api/manage/memberRank",
+					// contentType:"text/html",
+					data: rankData
+				})
+				showToast("已修改權限", "已將會員ID:" + rankedMemberID + " 權限修改為" + newRank);
+			})
+
+			$("#myTab").on("click", ".itemConfirm", async function () {
+				var itemID = parseInt(this.id.slice(8));
+				var newState = $("#state" + itemID).val();
+				var resellDate;
+
+				switch (newState) {
+					case "上架中":
+						resellDate = "";
+						break;
+					case "準備上架":
+						resellDate = $("#resellDate" + itemID).val();
+						break;
+					case "已刪除":
+						resellDate = "";
+						break;
+				}
+				var stateData = {
+					state: newState,
+					date: resellDate,
+					ID: itemID
+				}
+				var temp = $.ajax({
+					type: "put",
+					url: "/api/manage/itemState",
+					// contentType:"text/html",
+					data: stateData
+				})
+				showToast("已修改狀態", "已將商品ID:" + itemID + " 狀態修改為" + newState);
+			})
+		</script>
+	</body>
+
+	</html>

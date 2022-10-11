@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../bootstrap5/css/bootstrap.css" rel="stylesheet">
+    <link href="../css/manager.css" rel="stylesheet">
+    <!-- <link href="../css/index.css" rel="stylesheet"> -->
+    <script src="../bootstrap5/js/bootstrap.js"></script>
+    <script src="../js/jquery.js"></script>  
+    <script src="../js/logIn.js"></script>
+    <!-- <script src = "../js/profiles.js"></script> -->
+    <title>Document</title>
+    <style>
+        .order_detail_box {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-11" >
+                <!-- top-navbar navbar navbar-expand-sm navbar-dark bg-dark -->
+                <nav class="navbar navbar-expand bg-info text-white">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="../index.html">
+                            <img src="../img/LOGO03.png" style="height:30px; width:auto;">
+                        </a>
+                        <ul class="nav nav-pills me-auto te mx-1">
+                            <!-- nav nav-pills -->
+                            <!-- data-bs-toggle="pill" -->
+                            <li class="nav-item">
+                            <a class="nav-link text-white" href="../index.html">首頁</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="./rentflow.html">租借流程</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="./chat.html">聊天室</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="./wishpool.html">許願池</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link text-white active"  href="./member.html">會員</a>
+                            </li>                
+                            <li class="nav-item">
+                            <a class="nav-link text-white"  href="./cart.html">購物車</a>
+                            </li>
+                        </ul>
+                        <!-- 靠右 -->
+                        <div class="d-flex">
+                            <div class="btn-group" role="group">
+                                <!-- 第一顆按鈕 -->
+                                <button id="loginBtn" type="button" class="btn btn-primary " data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop">登入</button>
+                                <button id="logoutBtn" type="submit" style="display:none" class="btn btn-primary "
+                                    data-bs-target="#staticBackdrop">登出</button>
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-dark" id="staticBackdropLabel">登入</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <form class="text-dark">
+                                                <div class="modal-body" id="loginBox">
+                                                    <label class="mx-2 my-1">帳號</label>
+                                                    <input class="mx-2 my-1" type="text" id="loginAccountTextBox"
+                                                        placeholder="請輸入大小寫英數字"><br>
+                                                    <label class="mx-2 my-1">密碼 </label>
+                                                    <input class="mx-2 my-1" type="password" id="loginPasswordMTextBox"
+                                                        placeholder="請輸入大小寫英數字"><br>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn" id="forgetBtn">忘記密碼？</button>
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">關閉</button>
+                                                    <button type="button" id="loginMember" class="btn btn-primary"
+                                                        data-bs-dismiss="modal">送出</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 第二顆按鈕 -->
+                                <button id="createBtn" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop2">註冊</button>
+                                <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-dark" id="staticBackdropLabel2">註冊</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+
+                                            <form class="text-dark">
+                                                <div class="modal-body">
+                                                    <label class="mx-2 my-1">帳號</label>
+                                                    <input class="mx-2 my-1" type="text" id="createAccountTextBox"
+                                                        placeholder="請輸入大小寫英數字"><br>
+                                                    <label class="mx-2 my-1">密碼</label>
+                                                    <input class="mx-2 my-1" type="password" id="createPasswordMTextBox"
+                                                        placeholder="請輸入大小寫英數字"><br>
+                                                    <label class="mx-2 my-1">信箱</label>
+                                                    <input class="mx-2 my-1" type="text" id="createMailTextBox"
+                                                        placeholder=""><br>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">關閉</button>
+                                                    <button type="button" id="createMember" class="btn btn-primary"
+                                                        data-bs-dismiss="modal">送出</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <!-- main-body -->
+                <div class="row justify-content-center">
+                    <!-- 左側導覽列 -->
+                    <div class="col-2 ">
+                        <div class="mx-3 my-3 px-3 py-3 border border-3 border-dark" style="border-radius: 15px;">
+                            <ul class="nav flex-column nav-pills nav-fill">
+                                <li class="nav-item ">
+                                    <a class="nav-link " id="nav-member-tab" aria-controls="tab1" href="./member_profile.html"
+                                        aria-selected="true">會員資料</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="./member_payment.html">付款資訊</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="./member_traderecord.html" aria-selected="false">交易紀錄</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="./member_wishlist.html" aria-selected="false">許願清單</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./member_myproduct.html" aria-selected="false">我的商品</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./member_uploadproduct.html" aria-selected="false">上架商品</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./member_receiveorder.html" aria-selected="false">已接收訂單</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="./member_myorder.html" aria-selected="false">下訂訂單</a>
+                                </li>
+                                <li class="nav-item normal" id="backstage">
+                                    <a class="nav-link" href="./member_backstage.html" aria-selected="false">管理者後台</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 標籤內容 -->
+                    <div class="col-9 ">
+                        <div class="mx-3 my-3 px-3 py-3 text-dark" id="myTab">
+                            <!-- 下訂訂單 -->
+                            <div class="text-dark " id="tab2">
+                                <h1>下訂訂單</h1>
+                            </div>
+                            <div class="order">
+                                <!-- 一筆訂單 -->
+                                <div class="card my-2">
+                                    <div class="card-body d-flex justify-content-between">
+                                        <a href="#" class="link btn bg-info text-white">出租者ID</a>
+                                        <h5>下訂日期</h5>
+                                        <h5>租借天數</h5>
+                                        <h5>金額</h5>
+                                        <h5>商品狀態</h5>
+                                        <div class="btn-group">
+                                            <button class="btn btn-primary rounded-4">明細</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 一筆訂單結束 -->
+
+                                <!-- 一筆訂單 -->
+                                <div class="card my-2">
+                                    <div class="card-body d-flex justify-content-between">
+                                        <a href="#" class="link btn bg-info text-white">出租者ID</a>
+                                        <h5>下訂日期</h5>
+                                        <h5>租借天數</h5>
+                                        <h5>金額</h5>
+                                        <h5>商品狀態</h5>
+                                        <div class="btn-group">
+                                            <button class="btn btn-primary rounded-4">明細</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 一筆訂單結束 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- foot -->
+                <a href="javascript:window.scrollTo(0,0)">
+                    <footer class="footer bg-secondary text-center text-white mt-auto fixed-bottom">
+                        <div class="container-fluid">
+                            <span class="">2022 EEIT48 </span>
+                        </div>
+                    </footer>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- function 區域 -->
+    <script>
+        let item;
+        async function downloadAndRefreshUI() {
+            var p = $.ajax({
+                type: "get",
+                url: "/pages/myorder"
+            })
+            item = await p;
+            refreshUI();
+            console.log(item.linkedListorder_details[0].item_price)
+        }
+        downloadAndRefreshUI()
+
+
+        function refreshUI() {
+            $(".order").empty();
+            console.log(item.listorder_list.length);
+            for (let i = 0; i < item.listorder_list.length; i++) {
+                console.log(item.linkedListorder_details[0].item_price)
+                //訂單編號
+                let order_id = item.listorder_list[i].order_id;
+                //訂單狀態
+                let order_state = item.listorder_list[i].order_state;
+                //價錢
+                let order_total_price = item.listorder_list[i].order_total_price;
+                //下定日期
+                let order_date = item.listorder_list[i].order_date;
+                //租借者帳戶名稱 
+                // let member_account = item.linkedListmembers[i].member_account;
+
+
+                let liTemplate = `
+               <div class="card my-2 template">
+                                <div class="card-body d-flex justify-content-between">
+                                    <a href="#" class="link btn bg-info text-white"></a>
+                                    <h5>訂單編號${order_id}</h5>
+                                    <h5>下定日期${order_date}</h5>
+                                    <h5>總價${order_total_price}</h5>
+                                    <h5>商品狀態${order_state}</h5>
+                                    <div class="btn-group">
+                                        <button class="btn btn-primary rounded-4 orderDetailbtn">明細</button>
+                                    </div>
+                                </div>
+                            </div>                           
+                           
+                            `;
+                let innerBox = "";
+
+                for (let j = 0; j < item.linkedListmembers.length; j++) {
+                    if (item.listorder_list[i].order_id == item.linkedListorder_details[j].order_id) {
+                        //商品Detail
+
+                        //商品名稱
+                        let item_name = item.listitems[j].item_name;
+                        //商品持有人
+                        let owner_name = item.linkedListmembers[j].member_account;
+                        //運送地點	deliver_place
+                        let deliver_place = item.linkedListorder_details[j].deliver_place;
+                        //歸還地點 return_place
+                        let return_place = item.linkedListorder_details[j].return_place;
+                        //運送日期 	item_receive_date
+                        let item_receive_date = item.linkedListorder_details[j].item_receive_date;
+                        //歸還日期item_return_date
+                        let item_return_date = item.linkedListorder_details[j].item_return_date;
+                        //價格
+                        let item_price = item.linkedListorder_details[j].item_price;
+                        //商品狀態    
+                        let order_detail_state = item.linkedListorder_details[j].order_detail_state;
+
+                        innerBox += `<h5>${item_name}</h5><div class="card-body d-flex justify-content-between "><br>                                  
+                                    <h5>${owner_name}</h5>
+                                    <h5>${deliver_place}</h5>
+                                    <h5>${return_place}</h5>
+                                    <h5>${item_receive_date}</h5>
+                                    <h5>${item_return_date}</h5>
+                                    <h5>${item_price}</h5>
+                                    <h5>${order_detail_state}</h5>                               
+                                </div>`
+                    }
+                }
+                liTemplate += "<div class='order_detail_box'>";              
+                liTemplate += innerBox;
+                liTemplate += "</div>";
+                $(".order").append(liTemplate);
+            }
+            // $(".orderDetailbtn").click(function () {
+            //     $(this).parent().parent().parent().next($(".order_detail_box")).toggle();
+            // })
+        }
+        $("body").on("click",".orderDetailbtn",function () {
+            $(this).parent().parent().parent().next($(".order_detail_box")).toggle();  
+               })   
+             
+    </script>
+</body>
+
+</html>

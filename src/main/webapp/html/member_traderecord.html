@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../bootstrap5/css/bootstrap.css" rel="stylesheet">
+    <link href="../css/manager.css" rel="stylesheet">
+    <!-- <link href="../css/index.css" rel="stylesheet"> -->
+    <script src="../bootstrap5/js/bootstrap.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/logIn.js"></script>
+    <!-- <script src = "../js/profiles.js"></script> -->
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-11" >
+                <!-- top-navbar navbar navbar-expand-sm navbar-dark bg-dark -->
+                <nav class="navbar navbar-expand bg-info text-white">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="../index.html">
+                            <img src="../img/LOGO03.png" style="height:30px; width:auto;">
+                        </a>
+                        <ul class="nav nav-pills me-auto te mx-1">
+                            <!-- nav nav-pills -->
+                            <!-- data-bs-toggle="pill" -->
+                            <li class="nav-item">
+                            <a class="nav-link text-white" href="../index.html">首頁</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="./rentflow.html">租借流程</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="./chat.html">聊天室</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="./wishpool.html">許願池</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link text-white active"  href="./member.html">會員</a>
+                            </li>                
+                            <li class="nav-item">
+                            <a class="nav-link text-white"  href="./cart.html">購物車</a>
+                            </li>
+                        </ul>
+                        <!-- 靠右 -->
+                        <div class="d-flex">
+                            <div class="btn-group" role="group">
+                                <!-- 第一顆按鈕 -->
+                                <button id="loginBtn" type="button" class="btn btn-primary " data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop">登入</button>
+                                <button id="logoutBtn" type="submit" style="display:none" class="btn btn-primary "
+                                    data-bs-target="#staticBackdrop">登出</button>
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-dark" id="staticBackdropLabel">登入</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <form class="text-dark">
+                                                <div class="modal-body" id="loginBox">
+                                                    <label class="mx-2 my-1">帳號</label>
+                                                    <input class="mx-2 my-1" type="text" id="loginAccountTextBox"
+                                                        placeholder="請輸入大小寫英數字"><br>
+                                                    <label class="mx-2 my-1">密碼 </label>
+                                                    <input class="mx-2 my-1" type="password" id="loginPasswordMTextBox"
+                                                        placeholder="請輸入大小寫英數字"><br>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn" id="forgetBtn">忘記密碼？</button>
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">關閉</button>
+                                                    <button type="button" id="loginMember" class="btn btn-primary"
+                                                        data-bs-dismiss="modal">送出</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 第二顆按鈕 -->
+                                <button id="createBtn" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop2">註冊</button>
+                                <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-dark" id="staticBackdropLabel2">註冊</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+
+                                            <form class="text-dark">
+                                                <div class="modal-body">
+                                                    <label class="mx-2 my-1">帳號</label>
+                                                    <input class="mx-2 my-1" type="text" id="createAccountTextBox"
+                                                        placeholder="請輸入大小寫英數字"><br>
+                                                    <label class="mx-2 my-1">密碼</label>
+                                                    <input class="mx-2 my-1" type="password" id="createPasswordMTextBox"
+                                                        placeholder="請輸入大小寫英數字"><br>
+                                                    <label class="mx-2 my-1">信箱</label>
+                                                    <input class="mx-2 my-1" type="text" id="createMailTextBox"
+                                                        placeholder=""><br>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">關閉</button>
+                                                    <button type="button" id="createMember" class="btn btn-primary"
+                                                        data-bs-dismiss="modal">送出</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <!-- main-body -->
+                <div class="row justify-content-center">
+                    <!-- 左側導覽列 -->
+                    <div class="col-2 ">
+                        <div class="mx-3 my-3 px-3 py-3 border border-3 border-dark" style="border-radius: 15px;" >
+                            <ul class="nav flex-column nav-pills nav-fill">
+                                <li class="nav-item ">
+                                    <a class="nav-link" id="nav-member-tab"   aria-controls="tab1" href="./member_profile.html" >會員資料</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="./member_payment.html" >付款資訊</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="./member_traderecord.html" >交易紀錄</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link "   href="./member_wishlist.html" >許願清單</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"   href="./member_myproduct.html" aria-selected="false">我的商品</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link"   href="./member_uploadproduct.html" >上架商品</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link"   href="./member_receiveorder.html" >已接收訂單</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"   href="./member_myorder.html" >下訂訂單</a>
+                                </li>
+                                <li class="nav-item normal" id="backstage">
+                                    <a class="nav-link"   href="./member_backstage.html" >管理者後台</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 標籤內容 -->
+                    <div class="col-9 ">
+                        <!-- <div class="mx-3 my-3 px-3 py-3 text-dark" id="myTab"> -->
+                            <!-- 交易紀錄 -->
+                            <!-- <div class="text-dark " id="tab2">
+                                <h1>交易紀錄 </h1>
+                                <p>訂單ID 圖 商品名稱 應到貨 歸還日 運送方式 歸還方式 租借日期 價格</p> 
+                            </div> -->
+                            <div class="mx-3  py-3 ">
+                                <div class="row d-flex justify-content-between align-items-center px-3">
+                                    <div class="col-1">商品圖</div>
+                                    <div class="col-1 ">訂單ID</div>
+                                    <div class="col-1 ">商品名稱</div>
+                                    <div class="col-1 d-flex">應到貨日</div>
+                                    <div class="col-1 d-flex">到貨方式</div>
+                                    <div class="col-1 d-flex">歸還日</div>
+                                    <div class="col-1 d-flex">歸還方式</div>
+                                    <div class="col-1 d-flex">租借日期</div>
+                                    <div class="col-1 offset-lg-1">價格</div>
+                                </div>
+                            </div>
+                            <div class="mx-3 table-responsive py-3 ">
+                                <!-- 商品 -->
+                                <div class="card rounded-3 mb-4">  
+                                    <div class="card-body  ">
+                                        <div class="row d-flex justify-content-between align-items-center px-3">
+                                            <img class="img-fluid rounded-3" style="height:100px;width:auto;" src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/3.webp">
+                                            <div class="col-1">
+                                                <p class="lead fw-normal mb-2">訂單ID</p>
+                                            </div>
+                                            <div class="col-1">
+                                                <p class="lead fw-normal mb-2">我是商品名字</p>
+                                            </div>
+                                            <div class="col-1 d-flex">
+                                                到貨日
+                                            </div>
+                                            <div class="col-1 d-flex">
+                                                到貨方式
+                                            </div>
+                                            <div class="col-1 d-flex">
+                                                歸還日
+                                            </div>
+                                            <div class="col-1 d-flex">
+                                                歸還方式
+                                            </div>
+                                            <div class="col-1 d-flex px-1 ">
+                                            租借日期
+                                            </div>
+                                            <div class="col-1 offset-lg-1">
+                                                $1000
+                                            </div>
+                                        </div>
+                                    </div>   
+                                </div>
+                                <!-- 商品結束 -->
+                                <!-- 商品 -->
+                                <div class="card rounded-3 mb-4">  
+                                    <div class="card-body  ">
+                                        <div class="row d-flex justify-content-between align-items-center px-3">
+                                            <img class="img-fluid rounded-3" style="height:100px;width:auto;" src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/3.webp">
+                                            <div class="col-1">
+                                                <p class="lead fw-normal mb-2">訂單ID</p>
+                                            </div>
+                                            <div class="col-1">
+                                                <p class="lead fw-normal mb-2">我是商品名字</p>
+                                            </div>
+                                            <div class="col-1 d-flex">
+                                                到貨日
+                                            </div>
+                                            <div class="col-1 d-flex">
+                                                到貨方式
+                                            </div>
+                                            <div class="col-1 d-flex">
+                                                歸還日
+                                            </div>
+                                            <div class="col-1 d-flex">
+                                                歸還方式
+                                            </div>
+                                            <div class="col-1 d-flex px-1 ">
+                                            租借日期
+                                            </div>
+                                            <div class="col-1 offset-lg-1">
+                                                $1000
+                                            </div>
+                                        </div>
+                                    </div>   
+                                </div>
+                                <!-- 商品結束 -->
+                            </div>
+                        <!-- </div> -->
+                    </div>
+                </div>
+
+                <!-- foot -->
+                <a href="javascript:window.scrollTo(0,0)">
+                    <footer class="footer bg-secondary text-center text-white mt-auto fixed-bottom">
+                        <div class="container-fluid" >
+                            <span class="">2022 EEIT48 </span>
+                        </div>
+                    </footer>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- function 區域 -->
+    <script>
+
+    </script>
+</body>
+</html>

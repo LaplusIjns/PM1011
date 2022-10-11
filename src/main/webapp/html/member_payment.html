@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../bootstrap5/css/bootstrap.css" rel="stylesheet">
+    <link href="../css/manager.css" rel="stylesheet">
+    <!-- <link href="../css/index.css" rel="stylesheet"> -->
+    <script src="../bootstrap5/js/bootstrap.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/logIn.js"></script>
+    <!-- <script src = "../js/profiles.js"></script> -->
+    
+    <style>
+        .addNewCardBox,
+        .addNewAccountBox,
+        .payment_detail_id02,
+        .addConvenientStoreBox {
+            display: none;
+            width: 1000px;
+        }
+        .cs{display: flex; width: 1000px;}
+        .convenientstore{
+            flex: 1;
+        }
+        .seven,.family,.ok{
+            width:200px;
+             flex: 1;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-11" >
+                <!-- top-navbar navbar navbar-expand-sm navbar-dark bg-dark -->
+                <nav class="navbar navbar-expand bg-info text-white">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="../index.html">
+                            <img src="../img/LOGO03.png" style="height:30px; width:auto;">
+                        </a>
+                        <ul class="nav nav-pills me-auto te mx-1">
+                            <!-- nav nav-pills -->
+                            <!-- data-bs-toggle="pill" -->
+                            <li class="nav-item">
+                            <a class="nav-link text-white" href="../index.html">首頁</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="./rentflow.html">租借流程</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="./chat.html">聊天室</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="./wishpool.html">許願池</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link text-white active"  href="./member.html">會員</a>
+                            </li>                
+                            <li class="nav-item">
+                            <a class="nav-link text-white"  href="./cart.html">購物車</a>
+                            </li>
+                        </ul>
+                        <!-- 靠右 -->
+                        <div class="d-flex">
+                            <div class="btn-group" role="group">
+                                <!-- 第一顆按鈕 -->
+                                <button id="loginBtn" type="button" class="btn btn-primary " data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop">登入</button>
+                                <button id="logoutBtn" type="submit" style="display:none" class="btn btn-primary "
+                                    data-bs-target="#staticBackdrop">登出</button>
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-dark" id="staticBackdropLabel">登入</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <form class="text-dark">
+                                                <div class="modal-body" id="loginBox">
+                                                    <label class="mx-2 my-1">帳號</label>
+                                                    <input class="mx-2 my-1" type="text" id="loginAccountTextBox"
+                                                        placeholder="請輸入大小寫英數字"><br>
+                                                    <label class="mx-2 my-1">密碼 </label>
+                                                    <input class="mx-2 my-1" type="password" id="loginPasswordMTextBox"
+                                                        placeholder="請輸入大小寫英數字"><br>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn" id="forgetBtn">忘記密碼？</button>
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">關閉</button>
+                                                    <button type="button" id="loginMember" class="btn btn-primary"
+                                                        data-bs-dismiss="modal">送出</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 第二顆按鈕 -->
+                                <button id="createBtn" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop2">註冊</button>
+                                <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-dark" id="staticBackdropLabel2">註冊</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+
+                                            <form class="text-dark">
+                                                <div class="modal-body">
+                                                    <label class="mx-2 my-1">帳號</label>
+                                                    <input class="mx-2 my-1" type="text" id="createAccountTextBox"
+                                                        placeholder="請輸入大小寫英數字"><br>
+                                                    <label class="mx-2 my-1">密碼</label>
+                                                    <input class="mx-2 my-1" type="password" id="createPasswordMTextBox"
+                                                        placeholder="請輸入大小寫英數字"><br>
+                                                    <label class="mx-2 my-1">信箱</label>
+                                                    <input class="mx-2 my-1" type="text" id="createMailTextBox"
+                                                        placeholder=""><br>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">關閉</button>
+                                                    <button type="button" id="createMember" class="btn btn-primary"
+                                                        data-bs-dismiss="modal">送出</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <!-- main-body -->
+                <div class="row justify-content-center">
+                    <!-- 左側導覽列 -->
+                    <div class="col-2 ">
+                        <div class="mx-3 my-3 px-3 py-3 border border-3 border-dark" style="border-radius: 15px;">
+                            <ul class="nav flex-column nav-pills nav-fill">
+                                <li class="nav-item ">
+                                    <a class="nav-link" id="nav-member-tab" aria-controls="tab1" href="./member_profile.html"
+                                        aria-selected="true">會員資料</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="./member_payment.html">付款資訊</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="./member_traderecord.html" aria-selected="false">交易紀錄</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./member_wishlist.html" aria-selected="false">許願清單</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./member_myproduct.html" aria-selected="false">我的商品</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./member_uploadproduct.html" aria-selected="false">上架商品</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./member_receiveorder.html" aria-selected="false">已接收訂單</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./member_myorder.html" aria-selected="false">下訂訂單</a>
+                                </li>
+                                <li class="nav-item normal" id="backstage">
+                                    <a class="nav-link" href="./member_backstage.html" aria-selected="false">管理者後台</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 標籤內容 -->
+                    <div class="col-9 ">
+                        <div class="mx-3 my-3 px-3 py-3 text-dark" id="myTab">
+                            <div>
+                                <button class="addPaymentData btn btn-primary my-1">新增信用卡</button>
+                            </div>
+                            <div class="addNewCardBox">
+                                <input type="text" placeholder="姓" class="member_lastname">
+                                <input type="text " placeholder="名" class="member_firstname">
+                                <input type="number" placeholder="信用卡號碼" class="creditcard_number">
+                                <input type="date" placeholder="信用卡日期" class="creditcard_date">
+                                <input type="text" placeholder="信用卡安全碼" class="creditcard_security_code">
+                                <button class="addNewCard btn btn-primary">新增</button>
+                            </div>
+                            <div>
+                                <button class="addNewAccount btn btn-primary my-1">新增帳戶</button>
+                            </div>
+                            <div class="addNewAccountBox">
+                                <input type="tel" id="bankCard" placeholder="帳戶號碼">
+                                <button class="addNewBankAccount btn btn-primary">新增</button>
+                            </div>
+
+                            <div>
+                                <button class="addConvenientStore btn btn-primary my-1">新增/修改 收件便利商店</button>
+                            </div>
+                            <div class="addConvenientStoreBox">
+                                <span > seven11門市
+                                    <select name="seven" id="" class="seven">
+                                        <option></option>
+                                        <option>7-ELEVEn 中川門市 便利商店</option>
+                                        <option>7-ELEVEn 精明門市 便利商店</option>
+                                        <option>7-ELEVEN 忠明義門市</option>
+                                        <option>7-ELEVEN 墩隆門市</option>
+                                        <option>7-ELEVEN 忠明義門市</option>
+                                        <option>7-ELEVEN 桂冠門市</option>
+                                        <option>7-ELEVEn 精業門市 便利商店</option>
+                                        <option>7-ELEVEN 鄉林夏都門市</option>
+                                    </select></span>
+
+                                <span > 全家門市
+                                    <select name="family" id=""class="family">
+                                        <option></option>
+                                        <option>全家便利商店 台中樂活店</option>
+                                        <option>全家便利商店 台中福揚店</option>
+                                        <option>全家便利商店 台中墩陽店</option>
+                                        <option>全家便利商店 台中大英店</option>
+                                        <option>全家便利商店 台中墩陽店</option>
+                                        <option>全家便利商店 台中大進店</option>
+                                        <option>全家便利商店-台中新桂冠店</option>
+                                    </select></span>
+
+                                <span > OK門市
+                                    <select name="ok" id="" class="ok">
+                                        <option></option>
+                                        <option>OK便利商店 台中太原店</option>
+                                        <option>OK便利商店 台中華美店</option>
+                                        <option>OK便利商店 台中公益店</option>
+                                        <option>OK便利商店 台中忠太店</option>
+                                        <option>OK便利商店 台中黎明店</option>
+                                        <option>OK便利商店 台中大益店</option>
+                                        <option>OK便利商店 台中河南店</option>
+                                    </select></span>
+
+
+                                <button class="addNewConvenientStore btn btn-primary">新增</button>
+                            </div>
+
+
+                            <div class="outBox">
+                                <div class="card rounded-3 my-4">
+                                    <div class="card-body  ">
+                                        <div class="row d-flex justify-content-between align-items-center px-3">
+                                            <div class="col-1">
+                                                <p class="lead fw-normal mb-2">編號</p>
+                                            </div>
+                                            <div class="col-1 d-flex">
+                                                姓名
+                                            </div>
+                                            <div class="col-1 d-flex">
+                                                地址
+                                            </div>
+                                            <div class="col-1 d-flex">
+                                                卡號
+                                            </div>
+                                            <div class="btn-group col-2">
+                                                <button class=" offset-lg-1 btn bg-info border-3 text-white rounded-5">
+                                                    修改
+                                                </button>
+                                                <button class=" offset-lg-1 btn border-3 bg-danger text-white rounded-5">
+                                                    刪除
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- foot -->
+                <a href="javascript:window.scrollTo(0,0)">
+                    <footer class="footer bg-secondary text-center text-white mt-auto fixed-bottom">
+                        <div class="container-fluid">
+                            <span class="">2022 EEIT48 </span>
+                        </div>
+                    </footer>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- function 區域 -->
+    <script>
+        //每四碼空一格
+        $("#bankCard").on("input", function () {
+            var val = $(this).val().replace(/\s/g, "").replace(/(\d{4})/g, "$1 ");
+            $(this).val(val);
+        });
+        $("#bankCard").on("keyup", function () {
+            //獲取當前光標的位置
+            var caret = this.selectionStart;
+            //獲取當前的value
+            var value = this.value;
+            //從左邊沿到座標之間的空格數
+            var sp = (value.slice(0, caret).match(/\s/g) || []).length;
+            //去掉所有空格
+            var nospace = value.replace(/\s/g, '');
+            //重新插入空格
+            var curVal = this.value = nospace.replace(/\D+/g, "").replace(/(\d{4})/g, "$1 ").trim();
+            //從左邊沿到原座標之間的空格數
+            var curSp = (curVal.slice(0, caret).match(/\s/g) || []).length;
+            //修正光標位置
+            this.selectionEnd = this.selectionStart = caret + curSp - sp;
+        });
+
+        //取得信用卡 存摺付款資訊  重新更新畫面
+        async function downloadAndRefreshUI() {
+            var p = $.ajax({
+                type: "get",
+                url: "/getPaymentInformation"
+            })
+            item = await p;
+
+            refreshUI();
+            //綁刪除信用卡事件
+            $(".deleteCreditcard").click(async function () {
+                var payment_detail_id = $(this).prev($(".payment_detail_id02")).text();
+                console.log(payment_detail_id);
+                var p = $.ajax({
+                    type: "get",
+                    url: "/deleteCreditcard",
+                    data: {
+                        payment_detail_id: payment_detail_id
+                    }
+                })
+                setTimeout( downloadAndRefreshUI,1000);
+            })
+            //綁刪除帳號事件  
+            $(".deleteBankAccount").click(function () {
+                var p = $.ajax({
+                    type: "post",
+                    url: "/deleteBankAccount",
+                })
+                setTimeout( downloadAndRefreshUI,1000);
+            })
+
+        }
+        downloadAndRefreshUI();
+        //更新畫面
+        function refreshUI() {
+            $(".outBox").empty();
+            for (var i = 0; i < item.listmember_payment_detail.length; i++) {
+                //detail__id
+                var payment_detail_id = item.listmember_payment_detail[i].payment_detail_id;
+                //名
+                var member_firstname = item.listmember_payment_detail[i].member_firstname;
+                //姓
+                var member_lastname = item.listmember_payment_detail[i].member_lastname;
+                //信用卡號
+                var creditcard_number = item.listmember_payment_detail[i].creditcard_number;
+                //信用卡日期
+                var creditcard_date = item.listmember_payment_detail[i].creditcard_date;
+                //信用卡安全碼
+                var creditcard_security_code = item.listmember_payment_detail[i].creditcard_security_code;
+
+                //信用卡
+                let liTemplate = `<div class="card rounded-3 my-4">
+                        <div class="card-body  ">
+                            <div class="row d-flex justify-content-between align-items-center px-3">
+                                <div class="col-1">
+                                    <p class="lead fw-normal mb-2 ">${payment_detail_id}</p>
+                                </div>
+                                <div class="col-1 d-flex">
+                                ${member_lastname}${member_firstname}
+                                </div>
+                                <div class="col-1 d-flex">
+                                    卡號${creditcard_number}
+                                </div>
+                                <div class="col-1 d-flex">
+                                    信用卡日期${creditcard_date}
+                                </div>
+                                <div class="col-1 d-flex">
+                                    安全碼${creditcard_security_code}
+                                </div>
+                                <div class="btn-group col-2">   
+                                    <div class="payment_detail_id02">${payment_detail_id}</div>                                
+                                    <button class=" offset-lg-1 btn border-3 bg-danger text-white rounded-5 deleteCreditcard">
+                                        刪除
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+                $(".outBox").append(liTemplate);
+            };
+            //帳戶
+            for (j = 0; j < item.listmembers.length; j++) {
+                let bank_account = item.listmembers[j].bank_account;
+                let liTemplate2 = ` <div class="card rounded-3 my-4">
+                        <div class="card-body  ">
+                            <div class="row d-flex justify-content-between align-items-center px-3">
+                                <div class="col-1 ">
+                                    <p class="lead fw-normal mb-2 bank_account_id"></p>帳戶號碼
+                                </div>
+                                <div class="col-1 d-flex bank_accountInner">${bank_account}                           
+                                </div>                                                           
+                                <div class="btn-group col-2">                                   
+                                    <button class=" offset-lg-1 btn border-3 bg-danger text-white rounded-5 deleteBankAccount">
+                                        刪除
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <br><br>
+                    <div class="cs">
+                    <div class="convenientstore">${item.listmembers[j].seven11_address}
+                    </div> <br>
+                    <div class="convenientstore"> ${item.listmembers[j].ok_address}                         
+                    </div><br>
+                    <div class="convenientstore"> ${item.listmembers[j].family_address}  
+                        </div>
+                    </div>`
+                    ;
+                $(".outBox").append(liTemplate2);
+            }
+        }
+        //增加信用卡
+        $(".addPaymentData").click(
+            function () {
+                $(".addNewCardBox").show();
+                $(".addNewCard").click(function () {
+                    var member_firstname = $(".member_firstname").val();
+                    var member_lastname = $(".member_lastname").val();
+                    var creditcard_number = $(".creditcard_number").val();
+                    var creditcard_date = $(".creditcard_date").val();
+                    var creditcard_security_code = $(".creditcard_security_code").val();
+
+                    function addPaymentInformation() {
+                        var p = $.ajax({
+                            type: "post",
+                            url: "/addPaymentInformation",
+                            data: {
+                                member_firstname: member_firstname,
+                                member_lastname: member_lastname,
+                                creditcard_number: creditcard_number,
+                                creditcard_date: creditcard_date,
+                                creditcard_security_code: creditcard_security_code
+                            }
+                        })
+                    };
+                    addPaymentInformation();
+                    $(".addNewCardBox").hide();
+                    $(".member_firstname").val("");
+                    $(".member_lastname").val("");
+                    $(".creditcard_number").val("");
+                    $(".creditcard_date").val("");
+                    $(".creditcard_security_code").val("");
+                    setTimeout( downloadAndRefreshUI,1000);
+                })
+            }
+        )
+
+        //增加帳戶 發出AJAX請求 
+        $(".addNewAccount").click(
+            function () {
+
+                $(".addNewAccountBox").show();
+                $(".addNewBankAccount").click(async function () {
+                    var bankCard = $("#bankCard").val().replaceAll(" ", "");
+                    console.log(bankCard);
+                    async function addPaymentInformation() {
+                        var p = $.ajax({
+                            type: "post",
+                            url: "/addNewBankAccount",
+                            data: {
+                                bank_account_num: bankCard
+                            }
+                        })
+                    };
+                    addPaymentInformation();
+                    //清空input           
+                    $("#bankCard").val("");
+                    setTimeout( downloadAndRefreshUI,1000);
+                })
+
+            }
+        )
+        //增加便利商店資訊
+        $(".addConvenientStore").click(
+            function () {
+                console.log($(".seven").val());
+                $(".addConvenientStoreBox").show();
+                $(".addNewConvenientStore").click(
+                    function () {   
+                        console.log($(".seven").val());                                 
+                        var p = $.ajax({
+                            type: "post",
+                            url: "/addNewConvenientStore",
+                            data: {
+                                seven11_address:$(".seven").val(),
+                                ok_address:$(".ok").val(),
+                                family_address:$(".family").val()
+                            }
+                        })    
+                        $(".seven").val("");   
+                        $(".ok").val("");
+                        $(".family").val("");
+                        $(".addConvenientStoreBox").hide();
+                        setTimeout( downloadAndRefreshUI,1000);
+                    }
+                )
+            }
+        )
+    </script>
+</body>
+
+</html>
