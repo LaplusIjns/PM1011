@@ -112,8 +112,8 @@ public String SaveAndCheckAccount(members createMember) {
 			member.setMember_account(createMember.getMember_account());
 	        member.setMember_email(createMember.getMember_email());
 	        //將user輸入的密碼進行加密
-//	        member.setMember_password(bcpe.encode(createMember.getMember_password()));
-	        member.setMember_password(createMember.getMember_password());
+	        member.setMember_password(bcpe.encode(createMember.getMember_password()));
+//	        member.setMember_password(createMember.getMember_password());
 	        //寫入創帳號日期
 	        member.setAccount_create_time(dd.format(date));
 	        member.setMember_rank("2");
@@ -137,8 +137,8 @@ public String LoginAndCheckAccount( members loginMember,HttpSession session) {
 }else if(member == null){
 		return "帳號或密碼輸入錯誤";
 }else{   
-	Boolean	isright =loginMember.getMember_password().equals(member.getMember_password()) ;
-//	Boolean	isright = bcpe.matches(loginMember.getMember_password(), member.getMember_password());
+//	Boolean	isright =loginMember.getMember_password().equals(member.getMember_password()) ;
+	Boolean	isright = bcpe.matches(loginMember.getMember_password(), member.getMember_password());
 	if(isright) {
 	System.out.println("Login OK");
 	member.setLast_login_time(dd.format(date));

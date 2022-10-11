@@ -28,6 +28,7 @@ function AjaxdoRegister(dataToServer) {
 	return $.ajax({
 		type: "post",
 		url: "/doRegister",
+		async: !1,
 		data: dataToServer
 	})
 }
@@ -111,15 +112,18 @@ $(function() {
 	})
 
 	$("#createMember").on("click", function() {
-		console.log("OK?");
+//		console.log("OK?");
 		var dataToServer = {
 			member_account: $("#createAccountTextBox").val(),
 			member_password: $("#createPasswordMTextBox").val(),
 			member_email: $("#createMailTextBox").val()
 		}
+		
 		var p = AjaxdoRegister(dataToServer)
+		console.log(p)
+		console.log(eval(p)["responseText"])
 		var result = p;
-		alert(eval(result).responseText);
+		alert(eval(p).responseText);
 	})
 
 	$("#loginMember").on("click", function() {
@@ -134,11 +138,13 @@ $(function() {
 		var p = AjaxloginRegister(dataToServer)
 		var result = p;
 		//gyugyugyugyu
-		console.log(eval(result).responseText)
+		eval(result).responseText
 		console.log(p)
-		downloadAndRefreshUI(dataToServer);
-		rateUI();
+//		downloadAndRefreshUI(dataToServer);
+//		rateUI();
 		alert(eval(result).responseText);
+		location.reload()
+		
 	})
 
 	$("#logoutBtn").on("click", function() {
@@ -149,7 +155,7 @@ $(function() {
 		var p = AjaxlogoutRegister(dataToServer)
 		var result = p;
 		alert(eval(result).responseText);
-		//window.location.href = "#";
+		window.location.href = "../index.html";
 		document.location.reload(true);
 	})
 

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../bootstrap5/css/bootstrap.css" rel="stylesheet">
     <link href="../css/manager.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <link href="../css/index.css" rel="stylesheet"> -->
     <script src="../bootstrap5/js/bootstrap.js"></script>
     <script src="../js/jquery.js"></script>
@@ -28,37 +29,37 @@
                 <nav class="navbar navbar-expand bg-info text-white">
                     <div class="container-fluid">
                         <a class="navbar-brand" href="../index.html">
-                            <img src="../img/LOGO03.png" style="height:30px; width:auto;">
+                            <img src="../img/LOGO03.png" style="height:50px; width:auto;">
                         </a>
                         <ul class="nav nav-pills me-auto te mx-1">
                             <!-- nav nav-pills -->
                             <!-- data-bs-toggle="pill" -->
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="../index.html">首頁</a>
+                                <a class="nav-link text-white fs-4"  href="../index.html">首頁</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="./rentflow.html">租借流程</a>
+                                <a class="nav-link text-white fs-4" href="./rentflow.html">租借流程</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="./chat.html">聊天室</a>
+                                <a class="nav-link text-white fs-4" href="./chat.html">聊天室</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="./wishpool.html">許願池</a>
+                                <a class="nav-link text-white fs-4" href="./wishpool.html">許願池</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white active" href="./member.html">會員</a>
+                                <a class="nav-link text-white active fs-4"  href="./member.html">會員</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="./cart.html">購物車</a>
+                                <a class="nav-link text-white fs-4" href="./cart.html">購物車</a>
                             </li>
                         </ul>
                         <!-- 靠右 -->
                         <div class="d-flex">
                             <div class="btn-group" role="group">
                                 <!-- 第一顆按鈕 -->
-                                <button id="loginBtn" type="button" class="btn btn-primary " data-bs-toggle="modal"
+                                <button id="loginBtn" type="button" class="btn btn-primary fs-4" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop">登入</button>
-                                <button id="logoutBtn" type="submit" style="display:none" class="btn btn-primary "
+                                <button id="logoutBtn" type="submit" style="display:none" class="btn btn-primary fs-4"
                                     data-bs-target="#staticBackdrop">登出</button>
                                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
                                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
@@ -67,7 +68,7 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title text-dark" id="staticBackdropLabel">登入</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                <button type="button" class="btn-close fs-4" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
                                             <form class="text-dark">
@@ -80,8 +81,8 @@
                                                         placeholder="請輸入大小寫英數字"><br>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn" id="forgetBtn">忘記密碼？</button>
-                                                    <button type="button" class="btn btn-secondary"
+                                                    <button type="button" class="btn" id="forgetBtn fs-4">忘記密碼？</button>
+                                                    <button type="button" class="btn btn-secondary fs-4"
                                                         data-bs-dismiss="modal">關閉</button>
                                                     <button type="button" id="loginMember" class="btn btn-primary"
                                                         data-bs-dismiss="modal">送出</button>
@@ -91,7 +92,7 @@
                                     </div>
                                 </div>
                                 <!-- 第二顆按鈕 -->
-                                <button id="createBtn" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                <button id="createBtn" type="button" class="btn btn-primary fs-4" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop2">註冊</button>
                                 <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static"
                                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2"
@@ -100,7 +101,7 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title text-dark" id="staticBackdropLabel2">註冊</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                <button type="button" class="btn-close fs-4" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
 
@@ -117,9 +118,9 @@
                                                         placeholder=""><br>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
+                                                    <button type="button" class="btn btn-secondary fs-4"
                                                         data-bs-dismiss="modal">關閉</button>
-                                                    <button type="button" id="createMember" class="btn btn-primary"
+                                                    <button type="button" id="createMember" class="btn btn-primary fs-4"
                                                         data-bs-dismiss="modal">送出</button>
                                                 </div>
                                             </form>
@@ -162,7 +163,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="./member_myorder.html" aria-selected="false">下訂訂單</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item" hidden>
                                 <a class="nav-link" href="./member_backstage.html" aria-selected="false">管理者後台</a>
                             </li>
                         </ul>
@@ -180,10 +181,10 @@
                                         <img id="headPhoto"
                                             src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
                                             class="rounded-circle img-fluid" style="width: 100px;" />
-                                        <h4 class="my-2" id="member_nickname">暱稱(帳號)</h4>
-                                        <p id="member_region">居住城市</p>
-                                        <p id="member_introduction">簡介</p>
-                                        <!-- <p>E-mail </p> -->
+                                        <h4 class="my-2" id="member_nickname"></h4>
+                                        <p id="member_region"></p>
+                                        <p id="member_introduction"></p>
+                                        <p></p>
 
                                         <button type="button" class="btn btn-primary btn-rounded btn-lg">
                                             傳訊息
@@ -196,42 +197,42 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- 評價  -->
+<!--                         評價  -->
                         <div class="col-6">
                             <div class="mx-1 my-3 px-2 py-3" id="myRate">
-                                <!-- 單一評價 -->
-                                <div class="card my-1">
-                                    <div class="card-body text-dark d-flex justify-content-between">
-                                        <img class="img-fluid rounded-3" style="height:25px;width:auto;"
-                                            src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/3.webp">
-                                        <span>評價ID</span>
-                                        <span>簡述</span>
-                                        <div class="ratings">
-                                            <i class="fa fa-star rating-color"></i>
-                                            <i class="fa fa-star rating-color"></i>
-                                            <i class="fa fa-star rating-color"></i>
-                                            <i class="fa fa-star rating-color"></i>
-                                            <i class="fa fa-star rating-color"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- 單一評價結束 -->
-                                <!-- 單一評價 -->
-                                <div class="card my-1">
-                                    <div class="card-body text-dark d-flex justify-content-between">
-                                        <img class="img-fluid rounded-3" style="height:25px;width:auto;"
-                                            src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/3.webp">
-                                        <span>評價ID</span>
-                                        <span>簡述</span>
-                                        <div class="ratings">
-                                            <i class="fa fa-star rating-color"></i>
-                                            <i class="fa fa-star rating-color"></i>
-                                            <i class="fa fa-star rating-color"></i>
-                                            <i class="fa fa-star rating-color"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
+<!--                                 單一評價 -->
+<!--                                 <div class="card my-1"> -->
+<!--                                     <div class="card-body text-dark d-flex justify-content-between"> -->
+<!--                                         <img class="img-fluid rounded-3" style="height:25px;width:auto;" -->
+<!--                                             src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/3.webp"> -->
+<!--                                         <span>評價ID</span> -->
+<!--                                         <span>簡述</span> -->
+<!--                                         <div class="ratings"> -->
+<!--                                             <i class="fa fa-star rating-color"></i> -->
+<!--                                             <i class="fa fa-star rating-color"></i> -->
+<!--                                             <i class="fa fa-star rating-color"></i> -->
+<!--                                             <i class="fa fa-star rating-color"></i> -->
+<!--                                             <i class="fa fa-star rating-color"></i> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+<!--                                 單一評價結束 -->
+<!--                                 單一評價 -->
+<!--                                 <div class="card my-1"> -->
+<!--                                     <div class="card-body text-dark d-flex justify-content-between"> -->
+<!--                                         <img class="img-fluid rounded-3" style="height:25px;width:auto;" -->
+<!--                                             src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/3.webp"> -->
+<!--                                         <span>評價ID</span> -->
+<!--                                         <span>簡述</span> -->
+<!--                                         <div class="ratings"> -->
+<!--                                             <i class="fa fa-star rating-color"></i> -->
+<!--                                             <i class="fa fa-star rating-color"></i> -->
+<!--                                             <i class="fa fa-star rating-color"></i> -->
+<!--                                             <i class="fa fa-star rating-color"></i> -->
+<!--                                             <i class="fa fa-star"></i> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
                                 <!-- 單一評價結束 -->
 
                             </div>

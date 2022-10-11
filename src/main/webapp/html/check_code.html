@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../bootstrap5/css/bootstrap.css" rel="stylesheet">
+    <script src="../bootstrap5/js/bootstrap.js"></script>
+    <script src="../js/jquery.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+
+      </style>
+</head>
+
+<body>
+    <label class="mx-2 my-1">請輸入帳號:　　　　</label>
+    <input class="mx-2 my-1" type="text" id="checkAccount" placeholder=""><br>
+    <label class="mx-2 my-1">請輸入驗證碼:　　　</label>
+    <input class="mx-2 my-1" type="text" id="checkCode" placeholder=""><br>
+    <label class="mx-2 my-1">請輸入新的帳號密碼:</label>
+    <input class="mx-2 my-1" type="text" id="newPassword" placeholder="請輸入大小寫英數字"><br>
+    <button type="button" id="sentCode" class="btn btn-primary">送出</button>
+</body>
+
+<script>
+    $("#sentCode").on("click", async function () {
+        var dataToServer = {
+            member_account:$("#checkAccount").val(),
+            checkCode: $("#checkCode").val(),
+            newPassword: $("#newPassword").val(),
+        }
+            var p = $.ajax({
+                type: "post",
+                url: "http://localhost:8080/checkCode",
+                data: dataToServer
+            })
+            var result = await p;
+            alert(result);
+            if(result == "帳號資料已更新，請用新密碼重新登入") {
+                window.close();
+            }
+        })
+
+</script>
+</html>

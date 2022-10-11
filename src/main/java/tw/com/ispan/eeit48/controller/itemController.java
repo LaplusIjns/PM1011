@@ -149,7 +149,7 @@ public product product(@PathVariable(name="item_id")String item_id) {
 //	var memberID=2 測試用
 	
 	 item.setMember_id(memberID);
-	 item.setItem_state("準備上架");	 
+	 item.setItem_state("已上架");	 
 	 ir.save(item);	
 		System.out.println("ok");
 	System.out.println(item.getItem_id());

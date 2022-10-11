@@ -33,7 +33,7 @@ spring:
 # TLS , port 587
     port: 587
     username: tel2855973@gmail.com
-    password: rvyumconnwfvgrae
+    password: medchlbriucfhvfl
 # Other properties
     properties:
       mail:

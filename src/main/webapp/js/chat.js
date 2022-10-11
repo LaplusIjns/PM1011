@@ -1,5 +1,6 @@
 var ChatroomIDnow
 var userid = AjaxgetRegister()["responseJSON"]["member_id"]
+
 console.log(userid)
 var ChatroomList=[]
 function getchatroom(userid){

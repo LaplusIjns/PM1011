@@ -140,7 +140,10 @@ function rateUI() {
 }
 $(function() {
 	userData = AjaxgetRegister()
-	console.log(userData)
+//	console.log(userData["responseJSON"]["member_rank"])
+	if(userData["responseJSON"]["member_rank"]=="管理者"){
+		loginBtn.style.display = "none";
+	}
 	refreshUI();
 	rateUI();
 	//setTimeout(downloadAndRefreshUI,1000);
