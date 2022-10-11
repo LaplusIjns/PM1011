@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -53,6 +54,11 @@ public class membersController {
 	String number = "";
 	@Autowired
 	itemsRepository itemsRepository;
+	@Autowired
+	private ServerProperties serverProperties;
+
+//查看他人檔案
+	
 	
 	
 //members表新增銀行帳戶只能有一筆
@@ -265,7 +271,8 @@ public String forgetAccount(members forgetMember) {
 	  message.setTo(member.getMember_email(),"tel2855973@gmail.com");
 	  //前面信箱為收件人，後面信箱為寄件人
 	  message.setSubject("口袋漫遊網：密碼遺失驗證信");
-	  message.setText("您的驗證碼為:" + number + "。\n" + "請點擊以下網站輸入驗證碼。\n" + "http://127.0.0.1:5500/html/check_code.html" );
+	  int port = serverProperties.getPort();
+	  message.setText("您的驗證碼為:" + number + "。\n" + "請點擊以下網站輸入驗證碼。\n" + "http://127.0.0.1:"+port+"/html/check_code.html" );
 	  mailSender.send(message);
 	  System.out.println(number);
 	return  "請至信箱確認驗證碼，並點擊網址輸入驗證碼與新的密碼";
