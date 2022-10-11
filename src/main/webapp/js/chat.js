@@ -103,7 +103,7 @@ function newchatlist(){
 	ChatroomList=getchatroom(userid)['responseJSON'];
 	console.log(ChatroomList)
 	$("#chatroomlist").empty();
-		
+		if(ChatroomList!=undefined){
 		for(var i=0;i<ChatroomList.length;i++){
 			//抓聊天室資料
 			//console.log("===")
@@ -133,7 +133,7 @@ function newchatlist(){
 				//更新會員列表
 				
 				var $li=$("<li></li>").addClass("p-1");
-				$li.append('<a href="#" class="card " user='+ChatroomList[i]['chatroom_id']+'><div class="card-body"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="text-truncate mb-0 me-auto">'+talkWHO+'</h6><p class="small text-muted">'+lastMessageContent+'</p></div><div class="pt-1"><p class="small text-muted mb-1">'
+				$li.append('<a href="#" class="fs-5 card " user='+ChatroomList[i]['chatroom_id']+'><div class="card-body"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="fs-5 text-truncate mb-0 me-auto">'+talkWHO+'</h6><p class="fs-5 small font-weight-bold text-dark">'+lastMessageContent+'</p></div><div class="pt-1"><p class="fs-5 small font-weight-bold mb-1 text-success">'
 				+lastTimeTag+DateTag+"之前"+'</p></div></div></div></a>');
 				$li.appendTo("#chatroomlist");
 			}else{
@@ -153,11 +153,12 @@ function newchatlist(){
 				else if(compareDay==0&&compareHour==0&&compareMin!=0){lastTimeTag=compareMin;DateTag="分"}
 				else{lastTimeTag = compareSec;DateTag="秒"}
 				$li=$("<li></li>").addClass("p-1");
-				$li.append('<a href="#" class="card" user='+ChatroomList[i]['chatroom_id']+'><div class="card-body"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="text-truncate mb-0 me-auto">'+talkWHO+'</h6><p class="small text-muted"></p></div><div class="pt-1"><p class="small text-muted mb-1">'
+				$li.append('<a href="#" class="fs-5 card" user='+ChatroomList[i]['chatroom_id']+'><div class="card-body"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="fs-5 text-truncate mb-0 me-auto">'+talkWHO+'</h6><p class="fs-5 small font-weight-bold text-dark"></p></div><div class="pt-1"><p class="fs-5 small font-weight-bold mb-1 text-success">'
 				+lastTimeTag+DateTag+"之前創立"+'</p></div></div></div></a>');
 				$li.appendTo("#chatroomlist");
 				
 			}
+		}
 			
 		}
 		test01 = document.getElementsByClassName("card")
@@ -189,15 +190,15 @@ function rightsidechat(){
 				$div=$("<div></div>").addClass("d-flex flex-row justify-content-start");
 				$div.append('<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"alt="avatar 1" style="width: 45px; height: 100%;">'
 				+'<div>'
-                +' <p class="small p-2 ms-3 mb-1 rounded-3 text-center" style="background-color: #f5f6f7;">'+messagelist[j]["message_content"]+'</p>'
-                +'<p class="small ms-3 mb-3 rounded-3 text-muted float-end">'+TimeTag+'</p>'
+                +' <p class="small fs-3 ms-3 mb-1 rounded-3 text-center" style="background-color: #f5f6f7;">'+messagelist[j]["message_content"]+'</p>'
+                +'<p class="fs-4 small ms-3 mb-3 rounded-3 text-muted float-end">'+TimeTag+'</p>'
                 +'</div>');
 				$div.appendTo("#MessageBoard")
 			}else{
 				$div = $("<div></div>").addClass("d-flex flex-row justify-content-end");
 				$div.append('<div>'
-				+'<p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary text-center">'+messagelist[j]["message_content"]+'</p>'
-				+'<p class="small me-3 mb-3 rounded-3 text-muted">'+TimeTag+'</p>'
+				+'<p class="small fs-3 me-3 mb-1 text-white rounded-3 bg-primary text-center">'+messagelist[j]["message_content"]+'</p>'
+				+'<p class="fs-4 small me-3 mb-3 rounded-3 text-muted">'+TimeTag+'</p>'
 				+'</div>'
 				+'<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp" alt="avatar 1" style="width: 45px; height: 100%;">'
 				);
@@ -218,15 +219,15 @@ function onMessageReceived(payload) {
 				$div=$("<div></div>").addClass("d-flex flex-row justify-content-start");
 				$div.append('<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"alt="avatar 1" style="width: 45px; height: 100%;">'
 				+'<div>'
-                +' <p class="small p-2 ms-3 mb-1 rounded-3 text-center" style="background-color: #f5f6f7;">'+message["message_content"]+'</p>'
+                +' <p class="small fs-3 ms-3 mb-1 rounded-3 text-center " style="background-color: #f5f6f7;">'+message["message_content"]+'</p>'
                 +'<p class="small ms-3 mb-3 rounded-3 text-muted float-end">'+TimeTag+'</p>'
                 +'</div>');
 				$div.appendTo("#MessageBoard")
 			}else{
 				$div = $("<div></div>").addClass("d-flex flex-row justify-content-end");
 				$div.append('<div>'
-				+'<p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary text-center">'+message["message_content"]+'</p>'
-				+'<p class="small me-3 mb-3 rounded-3 text-muted">'+TimeTag+'</p>'
+				+'<p class="small fs-3 me-3 mb-1 text-white rounded-3 bg-primary text-center">'+message["message_content"]+'</p>'
+				+'<p class="fs-4 small me-3 mb-3 rounded-3 text-muted">'+TimeTag+'</p>'
 				+'</div>'
 				+'<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp" alt="avatar 1" style="width: 45px; height: 100%;">'
 				);
@@ -245,7 +246,8 @@ $(
 		// userid = 1; //使用者id
 		//更新左側聊天室列表
 		newchatlist()
-		ChatroomIDnow = ChatroomList[0]['chatroom_id']
+		if(ChatroomList!=undefined){
+		ChatroomIDnow = ChatroomList[0]['chatroom_id']}
 		//更新右側聊天室
 		rightsidechat()
 		

@@ -101,6 +101,11 @@ function loginrefreshUI() {
 
 $(function() {
 	userData = AjaxgetRegister()
+	isManager = false
+	if(userData["responseJSON"]["member_rank"]=="管理者"){
+		isManager = true;
+	}
+	console.log("rank "+isManager)
 	console.log(userData["responseJSON"]["member_id"])
 	loginrefreshUI()
 	//setTimeout(downloadAndRefreshUI,1000);

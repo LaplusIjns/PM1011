@@ -116,7 +116,7 @@ public String SaveAndCheckAccount(members createMember) {
 //	        member.setMember_password(createMember.getMember_password());
 	        //寫入創帳號日期
 	        member.setAccount_create_time(dd.format(date));
-	        member.setMember_rank("2");
+	        member.setMember_rank("一般");
 	        membersRepository.saveAndFlush(member);
 	        System.out.println("insertOK");
 	        return "帳號創立成功！請重新登入";

@@ -402,6 +402,15 @@
             //帳戶
             for (j = 0; j < item.listmembers.length; j++) {
                 let bank_account = item.listmembers[j].bank_account;
+                if(item.listmembers[j].ok_address==null){
+                    item.listmembers[j].ok_address=""
+                }
+                if(item.listmembers[j].seven11_address==null){
+                    item.listmembers[j].seven11_address=""
+                }
+                if(item.listmembers[j].family_address==null){
+                    item.listmembers[j].family_address=""
+                }
                 let liTemplate2 = ` <div class="card rounded-3 my-4">
                         <div class="card-body  ">
                             <div class="row d-flex justify-content-between align-items-center px-3">
