@@ -119,6 +119,9 @@ function rateUI() {
 	$("#myRate").text("")
 	if(rateData["responseText"]!=""){
 		for (let i = 0; i < rateData["responseJSON"]["linkedListmembers"].length; i++) {
+			if(rateData["responseJSON"]["listrate_list"][i]["rate_description"]==null){
+				rateData["responseJSON"]["listrate_list"][i]["rate_description"]="無評論"
+			}
 			$liTemplate = '<div class="card my-1">'
 			$liTemplate +=
 				'<div class="card-body text-dark d-flex justify-content-between">'

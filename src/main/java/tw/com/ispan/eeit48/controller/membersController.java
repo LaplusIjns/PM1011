@@ -146,7 +146,11 @@ public String LoginAndCheckAccount( members loginMember,HttpSession session) {
 //	localSession = session;
 //	localSession.setAttribute("member", member);
 	session.setAttribute("member", member);
-	return "歡迎回來" + member.getMember_nickname();
+	if(member.getMember_nickname()!=null) {
+	return "歡迎回來 " + member.getMember_nickname();}
+	else {
+	    return "歡迎回來 " + member.getMember_account();
+	}
 			}
 			System.out.println("帳號或密碼輸入錯誤");
 	        return "帳號或密碼輸入錯誤";
