@@ -122,10 +122,11 @@ function rateUI() {
 			if(rateData["responseJSON"]["listrate_list"][i]["rate_description"]==null){
 				rateData["responseJSON"]["listrate_list"][i]["rate_description"]="無評論"
 			}
+			// console.log((rateData["responseJSON"]["linkedListitems"][i]["item_name"]))
 			$liTemplate = '<div class="card my-1">'
 			$liTemplate +=
 				'<div class="card-body text-dark d-flex justify-content-between">'
-				+ '<img class="img-fluid rounded-3" style="height:25px;width:auto;" src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/3.webp">'
+				+ '<span class="text-primary">' + rateData["responseJSON"]["linkedListitems"][i]["item_name"] + '</span>'
 				+ '<span>' + rateData["responseJSON"]["linkedListmembers"][i]["member_account"] + '</span>'
 				+ '<span>' + rateData["responseJSON"]["listrate_list"][i]["rate_description"] + '</span>'
 				+ '<div class="ratings">'
