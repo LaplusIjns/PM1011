@@ -256,7 +256,7 @@ function onMessageReceived(payload) {
 					var member_icon
 					// console.log((getuserid(messagelist[j]['member_id'])["responseJSON"]))
 					if(getuserid(message['member_id'])["responseJSON"]["member_icon"]!=null){
-						member_icon ="../img/"+getuserid(messagelist[j]['member_id'])["responseJSON"]["member_icon"]}
+						member_icon ="../img/"+getuserid(message['member_id'])["responseJSON"]["member_icon"]}
 					else{
 						member_icon= "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
 					}
