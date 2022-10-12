@@ -250,31 +250,33 @@ function onMessageReceived(payload) {
 	// console.log(message["message_content"])
 	var MessageDate =new Date(message["message_sent_time"]);
 	TimeTag = timeparse(MessageDate)
-	
-	if(message['member_id']!=userid){
-				var member_icon
-				// console.log((getuserid(messagelist[j]['member_id'])["responseJSON"]))
-				if(getuserid(messagelist[j]['member_id'])["responseJSON"]["member_icon"]!=null){
-					member_icon ="../img/"+getuserid(messagelist[j]['member_id'])["responseJSON"]["member_icon"]}
-				else{
-					member_icon= "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+	console.log(message)
+	if(message["chatroom_id"]==ChatroomIDnow){
+		if(message['member_id']!=userid){
+					var member_icon
+					// console.log((getuserid(messagelist[j]['member_id'])["responseJSON"]))
+					if(getuserid(message['member_id'])["responseJSON"]["member_icon"]!=null){
+						member_icon ="../img/"+getuserid(messagelist[j]['member_id'])["responseJSON"]["member_icon"]}
+					else{
+						member_icon= "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+					}
+					$div=$("<div></div>").addClass("d-flex flex-row justify-content-start");
+					$div.append('<img src="'+member_icon+'"alt="avatar 1" style="width: 45px; height: 100%;">'
+					+'<div>'
+	                +' <p class="small fs-3 ms-3 mb-1 rounded-3 text-center " style="background-color: #f5f6f7;">'+message["message_content"]+'</p>'
+	                +'<p class="small ms-3 mb-3 rounded-3 text-muted float-end">'+TimeTag+'</p>'
+	                +'</div>');
+					$div.appendTo("#MessageBoard")
+				}else{
+					$div = $("<div></div>").addClass("d-flex flex-row justify-content-end");
+					$div.append('<div>'
+					+'<p class="small fs-3 me-3 mb-1 text-white rounded-3 bg-primary text-center">'+message["message_content"]+'</p>'
+					+'<p class="fs-4 small me-3 mb-3 rounded-3 text-muted">'+TimeTag+'</p>'
+					+'</div>'
+					+'<img src="'+userid_img+'" alt="avatar 1" style="width: 45px; height: 100%;">'
+					);
+					$div.appendTo("#MessageBoard")
 				}
-				$div=$("<div></div>").addClass("d-flex flex-row justify-content-start");
-				$div.append('<img src="'+member_icon+'"alt="avatar 1" style="width: 45px; height: 100%;">'
-				+'<div>'
-                +' <p class="small fs-3 ms-3 mb-1 rounded-3 text-center " style="background-color: #f5f6f7;">'+message["message_content"]+'</p>'
-                +'<p class="small ms-3 mb-3 rounded-3 text-muted float-end">'+TimeTag+'</p>'
-                +'</div>');
-				$div.appendTo("#MessageBoard")
-			}else{
-				$div = $("<div></div>").addClass("d-flex flex-row justify-content-end");
-				$div.append('<div>'
-				+'<p class="small fs-3 me-3 mb-1 text-white rounded-3 bg-primary text-center">'+message["message_content"]+'</p>'
-				+'<p class="fs-4 small me-3 mb-3 rounded-3 text-muted">'+TimeTag+'</p>'
-				+'</div>'
-				+'<img src="'+userid_img+'" alt="avatar 1" style="width: 45px; height: 100%;">'
-				);
-				$div.appendTo("#MessageBoard")
 			}
 			//修改左側聊天欄位
 			newchatlist()
