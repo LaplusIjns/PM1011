@@ -133,7 +133,8 @@ $(function() {
 
 	$("#loginMember").on("click", function() {
 		l++;
-		if (l == 3) {
+		console.log(l)
+		if (l == 1) {
 			$("#loginBox").append(`<label class="mx-2 my-1" style="color:red">忘記密碼？請輸入帳號並點擊忘記密碼，至登記信箱獲取驗證碼</label>`);
 		}
 		var dataToServer = {
@@ -148,7 +149,11 @@ $(function() {
 //		downloadAndRefreshUI(dataToServer);
 //		rateUI();
 		alert(eval(result).responseText);
-		location.reload()
+		// location.reload()
+		// console.log(p["responseText"])
+		if(p["responseText"]!="請輸入帳號與密碼" && p["responseText"]!="帳號或密碼輸入錯誤"){
+			location.reload()
+		}
 		
 	})
 
