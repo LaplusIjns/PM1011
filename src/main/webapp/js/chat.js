@@ -1,19 +1,23 @@
 var ChatroomIDnow
+// var lastChatroomID=0
 var userid = AjaxgetRegister()["responseJSON"]["member_id"]
-console.log(AjaxgetRegister()["responseJSON"]["member_icon"])
+var firsttag=true
+// console.log(AjaxgetRegister()["responseJSON"]["member_icon"])
 //userid_img 當前使用者頭像
 userid_img="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
 if(AjaxgetRegister()["responseJSON"]["member_icon"]!=null){
 	userid_img ="../img/"+ AjaxgetRegister()["responseJSON"]["member_icon"]
 }
-console.log(userid_img)
+// console.log(userid_img)
 var ChatroomList=[]
 function getuserid(memberid){
 	return $.ajax({
 		url:"/findmember_id/"+memberid,
 		type:"POST",
 		async:!1,
-		success:function(res){},
+		success:function(res){
+			// console.log(res)
+		},
 		error:function(err){console.log(err)},
 		});
 }
@@ -28,7 +32,7 @@ function getchatroom(userid){
 		});
 }
 function getchatroom(userid){
-	console.log(userid)
+	// console.log(userid)
 	return $.ajax({
 		url:"/api/chat/ALLchatrooms/"+userid,
 		type:"GET",
@@ -88,7 +92,6 @@ function onError(error) {
     console.log(error);
 }
 
-
 function sendMessage(userid,ChatroomIDnow) {
 	// console.log("123")
     var messageContent = document.querySelector('#chatmessage1').value;
@@ -116,14 +119,28 @@ function sendMessage(userid,ChatroomIDnow) {
 function newchatlist(){
 	nowDate = new Date();
 	ChatroomList=getchatroom(userid)['responseJSON'];
-	console.log(ChatroomList)
+	// console.log(ChatroomList)
+
+	if(firsttag){
+		console.log("storge!")
+		localJson = ChatroomList
+		for(var i=0;i<localJson.length;i++){
+			localJson[i]["RedCount"]=0
+		}
+		var tmp1 = JSON.stringify(localJson)
+		localStorage.setItem("chat",tmp1)
+		firsttag=false
+	}
+	// localStorageJson = JSON.parse(localStorage.getItem("chat"))
+	// console.log(localStorageJson)
+
 	$("#chatroomlist").empty();
 		if(ChatroomList!=undefined){
 		for(var i=0;i<ChatroomList.length;i++){
 			//抓聊天室資料
 			//console.log("===")
 			var lastMessage = getchatroommessages(ChatroomList[i]['chatroom_id'])['responseJSON'];
-			//console.log(lastMessage[lastMessage.length-1])
+			// console.log(lastMessage[lastMessage.length-1])
 			if(lastMessage[lastMessage.length-1]!=undefined){
 				var lastMessageContent = lastMessage[lastMessage.length-1]['message_content']
 				lastMessageTime =new Date( lastMessage[lastMessage.length-1]['message_sent_time'])
@@ -186,7 +203,6 @@ function newchatlist(){
 				$li.append('<a href="#" class="fs-5 card" user='+ChatroomList[i]['chatroom_id']+'><div class="card-body"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="'+member_icon+'" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="fs-5 text-truncate mb-0 me-auto">'+nickname+'</h6><p class="fs-5 small font-weight-bold text-dark"></p></div><div class="pt-1"><p class="fs-5 small font-weight-bold mb-1 text-success">'
 				+lastTimeTag+DateTag+"之前創立"+'</p></div></div></div></a>');
 				$li.appendTo("#chatroomlist");
-			//有bug!!	
 			}
 		}
 			
@@ -197,14 +213,26 @@ function newchatlist(){
 			test01[i].onclick = function(){
 				// console.log(this.getAttribute('user'))
 				//更新聊天室id
+				// lastChatroomID = ChatroomIDnow
 				ChatroomIDnow=this.getAttribute('user');
 				rightsidechat()
 			}
-		}		
-		
-		
+		}			
 }
 function rightsidechat(){
+	if(ChatroomIDnow!=0){
+		x= $('[user="'+ChatroomIDnow+'"]')
+		y= x.find('span').remove()
+		loadJson = JSON.parse(localStorage.getItem("chat"))
+		for(var i =0;i<Object.keys(loadJson).length;i++){
+			if(loadJson[i]["chatroom_id"]==ChatroomIDnow){
+			loadJson[i]["RedCount"]=0
+		}}
+		localStorage.setItem("chat",JSON.stringify(loadJson))
+	}
+	console.log("im here now")
+
+
 	$("#MessageBoard").empty();
 		var messagelist =[] 
 		messagelist=getchatroommessages(ChatroomIDnow)['responseJSON']
@@ -223,6 +251,7 @@ function rightsidechat(){
 				else{
 					member_icon= "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
 				}
+				// console.log(member_icon)
 				$div=$("<div></div>").addClass("d-flex flex-row justify-content-start");
 				$div.append('<img src="'+member_icon+'"alt="avatar 1" style="width: 45px; height: 100%;">'
 				+'<div>'
@@ -250,16 +279,18 @@ function onMessageReceived(payload) {
 	// console.log(message["message_content"])
 	var MessageDate =new Date(message["message_sent_time"]);
 	TimeTag = timeparse(MessageDate)
-	console.log(message)
+	// console.log(message)
+	//更新右側聊天
 	if(message["chatroom_id"]==ChatroomIDnow){
 		if(message['member_id']!=userid){
 					var member_icon
-					// console.log((getuserid(messagelist[j]['member_id'])["responseJSON"]))
-					if(getuserid(message['member_id'])["responseJSON"]["member_icon"]!=null){
-						member_icon ="../img/"+getuserid(message['member_id'])["responseJSON"]["member_icon"]}
+					
+					if(getuserid(message["member_id"])["responseJSON"][0]["member_icon"]!=null){
+						member_icon ="../img/"+getuserid(message['member_id'])["responseJSON"][0]["member_icon"]}
 					else{
 						member_icon= "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
 					}
+					// console.log("我在這裡: "+getuserid(message["member_id"])["responseJSON"][0]["member_icon"])
 					$div=$("<div></div>").addClass("d-flex flex-row justify-content-start");
 					$div.append('<img src="'+member_icon+'"alt="avatar 1" style="width: 45px; height: 100%;">'
 					+'<div>'
@@ -279,8 +310,167 @@ function onMessageReceived(payload) {
 				}
 			}
 			//修改左側聊天欄位
-			newchatlist()
+			newchatlistReceived(message)
 			console.log("renew chatlist")
+}
+
+function initalStorage(){
+	localStorage.setItem("chat",null)
+}
+
+function newchatlistReceived(message){
+	nowDate = new Date();
+	ChatroomList=getchatroom(userid)['responseJSON'];
+	// localStorageJson = localStorage.getItem("chat")
+	localStorageJson = JSON.parse(localStorage.getItem("chat"))
+	console.log(localStorageJson)
+	jsonlength = Object.keys(localStorageJson).length
+	existChatroom=false;
+	for(var i = 0;i<jsonlength;i++){
+		console.log("chatroom id "+localStorageJson[i]["chatroom_id"])
+		if(localStorageJson[i]["chatroom_id"]==message["chatroom_id"]){
+			existChatroom=true;
+		}
+	}
+	if(existChatroom==false){
+		newJson = {
+			"chatroom_id":message["chatroom_id"],
+			"chatroom_create_time":message["message_sent_time"],
+			"chatroom_member_id1":userid,
+			"chatroom_member_id2":message["member_id"],
+			"RedCount":0
+		}
+		localStorageJson.push(newJson)
+	}
+
+
+	console.log(localStorageJson.length)
+	for(var i=0;i<localStorageJson.length;i++){
+		if( message["chatroom_id"]==localStorageJson[i]["chatroom_id"] ){
+			if(message["member_id"]!=userid){
+				if(message["chatroom_id"]!=ChatroomIDnow)
+				localStorageJson[i]["RedCount"] += 1
+		}}
+	}
+	var tmp123 = localStorageJson.length
+			for(var i=0;i<tmp123;i++){
+				for(var j = 0;j<tmp123;j++){
+				if(localStorageJson[j]["chatroom_id"]==ChatroomList[i]["chatroom_id"]){
+					tmp = localStorageJson[i]
+					localStorageJson[i] = localStorageJson[j]
+					localStorageJson[j]=tmp
+				}}}
+	localStorage.setItem("chat",JSON.stringify(localStorageJson))
+	// console.log(message)
+	console.log(ChatroomList)
+	console.log(localStorageJson)
+
+	$("#chatroomlist").empty();
+		if(ChatroomList!=undefined){
+		for(var i=0;i<ChatroomList.length;i++){
+			//抓聊天室資料
+			//console.log("===")
+			var lastMessage = getchatroommessages(ChatroomList[i]['chatroom_id'])['responseJSON'];
+			// console.log(lastMessage[lastMessage.length-1])
+			if(lastMessage[lastMessage.length-1]!=undefined){
+				var lastMessageContent = lastMessage[lastMessage.length-1]['message_content']
+				lastMessageTime =new Date( lastMessage[lastMessage.length-1]['message_sent_time'])
+				lastMessageWhoSend = lastMessage[lastMessage.length-1]['member_id']
+				//console.log(lastMessageWhoSend)
+				talkWHO = (userid==ChatroomList[i]['chatroom_member_id1'])?ChatroomList[i]['chatroom_member_id2'] :ChatroomList[i]['chatroom_member_id1']
+				// console.log("跟誰交談: "+talkWHO+"交談內容: "+lastMessageContent+"最後一筆訊息時間: "+lastMessageTime)
+				//console.log("===")
+				nickname = (getuserid(talkWHO)["responseJSON"][0]["member_nickname"]==null)?getuserid(talkWHO)["responseJSON"][0]["member_account"]:getuserid(talkWHO)["responseJSON"][0]["member_nickname"]
+				compareDay = Math.floor( (nowDate - lastMessageTime)/1000/60/60/24);
+				compareHour = Math.floor((nowDate - lastMessageTime)/1000/60/60 - compareDay*24);
+				compareMin = Math.floor( (nowDate - lastMessageTime)/1000/60 - (compareDay*24+compareHour)*60);
+				compareSec = Math.floor( (nowDate - lastMessageTime)/1000 - (((compareDay*24+compareHour)*60)+compareMin)*60 );
+				var lastTimeTag;
+				var DateTag;
+				if(compareDay!=0){lastTimeTag=compareDay;DateTag="天";}
+				else if(compareDay==0&&compareHour!=0){lastTimeTag=compareHour;DateTag="小時";}
+				else if(compareDay==0&&compareHour==0&&compareMin!=0){lastTimeTag=compareMin;DateTag="分"}
+				else{lastTimeTag = compareSec;DateTag="秒"}
+				//console.log(lastTimeTag+DateTag+"之前")
+				//更新會員列表
+				var member_icon
+				// console.log("icon "+getuserid(talkWHO)["responseJSON"][0]["member_icon"])
+				// console.log(getuserid(talkWHO)["responseJSON"])
+
+					if(getuserid(talkWHO)["responseJSON"][0]["member_icon"]!=null){
+						member_icon ="../img/"+getuserid(talkWHO)["responseJSON"][0]["member_icon"]
+						// console.log(member_icon)
+						}else{
+						member_icon= "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+					}
+
+				//
+				if(localStorageJson[i]["RedCount"]==0){
+					var $li=$("<li></li>").addClass("p-1");
+					$li.append('<a href="#" class="fs-5 card " user='+ChatroomList[i]['chatroom_id']+'><div class="card-body"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="'+member_icon+'" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="fs-5 text-truncate mb-0 me-auto">'+nickname+'</h6><p class="fs-5 small font-weight-bold text-dark">'+lastMessageContent+'</p></div><div class="pt-1"><p class="fs-5 small font-weight-bold mb-1 text-success">'
+					+lastTimeTag+DateTag+"之前"+'</p></div></div></div></a>');
+					$li.appendTo("#chatroomlist");
+				}else{
+					var $li=$("<li></li>").addClass("p-1");
+					$li.append('<a href="#" class="fs-5 card " user='+ChatroomList[i]['chatroom_id']+'><div class="card-body"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="'+member_icon+'" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="fs-5 text-truncate mb-0 me-auto">'+nickname+'</h6><p class="fs-5 small font-weight-bold text-dark">'+lastMessageContent+'</p></div><div class="pt-1">'
+					+'<span class="badge bg-danger rounded-pill">'+localStorageJson[i]["RedCount"]+'</span>'
+					+'<p class="fs-5 small font-weight-bold mb-1 text-success">'+lastTimeTag+DateTag+"之前"+'</p></div></div></div></a>');
+					$li.appendTo("#chatroomlist");
+
+				}
+				//
+			}else{
+				//從沒聊天過
+				//console.log(ChatroomList[i])
+				talkWHO = (userid==ChatroomList[i]['chatroom_member_id1'])?ChatroomList[i]['chatroom_member_id2'] :ChatroomList[i]['chatroom_member_id1']
+				nickname = (getuserid(talkWHO)["responseJSON"][0]["member_nickname"]==null)?getuserid(talkWHO)["responseJSON"][0]["member_account"]:getuserid(talkWHO)["responseJSON"][0]["member_nickname"]
+				var member_icon
+				if(getuserid(talkWHO)["responseJSON"][0]["member_icon"]!=null){
+					member_icon ="../img/"+getuserid(talkWHO)["responseJSON"][0]["member_icon"]
+					}else{
+					member_icon= "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+				}
+				lastMessageTime =new Date( ChatroomList[i]['chatroom_create_time'])
+				compareDay = Math.floor( (nowDate - lastMessageTime)/1000/60/60/24);
+				compareHour = Math.floor((nowDate - lastMessageTime)/1000/60/60 - compareDay*24);
+				compareMin = Math.floor( (nowDate - lastMessageTime)/1000/60 - (compareDay*24+compareHour)*60);
+				compareSec = Math.floor( (nowDate - lastMessageTime)/1000 - (((compareDay*24+compareHour)*60)+compareMin)*60 );
+				//console.log(compareDay+"天"+compareHour+"時"+compareMin+"分"+compareSec+"秒之前")
+				var lastTimeTag;
+				var DateTag;
+				if(compareDay!=0){lastTimeTag=compareDay;DateTag="天";}
+				else if(compareDay==0&&compareHour!=0){lastTimeTag=compareHour;DateTag="小時";}
+				else if(compareDay==0&&compareHour==0&&compareMin!=0){lastTimeTag=compareMin;DateTag="分"}
+				else{lastTimeTag = compareSec;DateTag="秒"}
+
+				//
+				if(localStorageJson[i]["RedCount"]==0){
+					$li=$("<li></li>").addClass("p-1");
+					$li.append('<a href="#" class="fs-5 card" user='+ChatroomList[i]['chatroom_id']+'><div class="card-body"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="'+member_icon+'" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="fs-5 text-truncate mb-0 me-auto">'+nickname+'</h6><p class="fs-5 small font-weight-bold text-dark"></p></div><div class="pt-1"><p class="fs-5 small font-weight-bold mb-1 text-success">'
+					+lastTimeTag+DateTag+"之前創立"+'</p></div></div></div></a>');
+					$li.appendTo("#chatroomlist");
+				}else{
+					$li=$("<li></li>").addClass("p-1");
+					$li.append('<a href="#" class="fs-5 card" user='+ChatroomList[i]['chatroom_id']+'><div class="card-body"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="'+member_icon+'" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="fs-5 text-truncate mb-0 me-auto">'+nickname+'</h6><p class="fs-5 small font-weight-bold text-dark"></p></div><div class="pt-1">'
+					+'<span class="badge bg-danger rounded-pill">'+localStorageJson[i]["RedCount"]+'</span>'
+					+'<p class="fs-5 small font-weight-bold mb-1 text-success">'+lastTimeTag+DateTag+"之前創立"+'</p></div></div></div></a>');
+					$li.appendTo("#chatroomlist");
+				}
+				//<span class="badge bg-danger rounded-pill">3</span>
+			}
+		}
+			
+		}
+		test01 = document.getElementsByClassName("card")
+		// console.log(test01.length)
+		for(var i =0;i<test01.length;i++){
+			test01[i].onclick = function(){
+				// console.log(this.getAttribute('user'))
+				//更新聊天室id
+				ChatroomIDnow=this.getAttribute('user');
+				rightsidechat()
+			}
+		}		
 }
 
 
@@ -288,6 +478,7 @@ function onMessageReceived(payload) {
 $(
 	function(){
 		console.log("init")
+		initalStorage()
 		// userid = 1; //使用者id
 		//更新左側聊天室列表
 		newchatlist()

@@ -45,6 +45,7 @@ $(function(){
         alert("請先登入")}
         })
     $("#rentfile").click(function () {
+        //account
         poster = getproduct()["responseJSON"]["member"]["member_account"]
         console.log(poster)
         window.open("rentfile.html?account="+poster);

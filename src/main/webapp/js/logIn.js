@@ -129,6 +129,9 @@ $(function() {
 		console.log(eval(p)["responseText"])
 		var result = p;
 		alert(eval(p).responseText);
+		//預設ID 4 創聊天室
+		
+		//
 	})
 
 	$("#loginMember").on("click", function() {
