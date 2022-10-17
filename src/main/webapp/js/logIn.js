@@ -105,6 +105,9 @@ $(function() {
 	if(userData["responseJSON"]["member_rank"]=="管理者"){
 		isManager = true;
 	}
+	if(isManager){
+		
+	}
 	console.log("rank "+isManager)
 	console.log(userData["responseJSON"]["member_id"])
 	loginrefreshUI()
