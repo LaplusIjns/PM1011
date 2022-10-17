@@ -154,6 +154,7 @@ $(function() {
 	}
 	refreshUI();
 	rateUI();
+	
 	//setTimeout(downloadAndRefreshUI,1000);
 	$("#editbtn").on("click", function() {
 		$("input[name='member_nickname']").attr("value", userData["responseJSON"]["member_nickname"]);

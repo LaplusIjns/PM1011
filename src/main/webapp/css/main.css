@@ -1,0 +1,84 @@
+:root{
+    --apple:red;
+    --bee:blue;
+    --color01:#fad0c4;
+    --color02:#39b348;
+    --color03:#C4EAFF;
+    --color04:#5FBDF5;
+    --color05:#FFA374;
+    --color06:#CC3511;
+    --color07:#303A54;
+    --color08:#2af598;
+
+    --color09:#09b9d2;
+    --color10:#953c2b;
+
+    --color11:#33e8db;
+    --color12:#e21320;
+
+    --color13:#F2CDAC;
+
+    --color14:#4C4A59;
+    --color15:#1B7F7A;
+    --color16:#0897B4;
+    --color17:#4CABA6;
+    --color18:#f9dcc2;
+    --color19:#E5ECEE;
+
+    --color20:#D7E4E8;
+
+    --color21:#F28705;
+
+    --color22:#267365;
+
+}
+
+.card{
+    /* background-color: var(--apple);
+    color: var(--color01); */
+}
+
+.btn-primary{
+    background-color:var(--color02);
+    /* color:var(--color01); */
+}
+.btn-primary:hover{
+    background-color:var(--color22)!important;
+    color:var(--color01) ;
+    /* opacity: 0.5; */
+}
+.mainbody{
+    background-color: var(--color19);
+    height: 100%;
+}
+/* 聊天室側邊 */
+.sidemainbody{
+    background-color: var(--color20);
+}
+:root{
+    background-color: var(--color19);
+}
+
+/* 主頁搜尋欄 */
+.searchbar{
+
+    background-color: var(--color20);
+
+}
+.card:hover button{
+    color: var(--color21) !important;
+    background-color: var(--color01);
+}
+.card:hover button:hover{
+    color: var(--color21) !important;
+    background-color: var(--color05);
+}
+/* 聊天室用 */
+
+li:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.lichecked{
+    background-color: var(--color04);
+
+}

@@ -1,4 +1,5 @@
 var ChatroomIDnow
+var lastChatroomIDnow=0
 // var lastChatroomID=0
 var userid = AjaxgetRegister()["responseJSON"]["member_id"]
 var firsttag=true
@@ -173,7 +174,7 @@ function newchatlist(){
 				}
 				
 				var $li=$("<li></li>").addClass("p-1");
-				$li.append('<a href="#" class="fs-5 card " user='+ChatroomList[i]['chatroom_id']+'><div class="card-body"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="'+member_icon+'" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="fs-5 text-truncate mb-0 me-auto">'+nickname+'</h6><p class="fs-5 small font-weight-bold text-dark">'+lastMessageContent+'</p></div><div class="pt-1"><p class="fs-5 small font-weight-bold mb-1 text-success">'
+				$li.append('<a href="#" class="fs-5 card border-0" user='+ChatroomList[i]['chatroom_id']+'><div class="card-body mainbody"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="'+member_icon+'" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="fs-5 text-truncate mb-0 me-auto">'+nickname+'</h6><p class="fs-5 small font-weight-bold text-dark">'+lastMessageContent+'</p></div><div class="pt-1"><p class="fs-5 small font-weight-bold mb-1 text-success">'
 				+lastTimeTag+DateTag+"之前"+'</p></div></div></div></a>');
 				$li.appendTo("#chatroomlist");
 			}else{
@@ -200,7 +201,7 @@ function newchatlist(){
 				else if(compareDay==0&&compareHour==0&&compareMin!=0){lastTimeTag=compareMin;DateTag="分"}
 				else{lastTimeTag = compareSec;DateTag="秒"}
 				$li=$("<li></li>").addClass("p-1");
-				$li.append('<a href="#" class="fs-5 card" user='+ChatroomList[i]['chatroom_id']+'><div class="card-body"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="'+member_icon+'" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="fs-5 text-truncate mb-0 me-auto">'+nickname+'</h6><p class="fs-5 small font-weight-bold text-dark"></p></div><div class="pt-1"><p class="fs-5 small font-weight-bold mb-1 text-success">'
+				$li.append('<a href="#" class="fs-5 card border-0" user='+ChatroomList[i]['chatroom_id']+'><div class="card-body mainbody"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="'+member_icon+'" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="fs-5 text-truncate mb-0 me-auto">'+nickname+'</h6><p class="fs-5 small font-weight-bold text-dark"></p></div><div class="pt-1"><p class="fs-5 small font-weight-bold mb-1 text-success">'
 				+lastTimeTag+DateTag+"之前創立"+'</p></div></div></div></a>');
 				$li.appendTo("#chatroomlist");
 			}
@@ -214,15 +215,23 @@ function newchatlist(){
 				// console.log(this.getAttribute('user'))
 				//更新聊天室id
 				// lastChatroomID = ChatroomIDnow
+				lastChatroomIDnow = ChatroomIDnow
 				ChatroomIDnow=this.getAttribute('user');
 				rightsidechat()
 			}
 		}			
 }
 function rightsidechat(){
+	console.log(lastChatroomIDnow)
+	if(lastChatroomIDnow!=0){
+		aa=$('[user="'+lastChatroomIDnow+'"]')
+		aa.children().removeClass("lichecked")
+		console.log("123")
+	}
 	if(ChatroomIDnow!=0){
 		x= $('[user="'+ChatroomIDnow+'"]')
 		y= x.find('span').remove()
+		x.children().addClass("lichecked")
 		loadJson = JSON.parse(localStorage.getItem("chat"))
 		for(var i =0;i<Object.keys(loadJson).length;i++){
 			if(loadJson[i]["chatroom_id"]==ChatroomIDnow){
@@ -407,12 +416,12 @@ function newchatlistReceived(message){
 				//
 				if(localStorageJson[i]["RedCount"]==0){
 					var $li=$("<li></li>").addClass("p-1");
-					$li.append('<a href="#" class="fs-5 card " user='+ChatroomList[i]['chatroom_id']+'><div class="card-body"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="'+member_icon+'" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="fs-5 text-truncate mb-0 me-auto">'+nickname+'</h6><p class="fs-5 small font-weight-bold text-dark">'+lastMessageContent+'</p></div><div class="pt-1"><p class="fs-5 small font-weight-bold mb-1 text-success">'
+					$li.append('<a href="#" class="fs-5 card border-0" user='+ChatroomList[i]['chatroom_id']+'><div class="card-body mainbody"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="'+member_icon+'" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="fs-5 text-truncate mb-0 me-auto">'+nickname+'</h6><p class="fs-5 small font-weight-bold text-dark">'+lastMessageContent+'</p></div><div class="pt-1"><p class="fs-5 small font-weight-bold mb-1 text-success">'
 					+lastTimeTag+DateTag+"之前"+'</p></div></div></div></a>');
 					$li.appendTo("#chatroomlist");
 				}else{
 					var $li=$("<li></li>").addClass("p-1");
-					$li.append('<a href="#" class="fs-5 card " user='+ChatroomList[i]['chatroom_id']+'><div class="card-body"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="'+member_icon+'" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="fs-5 text-truncate mb-0 me-auto">'+nickname+'</h6><p class="fs-5 small font-weight-bold text-dark">'+lastMessageContent+'</p></div><div class="pt-1">'
+					$li.append('<a href="#" class="fs-5 card border-0" user='+ChatroomList[i]['chatroom_id']+'><div class="card-body mainbody"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="'+member_icon+'" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="fs-5 text-truncate mb-0 me-auto">'+nickname+'</h6><p class="fs-5 small font-weight-bold text-dark">'+lastMessageContent+'</p></div><div class="pt-1">'
 					+'<span class="badge bg-danger rounded-pill">'+localStorageJson[i]["RedCount"]+'</span>'
 					+'<p class="fs-5 small font-weight-bold mb-1 text-success">'+lastTimeTag+DateTag+"之前"+'</p></div></div></div></a>');
 					$li.appendTo("#chatroomlist");
@@ -446,12 +455,12 @@ function newchatlistReceived(message){
 				//
 				if(localStorageJson[i]["RedCount"]==0){
 					$li=$("<li></li>").addClass("p-1");
-					$li.append('<a href="#" class="fs-5 card" user='+ChatroomList[i]['chatroom_id']+'><div class="card-body"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="'+member_icon+'" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="fs-5 text-truncate mb-0 me-auto">'+nickname+'</h6><p class="fs-5 small font-weight-bold text-dark"></p></div><div class="pt-1"><p class="fs-5 small font-weight-bold mb-1 text-success">'
+					$li.append('<a href="#" class="fs-5 card border-0" user='+ChatroomList[i]['chatroom_id']+'><div class="card-body  mainbody"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="'+member_icon+'" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="fs-5 text-truncate mb-0 me-auto">'+nickname+'</h6><p class="fs-5 small font-weight-bold text-dark"></p></div><div class="pt-1"><p class="fs-5 small font-weight-bold mb-1 text-success">'
 					+lastTimeTag+DateTag+"之前創立"+'</p></div></div></div></a>');
 					$li.appendTo("#chatroomlist");
 				}else{
 					$li=$("<li></li>").addClass("p-1");
-					$li.append('<a href="#" class="fs-5 card" user='+ChatroomList[i]['chatroom_id']+'><div class="card-body"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="'+member_icon+'" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="fs-5 text-truncate mb-0 me-auto">'+nickname+'</h6><p class="fs-5 small font-weight-bold text-dark"></p></div><div class="pt-1">'
+					$li.append('<a href="#" class="fs-5 card border-0" user='+ChatroomList[i]['chatroom_id']+'><div class="card-body mainbody"><div class="d-flex align-items-center mb-1 justify-content-between "><img src="'+member_icon+'" alt="avatar" class="d-flex align-self-center me-3" width="60"><div class=""><h6 class="fs-5 text-truncate mb-0 me-auto">'+nickname+'</h6><p class="fs-5 small font-weight-bold text-dark"></p></div><div class="pt-1">'
 					+'<span class="badge bg-danger rounded-pill">'+localStorageJson[i]["RedCount"]+'</span>'
 					+'<p class="fs-5 small font-weight-bold mb-1 text-success">'+lastTimeTag+DateTag+"之前創立"+'</p></div></div></div></a>');
 					$li.appendTo("#chatroomlist");
@@ -467,6 +476,8 @@ function newchatlistReceived(message){
 			test01[i].onclick = function(){
 				// console.log(this.getAttribute('user'))
 				//更新聊天室id
+				lastChatroomIDnow = ChatroomIDnow
+				console.log(lastChatroomIDnow)
 				ChatroomIDnow=this.getAttribute('user');
 				rightsidechat()
 			}
