@@ -101,7 +101,10 @@ function refreshUI() {
 		alert("請先登入帳號！！");
 		window.location.replace("../index.html");
 	} else {
-		$("#member_nickname").text(userData["responseJSON"]["member_nickname"]);
+		if(userData["responseJSON"]["member_nickname"]==null){
+			userData["responseJSON"]["member_nickname"] = "";
+		}
+		$("#member_nickname").text(userData["responseJSON"]["member_account"]+" "+userData["responseJSON"]["member_nickname"]);
 		$("#member_region").text(userData["responseJSON"]["member_region"]);
 		$("#member_introduction").text(userData["responseJSON"]["member_introduction"]);
 		if (userData["responseJSON"]["member_icon"] != null) {

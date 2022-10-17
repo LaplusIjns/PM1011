@@ -40,11 +40,11 @@
 
 .btn-primary{
     background-color:var(--color02);
-    /* color:var(--color01); */
+    /* color:var(--color01) !important; */
 }
 .btn-primary:hover{
     background-color:var(--color22)!important;
-    color:var(--color01) ;
+    /* color:var(--color01) ; */
     /* opacity: 0.5; */
 }
 .mainbody{
@@ -66,11 +66,11 @@
 
 }
 .card:hover button{
-    color: var(--color21) !important;
-    background-color: var(--color01);
+    /* color: var(--color21); */
+    /* background-color: var(--color01); */
 }
 .card:hover button:hover{
-    color: var(--color21) !important;
+    /* color: var(--color21) ; */
     background-color: var(--color05);
 }
 /* 聊天室用 */
@@ -81,4 +81,11 @@ li:hover{
 .lichecked{
     background-color: var(--color04);
 
+}
+
+.nav-link:hover{
+    background-color: #e7674d;
+}
+.nav-link.active{
+    background-color: #CC3511 !important ;
 }

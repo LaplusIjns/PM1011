@@ -124,12 +124,13 @@
     </nav>
     <!-- main-body -->
     <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-11">
-                <div class="row justify-content-center">
+        <div class="row justify-content-center mainbody vh-100">
+            <div class="col-1 sidemainbody"></div>
+            <div class="col-10">
+                <div class="row justify-content-center vh-100">
                     <!-- 左側導覽列 -->
-                    <div class="col-2 ">
-                        <div class="mx-3 my-3 px-3 py-3 border border-3 border-dark" style="border-radius: 15px;">
+                    <div class="col-3 sidemainbody ">
+                        <div class="mx-3 my-3 px-3 py-3 ">
                             <ul class="nav flex-column nav-pills nav-fill">
                                 <li class="nav-item ">
                                     <a class="nav-link" id="nav-member-tab" aria-controls="tab1"
@@ -164,6 +165,7 @@
                                 </li>
                             </ul>
                         </div>
+                        
                     </div>
                     <!-- <div class="text-dark " id="tab2">
                         <h1>(我的商品) 圖 名字 狀態 上架日期 單位價格 (按鈕) 修改 刪除</h1>
@@ -206,8 +208,12 @@
                         </div>
                         <!-- </div> -->
                     </div>
+                  
                 </div>
-
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
                 <!-- foot -->
                 <a href="javascript:window.scrollTo(0,0)">
                     <footer class="footer bg-secondary text-center text-white mt-auto fixed-bottom">
@@ -216,9 +222,7 @@
                         </div>
                     </footer>
                 </a>
-            </div>
-        </div>
-    </div>
+
     <!-- function 區域 -->
     <script>
         var items;
