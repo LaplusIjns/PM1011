@@ -29,7 +29,7 @@
 
     --color21:#F28705;
 
-    --color22:#267365;
+    --color22:#1b6658;
 
 }
 
@@ -88,4 +88,8 @@ li:hover{
 }
 .nav-link.active{
     background-color: #CC3511 !important ;
+}
+
+li a:hover{
+    
 }
