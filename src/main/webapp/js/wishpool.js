@@ -41,17 +41,20 @@ function fillUI() {
     for (var i = 0; i < (len % 4 == 0 ? len / 4 : (len / 4) + 1); i++) {
         // $(".row").append(`<div class="col-3 mb-3 " id = "col${i}"></div>`);
         for (var k = 0; k < 4; k++) {
+            
             var index = k + i * 4;
+            if(list[index].item_description==null){
+                list[index].item_description = "";
+            }
             // console.log(allforthcol[k])
-            tmp = '<div class="card mb-3"><div>'
+            tmp = '<div class="card mb-5"><div>'
                 + '<img src="' + list[index].item_photo_url + '" class="card-img-top col-12" alt="...">'
                 // +'</div></div>'
                 + '<div class="card-body" id="' + list[index].wishlist_id + '">'
-                + '<p class="card-text">' + list[index].item_name + '</p>'
+                + '<p class="card-text fs-3">' + list[index].item_name + '</p>'
                 + '<p class="card-text">' + list[index].item_description + '</p>'
-                + '<img src="../img/like.png" alt="" width="20px" height="20px"'
-                + 'style="display: inline;" class="like">'
-                + '<p style="display: inline;">' + list[index].item_likes + '</p>'
+                + '<i class="bi bi-hand-thumbs-up-fill h4 fs-4 text-primary"></i>'
+                + '<p style="display: inline;" class="text-primary fs-4 mx-3">' + list[index].item_likes + '</p>'
                 + '</div></div>' + '</div></div>'
 
             // $tmp=$(tmp)
@@ -94,17 +97,20 @@ function refreshUI() {
             // var row = document.querySelector(".row");
             // row.insertAdjacentHTML('beforeend', `<div class="col-3 mb-3 " id = "col${i + 3}"></div>`)
             for (var k = 0; k < 4; k++) {
+                
                 var index = k + i * 4;
+                if( newlist['responseJSON'][index + 12]['item_description']==null){
+                    newlist['responseJSON'][index + 12]['item_description']="";
+                }
                 var creatediv =
-                    tmp = '<div class="card mb-3"><div>'
+                    tmp = '<div class="card mb-5"><div>'
                     + '<img src="' + newlist['responseJSON'][index + 12]['item_photo_url'] + '" class="card-img-top col-12" alt="...">'
                     // +'</div></div>'
                     + '<div class="card-body" id="' + newlist['responseJSON'][index + 12]['wishlist_id'] + '">'
-                    + '<p class="card-text">' + newlist['responseJSON'][index + 12]['item_name'] + '</p>'
+                    + '<p class="card-text fs-3">' + newlist['responseJSON'][index + 12]['item_name'] + '</p>'
                     + '<p class="card-text">' + newlist['responseJSON'][index + 12]['item_description'] + '</p>'
-                    + '<img src="../img/like.png" alt="" width="20px" height="20px"'
-                    + 'style="display: inline;" class="like">'
-                    + '<p style="display: inline;">' + newlist['responseJSON'][index + 12]["item_likes"] + '</p>'
+                    + '<i class="bi bi-hand-thumbs-up-fill h4 fs-4 text-primary"></i>'
+                    + '<p style="display: inline;" class="text-primary fs-4 mx-3">' + newlist['responseJSON'][index + 12]["item_likes"] + '</p>'
                     + '</div></div>' + '</div></div>'
 
                 // $tmp=$(tmp)

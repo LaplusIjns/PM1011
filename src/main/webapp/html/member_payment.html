@@ -16,6 +16,7 @@
     <!-- <script src = "../js/profiles.js"></script> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
     integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <style>
         .addNewCardBox,
@@ -196,7 +197,11 @@
                     <div class="col-9 ">
                         <div class="mx-3 my-3 px-3 py-3 text-dark" id="myTab">
                             <div>
-                                <button class="addPaymentData btn btn-primary my-1"><i class="bi bi-credit-card-fill"></i>新增</button>
+                                <button class="addPaymentData btn btn-primary my-1 fs-3 px-3"><i class="bi bi-credit-card-fill"></i><br>信用卡</button>
+
+                                <button class="addNewAccount btn btn-primary my-1 fs-3 px-3"><i class="fa fa-university" aria-hidden="true"></i><br>帳戶</button>
+
+                                <button class="addConvenientStore btn btn-primary my-1 fs-3 px-3"><i class="bi bi-shop"></i><br>便利商店</button>
                             </div>
                             <div class="addNewCardBox">
                                 <input type="text" placeholder="姓" class="member_lastname">
@@ -206,16 +211,9 @@
                                 <input type="text" placeholder="信用卡安全碼" class="creditcard_security_code">
                                 <button class="addNewCard btn btn-primary">新增</button>
                             </div>
-                            <div>
-                                <button class="addNewAccount btn btn-primary my-1">新增帳戶</button>
-                            </div>
                             <div class="addNewAccountBox">
                                 <input type="tel" id="bankCard" placeholder="帳戶號碼">
                                 <button class="addNewBankAccount btn btn-primary">新增</button>
-                            </div>
-
-                            <div>
-                                <button class="addConvenientStore btn btn-primary my-1">新增/修改 收件便利商店</button>
                             </div>
                             <div class="addConvenientStoreBox">
                                 <span > seven11門市
