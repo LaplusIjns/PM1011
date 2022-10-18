@@ -1,4 +1,4 @@
-function getproduct() {
+function getproduct(item_id) {
     return $.ajax({
         type: "get",
         async:!1,
@@ -24,7 +24,6 @@ function creatchatroom(poster,viewer){
 		error:function(err){console.log(err)},
 		});
 }
-
 function downloadAndRefreshUI(item_id) {
     var p = $.ajax({
         type: "get",
@@ -137,7 +136,18 @@ let template2 = `<div class="col-5">
 }
 
 $(function(){
-    poster = getproduct()["responseJSON"]["member"]["member_id"]
+
+    var item_id = localStorage.getItem("item_id");
+        console.log(item_id);
+        downloadAndRefreshUI(item_id)
+        // console.log(item)
+        
+
+
+
+
+
+    poster = getproduct(item_id)["responseJSON"]["member"]["member_id"]
     console.log("poster: "+poster)
     viewer = AjaxgetRegister()["responseJSON"]["member_id"]
     console.log("viewer: "+viewer)
@@ -166,7 +176,8 @@ $(function(){
     }
         })
     $("#rentfile").click(function () {
-        poster = getproduct()["responseJSON"]["member"]["member_account"]
+        //account
+        poster = getproduct(item_id)["responseJSON"]["member"]["member_account"]
         console.log(poster)
         window.open("rentfile.html?account="+poster);
     })

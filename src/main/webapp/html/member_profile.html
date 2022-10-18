@@ -10,7 +10,7 @@
     <!-- <link href="../css/index.css" rel="stylesheet"> -->
     <script src="../bootstrap5/js/bootstrap.js"></script>
     <script src="../js/jquery.js"></script>
-    <!-- <script src="../js/logIn.js"></script> -->
+    <script src="../js/logIn.js"></script>
     <!--     <script src = "../js/profiles.js"></script>  -->
     <script src="../js/jquery.toast.js"></script>
     <link href="../css/jquery.toast.css" rel="stylesheet">
@@ -27,9 +27,9 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <!-- <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-11">
+            <div class="col-11"> -->
                 <!-- top-navbar navbar navbar-expand-sm navbar-dark bg-dark -->
                 <nav class="navbar navbar-expand bg-info text-white">
                     <div class="container-fluid">
@@ -138,9 +138,13 @@
  
             </nav>
             <!-- main-body -->
-            <div class="row justify-content-center">
+            <div class="container-fluid">
+                <div class="row justify-content-center mainbody vh-100">
+                    <div class="col-1 sidemainbody"></div>
+                    <div class="col-10">
+                        <div class="row justify-content-center vh-100">
                 <!-- 左側導覽列 -->
-                <div class="col-2 ">
+                <div class="col-3 sidemainbody fs-3 ">
                     <div class="mx-3 my-3 px-3 py-3 border border-3 border-dark" style="border-radius: 15px;">
                         <ul class="nav flex-column nav-pills nav-fill">
                             <li class="nav-item ">
@@ -194,12 +198,13 @@
                                         <p id="member_introduction"></p>
                                         <p></p>
 
-                                        <button type="button" class="btn btn-primary btn-rounded btn-lg">
+                                        <button type="button" class="btn btn-primary btn-rounded btn-lg" hidden>
                                             傳訊息
                                         </button>
-                                        <button id="editbtn" type="button" class="btn btn-primary btn-rounded btn-lg"
-                                            data-bs-toggle="modal" data-bs-target="#editmodal">
-                                            編輯
+                                        <button id="editbtn" type="button"
+                                            class="btn btn-primary btn-rounded btn-lg" data-bs-toggle="modal"
+                                            data-bs-target="#editmodal">
+                                            <i class="bi bi-pencil-square"></i>編輯
                                         </button>
                                     </div>
                                 </div>
@@ -307,8 +312,9 @@
             </a>
 
         </div>
+        <div class="col-1"></div>
     </div>
-    </div>
+</div>
     <!-- function 區域 -->
     <script src="../js/profiles.js"></script>
     <script>

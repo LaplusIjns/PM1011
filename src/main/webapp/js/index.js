@@ -7,17 +7,31 @@ function downloadAndRefreshUI() {
         async:!1,
         url: "/pages/frontCommodity"
     })
+    var temp = $.ajax({
+        type: "get",
+        async:!1,
+        url: "/api/manage/popularItemCatagories/"
+    })
     item =p["responseJSON"];
     console.log(item)
+    popularCategories = temp["responseJSON"];
+    console.log(popularCategories)
+    popularCategories = popularCategories.categories;
 
     //返回的JSON資料會存在result
     // newsList = JSON.parse(result);
     items = item["litems"];
     iic = item.item_picture;
-    refreshUI(items);
+    refreshUI(items,popularCategories);
 
 }
-function refreshUI(items) {
+function refreshUI(items,popularCategories) {
+    console.log(popularCategories)
+    for (var i = 0; i < popularCategories.length; i++) {
+        $("#popCategories").append(
+            `<li><span class="list-group-item list-group-item-action popCategories">${popularCategories[i]}</span></li>`
+        )
+    }
     console.log(items)
     //             console.log(items.length);
     $(".bigbox").empty();
@@ -101,8 +115,10 @@ function refreshUIs() {
     //   console.log(r.itps[0][0].picture_url);
     $(".bigbox").empty();
     console.log(r)
+    // r=r["responseJSON"]
     // if (its != "" && its != null && its != undefined) {
         $(".bigbox").append(`<div class="row superbigbox"></div>`);
+        // console.log(r.itps)
         for (let i = 0; i <r.itps.length; i++) {
             console.log(i+" ")
             //商品圖片
@@ -631,6 +647,19 @@ $(function(){
             }
         }
     )
+    $("#popCategories").on("click", ".popCategories", function () {
+        var postdata = {
+            category_name: this.innerText
+        }
+        temp = $.ajax({
+            type: "post",
+            url: "/api/searchItem/itemCategory",
+            async:!1,
+            data: postdata
+        })
+        r =temp["responseJSON"];
+        refreshUIs();
+    })
 
     console.log("hello")
 

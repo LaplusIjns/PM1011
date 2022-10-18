@@ -101,7 +101,10 @@ function refreshUI() {
 		alert("請先登入帳號！！");
 		window.location.replace("../index.html");
 	} else {
-		$("#member_nickname").text(userData["responseJSON"]["member_nickname"]);
+		if(userData["responseJSON"]["member_nickname"]==null){
+			userData["responseJSON"]["member_nickname"] = "";
+		}
+		$("#member_nickname").text(userData["responseJSON"]["member_account"]+" "+userData["responseJSON"]["member_nickname"]);
 		$("#member_region").text(userData["responseJSON"]["member_region"]);
 		$("#member_introduction").text(userData["responseJSON"]["member_introduction"]);
 		if (userData["responseJSON"]["member_icon"] != null) {
@@ -154,6 +157,7 @@ $(function() {
 	}
 	refreshUI();
 	rateUI();
+	
 	//setTimeout(downloadAndRefreshUI,1000);
 	$("#editbtn").on("click", function() {
 		$("input[name='member_nickname']").attr("value", userData["responseJSON"]["member_nickname"]);
@@ -162,69 +166,7 @@ $(function() {
 		$("input[name='member_birthday']").attr("value", userData["responseJSON"]["member_birthday"]);
 	})
 
-	$("#createMember").on("click", function() {
-		console.log("OK?");
-		var dataToServer = {
-			member_account: $("#createAccountTextBox").val(),
-			member_password: $("#createPasswordMTextBox").val(),
-			member_email: $("#createMailTextBox").val()
-		}
-		var p = AjaxdoRegister(dataToServer)
-		var result = p;
-		alert(eval(result).responseText);
-	})
 
-	$("#loginMember").on("click", function() {
-		l++;
-		if (l == 3) {
-			$("#loginBox").append(`<label class="mx-2 my-1" style="color:red">忘記密碼？請輸入帳號並點擊忘記密碼，至登記信箱獲取驗證碼</label>`);
-		}
-		var dataToServer = {
-			member_account: $("#loginAccountTextBox").val(),
-			member_password: $("#loginPasswordMTextBox").val()
-		}
-		var p = AjaxloginRegister(dataToServer)
-		var result = p;
-		//gyugyugyugyu
-		console.log(eval(result).responseText)
-		console.log(p)
-		downloadAndRefreshUI(dataToServer);
-		rateUI();
-		alert(eval(result).responseText);
-	})
-
-	$("#logoutBtn").on("click", function() {
-		var dataToServer = {
-			member_account: $("#loginAccountTextBox").val(),
-			member_password: $("#loginPasswordMTextBox").val()
-		}
-		var p = AjaxlogoutRegister(dataToServer)
-		var result = p;
-		alert(eval(result).responseText);
-		//window.location.href = "#";
-		document.location.reload(true);
-	})
-
-	$("#changeMember").on("click", function() {
-		var dataToServer = {
-			member_account: $("#changeAccountTextBox").val(),
-			member_password: $("#changePasswordMTextBox").val(),
-			member_email: $("#changeMailTextBox").val()
-		}
-		var p = AjaxchangeRegister(dataToServer)
-		console.log(p)
-		var result = p;
-		alert(eval(result).responseText);
-	})
-
-	$("#forgetBtn").on("click", function() {
-		var dataToServer = {
-			member_account: $("#loginAccountTextBox").val(),
-		}
-		var p = AjaxforgetRegister(dataToServer)
-		var result = p;
-		alert(eval(result).responseText);
-	})
 
 	       $("#formBtn").on("click", function () {
 	       window.location.reload()
