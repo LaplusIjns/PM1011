@@ -19,6 +19,15 @@
 	<!-- <script src = "../js/profiles.js"></script> -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+	integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script
+  src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"
+  integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY="
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
 	<title>Document</title>
 	<style>
 		.chart {
@@ -200,36 +209,39 @@
 								<div class="text-dark " id="tab2">
 									<h1>管理者後台</h1>
 									<h3 style="display: inline;">圖表:</h3>
-									<button id="itemsPie">全站商品比例</button>
-									<button id="CategoriesPie">熱門分類</button>
-									<button id="membersLine">活躍會員數</button>
+									<button id="itemsPie" class="btn btn-primary fs-4 p-2 m-1"><i class="fa fa-pie-chart fs-4" aria-hidden="true"></i><br>商品比例</button>
+									<button id="CategoriesPie" class="btn btn-primary fs-4 p-2 m-1"><i class="fa fa-pie-chart fs-4" aria-hidden="true"></i><br>熱門分類</button>
+									<button id="membersLine" class="btn btn-primary fs-4 p-2 m-1"><i class="fa fa-line-chart fs-4" aria-hidden="true"></i><br>活躍會員</button>
 								</div>
 								<!-- <form class="my-2"> -->
+									<br>
 
 								<label>會員管理</label>
-								<input type="text" placeholder="以帳號搜尋" id="searchAcc">
+								<input type="text" placeholder="以帳號搜尋" id="searchAcc" >
 								<input type="text" placeholder="以暱稱搜尋" id="searchName">
 
 								<button class="btn btn-danger border-3 border-dark mx-3" id="searchMember">確定</button>
-								<div id="divMember"></div>
+								
 								<!-- </form> -->
 
 								<!-- <form class="my-2"> -->
 								<label>商品管理</label>
 								<input type="text" placeholder="以品名搜尋" id="searchItemName">
 								<button class="btn btn-danger border-3 border-dark mx-3" id="searchItem">確定</button>
-								<div id="divItem"></div>
+								
 								<!-- </form> -->
 
 							</div>
 
 
 							<div id="divChart">
-								<div id="piechart01" class="chart noshow"></div>
-								<div id="piechart02" class="chart noshow"></div>
-								<div id="linechart01" class="chart noshow"></div>
+								<div id="piechart01" class="chart noshow" style="width: 1200px; height: 500px;"></div>
+								<div id="piechart02" class="chart noshow" style="width: 1200px; height: 500px;"></div>
+								<div id="linechart01" class="chart noshow" style="width: 1200px; height: 500px;"></div>
 							</div>
 							<!-- <div id="linechart02" class="chart noshow"></div> -->
+							<div id="divMember"></div>
+							<div id="divItem"></div>
 						</div>
 					</div>
 				</div>
@@ -248,6 +260,42 @@
     </div>
 	<!-- function 區域 -->
 	<script>
+	// function AjaxgetAccount(inputaccount){
+	// 	return $.ajax({
+	// 	type: "post",
+	// 	url: "/findmember_accountlike/"+inputaccount,
+	// 	async: !1,
+	// })}
+	// function getaccount(){
+	// 	var abc = $("#searchAcc").val();
+	// 	console.log(abc)
+	// 	res = AjaxgetAccount(abc)["responseJSON"]
+	// 	console.log(res)
+	// 	resval = []
+	// 	for(var i =0;i<res.length;i++){
+	// 		// console.log(res[i].member_account)
+	// 		resval.push(res[i].member_account)
+	// 	}
+	// 	console.log(resval)
+	// 	return resval
+	// }
+	$( "#searchAcc" ).autocomplete({
+      source: function(request, response) {
+		console.log(request);
+			$.ajax({
+			type: "post",
+			url: "/findmember_accountlike/"+request.term,
+			async: !1,
+			success: function( data ) {
+				console.log(data)
+				resval = []
+				for(var i =0;i<data.length;i++){
+				// console.log(res[i].member_account)
+				resval.push(data[i].member_account)
+			}
+				response( resval );
+			}})}});
+
 		function clearSearchResult() {
 			$("#divChart").show();
 			$("#divMember").empty();
@@ -306,12 +354,12 @@
 				titleTextStyle: {
 					color: "black",    // any HTML string color ('red', '#cc00cc')
 					// fontName: 'Times New Roman', // i.e. 'Times New Roman'
-					fontSize: 20, // 12, 18 whatever you want (don't specify px)
+					fontSize: 40, // 12, 18 whatever you want (don't specify px)
 					bold: false,    // true or false
 					italic: false   // true of false
 
 				},
-				fontSize: 16
+				fontSize: 32
 
 			};
 
@@ -340,11 +388,12 @@
 				titleTextStyle: {
 					color: "black",    // any HTML string color ('red', '#cc00cc')
 					// fontName: 'Times New Roman', // i.e. 'Times New Roman'
-					fontSize: 20, // 12, 18 whatever you want (don't specify px)
+					fontSize: 40, // 12, 18 whatever you want (don't specify px)
 					bold: false,    // true or false
-					italic: false   // true of false
+					italic: false,   // true of false
+					
 				},
-				fontSize: 16
+				fontSize: 32
 			};
 
 			var chart = new google.visualization.PieChart(document.getElementById('piechart02'));
@@ -361,9 +410,29 @@
 			// Set Options
 			var options = {
 				title: '本年度逐月活躍會員數',
-				hAxis: { title: '月份' },
-				vAxis: { title: '人數' },
-				legend: 'none'
+				titleTextStyle: {
+					color: "black",    // any HTML string color ('red', '#cc00cc')
+					// fontName: 'Times New Roman', // i.e. 'Times New Roman'
+					fontSize: 40, // 12, 18 whatever you want (don't specify px)
+					bold: false,    // true or false
+					italic: false,   // true of false
+					
+				},
+				hAxis: { title: '月份',
+				titleTextStyle: {
+					color: "black",    
+					bold: false,    
+					italic: false,   }},
+				vAxis: { title: '人數',
+				titleTextStyle: {
+					color: "black",    
+					bold: false,    
+					italic: false,   },
+					
+				},
+				legend: 'none',
+				fontSize: 32,
+				
 			};
 			// Draw Chart
 			var chart = new google.visualization.LineChart(document.getElementById('linechart01'));
@@ -398,12 +467,12 @@
 						"<h1>會員帳號: " + e.mb.member_account + "</h1><br>" +
 						"<h1>會員暱稱: " + e.mb.member_nickname + "</h1><br>" +
 						"<h1>目前權限: " + e.mb.member_rank + "</h1><br>" +
-						"<select name='rank' id='rank'>" +
+						"<select name='rank' id='rank' class='fs-4 m-2'>" +
 						"<option value='一般'>一般權限</option>" +
 						"<option value='停權'>停權</option>" +
 						"</select>" +
 						"<div id='inputBanDate'>" +
-						"<button class='memberConfirm'>確認更改</button><hr>" +
+						"<button class='memberConfirm btn btn-danger'>確認更改</button><hr>" +
 						"</div>" +
 						"<h1>會員商品</h1><br>");
 
@@ -413,13 +482,13 @@
 							"<h2>商品ID: " + e.it[i].item_id + "</h2><br>" +
 							"<h2>商品名稱: " + e.it[i].item_name + "</h2><br>" +
 							"<h2>商品狀態: " + e.it[i].item_state + "</h2><br>" +
-							"<select class='state' id='state" + e.it[i].item_id + "'>" +
+							"<select class='state m-2 fs-4' id='state" + e.it[i].item_id + "'>" +
 							"<option value='上架中'>上架中</option>" +
 							"<option value='準備上架'>準備上架</option>" +
 							"<option value='已刪除'>已刪除</option>" +
 							"</select>" +
 							"<div id='inputResellDate" + e.it[i].item_id + "'>" +
-							"<button class='itemConfirm' id='iConfirm" + e.it[i].item_id +
+							"<button class='itemConfirm btn btn-danger' id='iConfirm" + e.it[i].item_id +
 							"'>確認更改</button><hr>" +
 							"</div>"
 						)
@@ -457,12 +526,12 @@
 							"<h1>會員帳號: " + e.mbs[index].member_account + "</h1><br>" +
 							"<h1>會員暱稱: " + e.mbs[index].member_nickname + "</h1><br>" +
 							"<h1>目前權限: " + e.mbs[index].member_rank + "</h1><br>" +
-							"<select name='rank' id='rank'>" +
+							"<select name='rank' id='rank' class='fs-4 m-2'>" +
 							"<option value='一般'>一般權限</option>" +
 							"<option value='停權'>停權</option>" +
 							"</select>" +
 							"<div id='inputBanDate'>" +
-							"<button class='memberConfirm'>確認更改</button><hr>" +
+							"<button class='memberConfirm btn btn-danger'>確認更改</button><hr>" +
 							"</div>" +
 							"<h1>會員商品</h1><br>" +
 							"<h2>數量:" + e.its[index].length + "</h2><br>");
@@ -473,13 +542,13 @@
 								"<h2>商品ID: " + e.its[index][i].item_id + "</h2><br>" +
 								"<h2>商品名稱: " + e.its[index][i].item_name + "</h2><br>" +
 								"<h2>商品狀態: " + e.its[index][i].item_state + "</h2><hr>" +
-								"<select class='state' id='state" + e.it[i].item_id + "'>" +
+								"<select class='state m-2 fs-4' id='state" + e.it[i].item_id + "'>" +
 								"<option value='上架中'>上架中</option>" +
 								"<option value='準備上架'>準備上架</option>" +
 								"<option value='已刪除'>已刪除</option>" +
 								"</select>" +
 								"<div id='inputResellDate" + e.it[i].item_id + "'>" +
-								"<button class='itemConfirm' id='iConfirm" + e.it[i].item_id +
+								"<button class='itemConfirm btn btn-danger' id='iConfirm" + e.it[i].item_id +
 								"'>確認更改</button><hr>" +
 								"</div>"
 							)
@@ -524,13 +593,13 @@
 					"<h2>商品ID: " + r[i].item_id + "</h2><br>" +
 					"<h2>商品名稱: " + r[i].item_name + "</h2><br>" +
 					"<h2>商品狀態: " + r[i].item_state + "</h2><br>" +
-					"<select class='state' id='state" + r[i].item_id + "'>" +
+					"<select class='state m-2 fs-4' id='state" + r[i].item_id + "'>" +
 					"<option value='上架中'>上架中</option>" +
 					"<option value='準備上架'>準備上架</option>" +
 					"<option value='已刪除'>已刪除</option>" +
 					"</select>" +
 					"<div id='inputResellDate" + r[i].item_id + "'>" +
-					"<button class='itemConfirm' id='iConfirm" + r[i].item_id +
+					"<button class='itemConfirm btn btn-danger' id='iConfirm" + r[i].item_id +
 					"'>確認更改</button><hr>" +
 					"</div>"
 				);
@@ -549,12 +618,12 @@
 				$("#inputBanDate").empty();
 				$("#inputBanDate").append(
 					"<label>停權結束日期:<input type='date' id='banDate'></label><br>" +
-					"<button class='memberConfirm'>確認更改</button><hr>"
+					"<button class='memberConfirm btn btn-danger'>確認更改</button><hr>"
 				);
 			} else {
 				$("#inputBanDate").empty();
 				$("#inputBanDate").append(
-					"<button class='memberConfirm'>確認更改</button><hr>"
+					"<button class='memberConfirm btn btn-danger'>確認更改</button><hr>"
 				)
 			}
 		})
@@ -566,12 +635,12 @@
 				$("#inputResellDate" + ID).append(
 					"<label>重新上架日期:<input type='date' id='resellDate" + ID +
 					"'></label><br>" +
-					"<button class='itemConfirm' id='iConfirm" + ID +
+					"<button class='itemConfirm btn btn-danger' id='iConfirm" + ID +
 					"'>確認更改</button><hr>"
 				);
 			} else {
 				$("#inputResellDate" + ID).append(
-					"<button class='itemConfirm' id='iConfirm" + ID +
+					"<button class='itemConfirm btn btn-danger' id='iConfirm" + ID +
 					"'>確認更改</button><hr>"
 				)
 			}

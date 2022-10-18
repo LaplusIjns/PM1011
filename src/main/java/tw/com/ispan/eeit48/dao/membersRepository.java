@@ -32,6 +32,9 @@ public interface membersRepository extends JpaRepository<members, Integer> {
 	
 	@Query(value = "select member_account from members where member_id = ?1", nativeQuery = true)
 	String findmember_accountBymember_id(Integer member_id);
+	//1018
+	@Query(value = "select * from members where member_account like concat('%',?1,'%') ", nativeQuery = true)
+	List<members> findmember_accountlike(String member_account);
 	
 	@Transactional
 	@Modifying

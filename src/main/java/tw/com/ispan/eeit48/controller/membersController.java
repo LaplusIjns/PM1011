@@ -73,7 +73,20 @@ public class membersController {
         }else {
             return ResponseEntity.notFound().build();
         }
-    }	
+    }
+	//1018
+	@PostMapping(path = {"/findmember_accountlike/{memberaccount}"})
+    public ResponseEntity<?> findBymember_idlike(@PathVariable(name="memberaccount") String id) {
+        //獲得特定使用者資料
+        members bean = new members();
+        bean.setMember_account(id);
+        List<members> result = membersRepository.findmember_accountlike(bean.getMember_account());
+        if(result!=null && !result.isEmpty()) {
+            return ResponseEntity.ok(result);
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 	//查看特定人account檔案
     @PostMapping(path = {"/findmember_account/{accountname}"})
     public ResponseEntity<?> findBymember_account(@PathVariable(name="accountname") String id) {
