@@ -122,7 +122,15 @@ let template2 = `<div class="col-5">
                 items_id: items_id
             }
         })
-        alert("success")
+        $.toast({
+            heading: '通知',
+            text: "加入購物車",
+            icon: 'info',
+            loader: true,       
+            loaderBg: '#9EC600' ,
+            showHideTransition: 'fade',
+            position:"top-center",
+        })
     })
 
 }
@@ -156,7 +164,16 @@ $(function(){
         // window.location.href="chat.html";
         window.open("chat.html");
     }else{
-        alert("請先登入")}
+        $.toast({
+            heading: '通知',
+            text: "請先登入",
+            icon: 'error',
+            loader: true,       
+            loaderBg: '#9EC600' ,
+            showHideTransition: 'fade',
+            position:"top-center",
+        })
+    }
         })
     $("#rentfile").click(function () {
         //account
