@@ -90,6 +90,7 @@ function loginrefreshUI() {
 		$("#member_nickname").text(userData["responseJSON"]["member_nickname"]);
 		$("#member_region").text(userData["responseJSON"]["member_region"]);
 		$("#member_introduction").text(userData["responseJSON"]["member_introduction"]);
+		memberID = userData["responseJSON"]["member_id"];
 		if (userData["responseJSON"]["member_icon"] != null) {
 			$("#headPhoto").attr("src", "../img/" + userData["responseJSON"]["member_icon"]);
 		}
@@ -101,14 +102,18 @@ function loginrefreshUI() {
 
 $(function() {
 	userData = AjaxgetRegister()
-	isManager = false
+	isManager = false;
+	isbanned = false;
+	var memberID;
 	if(userData["responseJSON"]["member_rank"]=="管理者"){
 		isManager = true;
+	}else if(userData["responseJSON"]["member_rank"]=="停權"){
+		isbanned = true;
 	}
 	if(isManager){
-		
+		$("#backstage").removeClass("normal");
 	}
-	console.log("rank "+isManager)
+	console.log("rank "+userData["responseJSON"]["member_rank"])
 	console.log(userData["responseJSON"]["member_id"])
 	loginrefreshUI()
 	//setTimeout(downloadAndRefreshUI,1000);

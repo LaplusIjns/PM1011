@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../bootstrap5/css/bootstrap.css" rel="stylesheet">
+    <link href="../css/manager.css" rel="stylesheet">
+    <!-- <link href="../css/index.css" rel="stylesheet"> -->
+    <script src="../bootstrap5/js/bootstrap.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/logIn.js"></script>
+    <!-- <script src = "../js/profiles.js"></script> -->
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-11">
+                <!-- top-navbar navbar navbar-expand-sm navbar-dark bg-dark -->
+                <nav class="navbar navbar-expand bg-info text-white">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="../index.html">
+                            <img src="../img/LOGO03.png" style="height:50px; width:auto;">
+                        </a>
+                        <ul class="nav nav-pills me-auto te mx-1">
+                            <!-- nav nav-pills -->
+                            <!-- data-bs-toggle="pill" -->
+                            <li class="nav-item">
+                                <a class="nav-link text-white fs-4" href="../index.html">首頁</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white fs-4" href="./rentflow.html">租借流程</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white fs-4" href="./chat.html">聊天室</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white fs-4" href="./wishpool.html">許願池</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white active fs-4" href="./member.html">會員</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white fs-4" href="./cart.html">購物車</a>
+                            </li>
+                        </ul>
+                        <!-- 靠右 -->
+                        <div class="d-flex">
+                            <div class="btn-group" role="group">
+                                <!-- 第一顆按鈕 -->
+                                <button id="loginBtn" type="button" class="btn btn-primary fs-4" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop">登入</button>
+                                <button id="logoutBtn" type="submit" style="display:none" class="btn btn-primary fs-4"
+                                    data-bs-target="#staticBackdrop">登出</button>
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-dark" id="staticBackdropLabel">登入</h5>
+                                                <button type="button" class="btn-close fs-4" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <form class="text-dark">
+                                                <div class="modal-body" id="loginBox">
+                                                    <label class="mx-2 my-1">帳號</label>
+                                                    <input class="mx-2 my-1" type="text" id="loginAccountTextBox"
+                                                        placeholder="請輸入大小寫英數字"><br>
+                                                    <label class="mx-2 my-1">密碼 </label>
+                                                    <input class="mx-2 my-1" type="password" id="loginPasswordMTextBox"
+                                                        placeholder="請輸入大小寫英數字"><br>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn fs-4" id="forgetBtn">忘記密碼？</button>
+                                                    <button type="button" class="btn btn-secondary fs-4"
+                                                        data-bs-dismiss="modal">關閉</button>
+                                                    <button type="button" id="loginMember" class="btn btn-primary fs-4"
+                                                        data-bs-dismiss="modal">送出</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 第二顆按鈕 -->
+                                <button id="createBtn" type="button" class="btn btn-primary fs-4" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop2">註冊</button>
+                                <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title text-dark" id="staticBackdropLabel2">註冊</h5>
+                                                <button type="button" class="btn-close fs-4" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+
+                                            <form class="text-dark">
+                                                <div class="modal-body">
+                                                    <label class="mx-2 my-1">帳號</label>
+                                                    <input class="mx-2 my-1" type="text" id="createAccountTextBox"
+                                                        placeholder="請輸入大小寫英數字"><br>
+                                                    <label class="mx-2 my-1">密碼</label>
+                                                    <input class="mx-2 my-1" type="password" id="createPasswordMTextBox"
+                                                        placeholder="請輸入大小寫英數字"><br>
+                                                    <label class="mx-2 my-1">信箱</label>
+                                                    <input class="mx-2 my-1" type="text" id="createMailTextBox"
+                                                        placeholder=""><br>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary fs-4"
+                                                        data-bs-dismiss="modal">關閉</button>
+                                                    <button type="button" id="createMember" class="btn btn-primary fs-4"
+                                                        data-bs-dismiss="modal">送出</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <!-- main-body -->
+                <div class="row justify-content-center">
+                    <!-- 左側導覽列 -->
+                    <div class="col-2 ">
+                        <div class="mx-3 my-3 px-3 py-3 border border-3 border-dark" style="border-radius: 15px;">
+                            <ul class="nav flex-column nav-pills nav-fill">
+                                <ul class="nav flex-column nav-pills nav-fill">
+                                    <li class="nav-item ">
+                                        <a class="nav-link" id="nav-member-tab" aria-controls="tab1"
+                                            href="./member_profile.html" aria-selected="true">會員資料</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="./member_payment.html">付款資訊</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="./member_traderecord.html"
+                                            aria-selected="false">交易紀錄</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="./member_wishlist.html"
+                                            aria-selected="false">願望清單</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="./member_addwishlists.html"
+                                            aria-selected="false">發表願望</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="./member_myproduct.html"
+                                            aria-selected="false">我的商品</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="./member_uploadproduct.html"
+                                            aria-selected="false">上架商品</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="./member_receiveorder.html"
+                                            aria-selected="false">已接收訂單</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="./member_myorder.html" aria-selected="false">下訂訂單</a>
+                                    </li>
+                                    <li class="nav-item normal" id="backstage">
+                                        <a class="nav-link" href="./member_backstage.html"
+                                            aria-selected="false">管理者後台</a>
+                                    </li>
+                                </ul>
+                        </div>
+                    </div>
+
+                    <!-- 標籤內容 -->
+                    <div class="col-9 ">
+                        <div class="mx-3 my-3 px-3 py-3 text-dark" id="myTab">
+                            <!-- 上架商品 -->
+                            <!-- <div class="text-dark " id="tab2">
+                                <h1>(上架商品) 商品名字 商品簡述 商品分類 價格 商品圖片 接受付款方式</h1>
+                            </div> -->
+                            <div class="">
+                                <form method="post" class="test" action="http://localhost:8080/api/wishpool/addWishlist"
+                                    enctype="Multipart/Form-Data">
+                                    <div class="mx-3 my-3">
+                                        <div class="my-2">
+                                            <label class="form-label">願望物品名稱</label><br />
+                                            <input class="form-text" type="text" name="item_name">
+                                        </div>
+                                        <div>
+                                            <label class="form-label">簡介</label>
+                                            <textarea class="form-control" name="item_description"></textarea>
+                                        </div>
+
+                                        <div class="mx-1 my-1" id="searchByCategory">
+                                            <label class="mx-1 my-1">物品類別<br />
+                                                <input type="radio" name="category_type" value="漫畫">
+                                                  <label for="漫畫">漫畫</label>
+                                                <input type="radio" name="category_type" value="小說">
+                                                  <label for="小說">小說</label>
+                                                <input type="radio" name="category_type" value="桌遊">
+                                                  <label for="桌遊">桌遊</label>
+                                                <input type="radio" name="category_type" value="主機">
+                                                  <label for="主機">主機</label>
+                                            </label><br />
+                                            <div class="mx-1 my-1" id="extraRadio"></div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">上傳圖片</label>
+                                            <input class="form-control" type="file" id="uploadImg" accept="image/*">
+                                            <button id="confirmUpload" type="button">確認上傳</button>
+                                            <div class="uploadImg"></div>
+                                        </div>
+
+                                        <div class="">
+                                            <label for="typeNumber" class="form-label">期望價格</label>
+                                            <input type="number" id="typeNumber" class="form-control"
+                                                placeholder="輸入單位金額" name="expect_price" />
+                                        </div>
+                                        <input type="hidden" name="addwish_date" value="" id="wishdate">
+                                        <button
+                                            class="btn btn-primary text-white border-3 border-dark my-3 mx-5 submit">發表到許願池</button>
+                                    </div>
+                                </form>
+                                <iframe id="rfFrame" name="rfFrame" src="about:blank" style="display:none;"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- foot -->
+                <a href="javascript:window.scrollTo(0,0)">
+                    <footer class="footer bg-secondary text-center text-white mt-auto fixed-bottom">
+                        <div class="container-fluid">
+                            <span class="">2022 EEIT48 </span>
+                        </div>
+                    </footer>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- function 區域 -->
+
+    <script>
+        //強制頁面不要跳轉
+        $(".test").attr("target", "rfFrame")
+
+        // 設定日期
+        var date = new Date();
+        var dateStr = date.getFullYear() + "-" + (date.getMonth() + 1).toString().padStart(2, "0") + "-" + date.getDate().toString().padStart(2, "0");
+        $("#wishdate").val(dateStr);
+        console.log($("#wishdate").val());
+
+        // alert
+        $(".submit").on("click",function(){
+            setTimeout(function(){
+                alert("許願成功！");
+                $(".test")[0].reset();
+                $(".uploadImg").empty();
+            },500)       
+        })
+
+        // 上傳圖片到imgur
+        var file = document.getElementById("uploadImg");
+        var form = new FormData();
+        file.addEventListener("change", ev => {
+            form.append("image", ev.target.files[0])
+        })
+
+        form.append('type', 'file');
+
+        $("#confirmUpload").on("click", function () {
+            var settings = {
+                async: true,
+                crossDomain: true,
+                url: 'https://api.imgur.com/3/image',
+                method: 'POST',
+                headers: {
+                    authorization: 'Bearer 7bd51cbe0e6e4455fdfc08ddc2743a83d34fea81'
+                },
+                processData: false,
+                contentType: false,
+                mimeType: 'multipart/form-data',
+                data: form,
+            };
+
+            $.ajax(settings).done(function (response) {
+                console.log(JSON.parse(response).data.link);
+                $(".uploadImg").append(
+                    `<input class="form-text" type="hidden" name="item_photo_url" value="${JSON.parse(response).data.link}">`
+                )
+                $(".uploadImg").append(
+                    "<p>上傳成功！</p>"
+                )
+                
+            });
+        })
+
+
+        $("[name='category_type']").change(function () {
+            $("#itemName").val("");
+            $("#itemTag").val("");
+            $("#minPrice").val("");
+            $("#maxPrice").val("");
+            function showRegion() {
+                $("#extraRadio").empty();
+                $("#extraRadio").append(
+                    '<label class="mx-1 my-1">地區</label><br />' +
+                    '<input type="radio" name="category_region" value="01">' +
+                    '<label for="台灣">台灣</label>' +
+                    '<input type="radio" name="category_region" value="02">' +
+                    '<label for="香港">香港</label>' +
+                    '<input type="radio" name="category_region" value="03">' +
+                    '<label for="日本">日本</label>' +
+                    '<input type="radio" name="category_region" value="04">' +
+                    '<label for="韓國">韓國</label><br>' +
+                    '<input type="radio" name="category_region" value="05">' +
+                    '<label for="中國">中國</label>' +
+                    '<input type="radio" name="category_region" value="06">' +
+                    '<label for="美國">美國</label>' +
+                    '<input type="radio" name="category_region" value="07">' +
+                    '<label for="歐洲">歐洲</label>' +
+                    '<input type="radio" name="category_region" value="08">' +
+                    '<label for="其他">其他</label><br>' +
+                    '<div id="typeRadio"></div>'
+                )
+            }
+            switch ($("[name='category_type']:checked").val()) {
+                case "漫畫":
+                    showRegion();
+                    $("[name='category_region']").change(function () {
+                        $("#typeRadio").empty();
+                        $("#typeRadio").append(
+                            '<label class="mx-1 my-1">類別</label><br />' +
+                            '<input type="radio" name="comic_type" value="01">' +
+                            '<label for="熱血">熱血</label>' +
+                            '<input type="radio" name="comic_type" value="02">' +
+                            '<label for="冒險">冒險</label>' +
+                            '<input type="radio" name="comic_type" value="03">' +
+                            '<label for="奇幻">奇幻</label>' +
+                            '<input type="radio" name="comic_type" value="04">' +
+                            '<label for="科幻">科幻</label>' +
+                            '<input type="radio" name="comic_type" value="05">' +
+                            '<label for="競技">競技</label>' +
+                            '<input type="radio" name="comic_type" value="06">' +
+                            '<label for="運動">運動</label>' +
+                            '<input type="radio" name="comic_type" value="07">' +
+                            '<label for="校園">校園</label>' +
+                            '<input type="radio" name="comic_type" value="08">' +
+                            '<label for="歷史">歷史</label>' +
+                            '<input type="radio" name="comic_type" value="09">' +
+                            '<label for="推理">推理</label>' +
+                            '<input type="radio" name="comic_type" value="10">' +
+                            '<label for="懸疑">懸疑</label>' +
+                            '<input type="radio" name="comic_type" value="11">' +
+                            '<label for="恐怖">恐怖</label>' +
+                            '<input type="radio" name="comic_type" value="12">' +
+                            '<label for="美食">美食</label>' +
+                            '<input type="radio" name="comic_type" value="13">' +
+                            '<label for="戀愛">戀愛</label>' +
+                            '<input type="radio" name="comic_type" value="14">' +
+                            '<label for="日常">日常</label>' +
+                            '<input type="radio" name="comic_type" value="15">' +
+                            '<label for="音樂">音樂</label>' +
+                            '<input type="radio" name="comic_type" value="16">' +
+                            '<label for="治癒">治癒</label>' +
+                            '<input type="radio" name="comic_type" value="17">' +
+                            '<label for="社會">社會</label>' +
+                            '<input type="radio" name="comic_type" value="18">' +
+                            '<label for="搞笑">搞笑</label>' +
+                            '<input type="radio" name="comic_type" value="19">' +
+                            '<label for="萌系">萌系</label>' +
+                            '<input type="radio" name="comic_type" value="20">' +
+                            '<label for="後宮">後宮</label>' +
+                            '<input type="radio" name="comic_type" value="21">' +
+                            '<label for="BL">BL</label>' +
+                            '<input type="radio" name="comic_type" value="22">' +
+                            '<label for="GL">GL</label>' +
+                            '<input type="radio" name="comic_type" value="23">' +
+                            '<label for="四格">四格</label>' +
+                            '<input type="radio" name="comic_type" value="24">' +
+                            '<label for="武俠">武俠</label>' +
+                            '<input type="radio" name="comic_type" value="25">' +
+                            '<label for="格鬥">格鬥</label>' +
+                            '<input type="radio" name="comic_type" value="26">' +
+                            '<label for="機戰">機戰</label>' +
+                            '<input type="radio" name="comic_type" value="27">' +
+                            '<label for="同人">同人</label>' +
+                            '<input type="radio" name="comic_type" value="28">' +
+                            '<label for="溫馨">溫馨</label>' +
+                            '<input type="radio" name="comic_type" value="29">' +
+                            '<label for="獵奇">獵奇</label>' +
+                            '<input type="radio" name="comic_type" value="30">' +
+                            '<label for="其他">其他</label>'
+                        )
+                    })
+
+                    break;
+                case "小說":
+                    showRegion();
+                    $("[name='category_region']").change(function () {
+                        $("#typeRadio").empty();
+                        $("#typeRadio").append(
+                            '<label class="mx-1 my-1">類別</label><br />' +
+                            '<input type="radio" name="novel_type" value="01">' +
+                            '<label for="奇幻">奇幻</label>' +
+                            '<input type="radio" name="novel_type" value="02">' +
+                            '<label for="科幻">科幻</label>' +
+                            '<input type="radio" name="novel_type" value="03">' +
+                            '<label for="玄幻">玄幻</label>' +
+                            '<input type="radio" name="novel_type" value="04">' +
+                            '<label for="歷史">歷史</label>' +
+                            '<input type="radio" name="novel_type" value="05">' +
+                            '<label for="武俠">武俠</label>' +
+                            '<input type="radio" name="novel_type" value="06">' +
+                            '<label for="推理">推理</label>' +
+                            '<input type="radio" name="novel_type" value="07">' +
+                            '<label for="懸疑">懸疑</label>' +
+                            '<input type="radio" name="novel_type" value="08">' +
+                            '<label for="恐怖">恐怖</label>' +
+                            '<input type="radio" name="novel_type" value="09">' +
+                            '<label for="言情">言情</label>' +
+                            '<input type="radio" name="novel_type" value="10">' +
+                            '<label for="穿越">穿越</label>' +
+                            '<input type="radio" name="novel_type" value="11">' +
+                            '<label for="古典">古典</label>' +
+                            '<input type="radio" name="novel_type" value="12">' +
+                            '<label for="輕">輕小說</label>' +
+                            '<input type="radio" name="novel_type" value="13">' +
+                            '<label for="同人">同人</label>' +
+                            '<input type="radio" name="novel_type" value="14">' +
+                            '<label for="純文學">純文學</label>' +
+                            '<input type="radio" name="novel_type" value="15">' +
+                            '<label for="其他">其他</label>'
+                        )
+                    })
+
+                    break;
+                case "桌遊":
+                    $("#extraRadio").empty();
+                    $("#extraRadio").append(
+                        '<label class="mx-1 my-1">大小<br />' +
+                        '<input type="radio" name="boardgame_size" value="01">' +
+                        '<label for="01">小型</label>' +
+                        '<input type="radio" name="boardgame_size" value="02">' +
+                        '<label for="02">中型</label>' +
+                        '<input type="radio" name="boardgame_size" value="03">' +
+                        '<label for="03">大型</label><br>' +
+                        '<div id="typeRadio"></div>'
+                    )
+                    $("[name='boardgame_size']").change(function () {
+                        $("#typeRadio").empty();
+                        $("#typeRadio").append(
+                            '<label class="mx-1 my-1">類別<br />' +
+                            '<input type="radio" name="boardgame_type" value="01">' +
+                            '<label for="兒童">兒童</label>' +
+                            '<input type="radio" name="boardgame_type" value="02">' +
+                            '<label for="家庭">家庭</label>' +
+                            '<input type="radio" name="boardgame_type" value="03">' +
+                            '<label for="派對">派對</label><br>' +
+                            '<input type="radio" name="boardgame_type" value="04">' +
+                            '<label for="陣營">陣營</label>' +
+                            '<input type="radio" name="boardgame_type" value="05">' +
+                            '<label for="策略">策略</label>' +
+                            '<input type="radio" name="boardgame_type" value="06">' +
+                            '<label for="主題">主題</label><br>' +
+                            '<input type="radio" name="boardgame_type" value="07">' +
+                            '<label for="抽象">抽象</label>' +
+                            '<input type="radio" name="boardgame_type" value="08">' +
+                            '<label for="集換">集換</label>'
+                        )
+                    })
+
+                    break;
+                case "主機":
+                    $("#extraRadio").empty();
+                    $("#extraRadio").append(
+                        '<label class="mx-1 my-1">類別<br />' +
+                        '<input type="radio" name="console_type" value="0001">' +
+                        '<label for="0001">家用主機</label>' +
+                        '<input type="radio" name="console_type" value="0002">' +
+                        '<label for="0002">掌上主機</label>' +
+                        '<input type="radio" name="console_type" value="0003">' +
+                        '<label for="0003">大型機台</label><br>'
+                    )
+                    break;
+            }
+        })
+    </script>
+</body>
+
+</html>
