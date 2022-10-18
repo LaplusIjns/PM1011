@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../bootstrap5/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/cardSlider.css">
     <!-- <link href="../css/index.css" rel="stylesheet"> -->
     <script src="../bootstrap5/js/bootstrap.js"></script>
     <script src="../js/jquery.js"></script>
@@ -15,12 +16,12 @@
     <!-- <script src = "../js/profiles.js"></script> -->
     <title>Document</title>
 </head>
-<body>
-    <div class="container-fluid">
+<body class="mainbody">
+    <!-- <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-11" >
-                <!-- top-navbar navbar navbar-expand-sm navbar-dark bg-dark -->
-                <nav class="navbar navbar-expand bg-info text-white">
+            <div class="col-11"> -->
+    <!-- top-navbar navbar navbar-expand-sm navbar-dark bg-dark -->
+    <nav class="navbar navbar-expand bg-info text-white px-5">
                     <div class="container-fluid">
                         <a class="navbar-brand" href="../index.html">
                             <img src="../img/LOGO03.png" style="height:50px; width:auto;">
@@ -126,10 +127,33 @@
                     </div>
                 </nav>
                 <!-- main-body -->
+                <div class="container-fluid ">
                 <div class="row justify-content-center">
-                    <div class="col-6">
+                    <div class="col-10">
                         <h2>租借流程</h2>
-                        <img src="../img/rent_process.png " style="height: 700px; width: auto;">
+                        <!-- <img src="../img/rent_process.png " style="height: 700px; width: auto;"> -->
+                        <form action="" class="text-white">
+                                <input type="radio" id="1" name="sld" checked/>
+                                <label class="text-white p-3" for="1">1.搜尋想找的商品名稱，或點進熱門搜尋關鍵字瀏覽物品<br></label>
+
+                                <input type="radio" id="2" name="sld"/>
+                                <label class="text-white p-3" for="2">2.找到商品後，點進商品頁面瀏覽商品資訊以及可租借日期<br></label>
+
+                                <input type="radio" id="3" name="sld"/>
+                                <label class="text-white p-3" for="3">3.商品已借出＞預約租借日期　商品可租借＞選擇租借與歸還日期</label>
+
+                                <input type="radio" id="4" name="sld"/>
+                                <label class="text-white p-3" for="4">4.將商品加入購物車繼續瀏覽其他商品，或是直接結帳<br><br></label>
+
+                                <input type="radio" id="5" name="sld"/>
+                                <label class="text-white p-3" for="5">5.進入結帳頁面，填寫寄送資訊並付款後按下確認結帳按鈕<br></label>
+
+                                <input type="radio" id="6" name="sld"/>
+                                <label class="text-white p-3" for="6">6.賣家確認訂單及款項後就會將商品寄出並通知賣家<br><br></label>
+
+                                <input type="radio" id="7" name="sld"/>
+                                <label class="text-white p-3" for="7">7.在預定歸還日將商品寄回給賣家，並通知賣家商品已寄出<br></label>
+                              </form>
                         <div class="products" style="padding-top: 30px;">
                             <h1>注意事項</h1><br>
                             <h2>1.您最多只能同時預約五項商品</h2><br>

@@ -97,7 +97,7 @@ function refreshUI() {
                 var index = k + i * 4;
                 var creatediv =
                     tmp = '<div class="card mb-3"><div>'
-                    + '<img src="../img/big2.jpg" class="card-img-top col-12" alt="...">'
+                    + '<img src="' + newlist['responseJSON'][index + 12]['item_photo_url'] + '" class="card-img-top col-12" alt="...">'
                     // +'</div></div>'
                     + '<div class="card-body" id="' + newlist['responseJSON'][index + 12]['wishlist_id'] + '">'
                     + '<p class="card-text">' + newlist['responseJSON'][index + 12]['item_name'] + '</p>'
