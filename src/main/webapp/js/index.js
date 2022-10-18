@@ -220,7 +220,16 @@ $(function(){
                 items_id: items_id
             }
         })
-        alert("加入購物車");
+        // alert("加入購物車");
+        $.toast({
+            heading: '通知',
+            text: "加入購物車",
+            icon: 'info',
+            loader: true,       
+            loaderBg: '#9EC600' ,
+            showHideTransition: 'fade',
+            position:"top-center",
+        })
     })
     $(".addCart").click(function () {
         //                 console.log($(this).attr("name"));

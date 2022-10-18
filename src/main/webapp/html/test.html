@@ -16,6 +16,8 @@
         integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" crossorigin="anonymous">
     <link href="../css/main.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="../js/jquery.toast.js"></script>
+    <link href="../css/jquery.toast.css">
 
 </head>
 
@@ -72,92 +74,20 @@
     <button class="addPaymentData btn btn-primary my-1">修改 <i class="bi bi-pencil-square"></i></button>
 
     <!-- <button class="addPaymentData btn btn-primary my-1">忘記密碼 <i class="bi bi-question-square-fill"></i></button> -->
-    <div class="row">
-        <div class="col-3">
-            <div class="px-2 py-3">
-                <div class="card">
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/3.webp"
-                        class="card-img-top">
-                    <h5 class="text-center card-title">這裡是標題</h5>
-                    <div class="mx-4">
-                        <span>這裡是簡介
-                            要塞一些字123143242asdasdasdasdaasdasdasdasasdas342342342342343424qweqeqeqwe2</span>
-                    </div>
-                    <div class="px-3 py-3">
-                        <div class="d-flex justify-content-between mx-3 my03">
-                            <span>$100</span>
-                            <span>加入購物車</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="px-2 py-3">
-                <div class="card">
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/3.webp"
-                        class="card-img-top">
-                    <h5 class="text-center card-title">這裡是標題</h5>
-                    <div class="mx-4">
-                        <span>這裡是簡介
-                            要塞一些字123143242asdasdasdasdaasdasdasdasasdas342342342342343424qweqeqeqwe2</span>
-                    </div>
-                    <div class="px-3 py-3">
-                        <div class="d-flex justify-content-between mx-3 my03">
-                            <span>$100</span>
-                            <span>加入購物車</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="px-2 py-3">
-                <div class="card">
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/3.webp"
-                        class="card-img-top">
-                    <h5 class="text-center card-title">這裡是標題</h5>
-                    <div class="mx-4">
-                        <span>這裡是簡介
-                            要塞一些字123143242asdasdasdasdaasdasdasdasasdas342342342342343424qweqeqeqwe2</span>
-                    </div>
-                    <div class="px-3 py-3">
-                        <div class="d-flex justify-content-between mx-3 my03">
-                            <span>$100</span>
-                            <span>加入購物車</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="px-2 py-3">
-                <div class="card">
-                    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/3.webp"
-                        class="card-img-top">
-                    <h5 class="text-center card-title">這裡是標題</h5>
-                    <div class="mx-4">
-                        <span>這裡是簡介
-                            要塞一些字123143242asdasdasdasdaasdasdasdasasdas342342342342343424qweqeqeqwe2</span>
-                    </div>
-                    <div class="px-3 py-3">
-                        <div class="d-flex justify-content-between mx-3 my03">
-                            <span>$100</span>
-                            <span>加入購物車</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
     <script>
+        $(".btn").on(
+            "click",function(){
         $.toast({
-            heading: 'Information',
+            heading: '歡迎回來',
             text: 'Loaders are enabled by default. Use `loader`, `loaderBg` to change the default behavior',
             icon: 'info',
-            loader: true,        // Change it to false to disable loader
-            loaderBg: '#9EC600'  // To change the background
+            loader: true,       
+            loaderBg: '#9EC600' ,
+            showHideTransition: 'fade',
+            position:"top-center",
+        })
         })
 
     </script>

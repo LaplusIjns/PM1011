@@ -93,3 +93,13 @@ li:hover{
 li a:hover{
     
 }
+.jq-toast-single {
+    font-size: 32px;
+  }
+  .jq-toast-wrap {
+    width:50%;
+}
+.jq-toast-single h2{
+    font-size: 32px;
+    padding: 10px;
+}

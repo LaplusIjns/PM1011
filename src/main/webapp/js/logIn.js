@@ -136,7 +136,20 @@ $(function() {
 		console.log(p)
 		console.log(eval(p)["responseText"])
 		var result = p;
-		alert(eval(p).responseText);
+		abc = eval(p).responseText
+		// alert(eval(p).responseText);
+		$.toast({
+            heading: '註冊',
+            text: abc,
+            icon: 'info',
+            loader: true,       
+            loaderBg: '#9EC600' ,
+            showHideTransition: 'fade',
+            position:"top-center",
+        })
+		//預設ID 4 創聊天室
+		
+		//
 	})
 
 	$("#loginMember").on("click", function() {
@@ -156,12 +169,26 @@ $(function() {
 		console.log(p)
 //		downloadAndRefreshUI(dataToServer);
 //		rateUI();
-		alert(eval(result).responseText);
-		// location.reload()
-		// console.log(p["responseText"])
-		if(p["responseText"]!="請輸入帳號與密碼" && p["responseText"]!="帳號或密碼輸入錯誤"){
-			location.reload()
-		}
+		abc = eval(result).responseText
+		// alert(eval(result).responseText);
+		$.toast({
+            heading: '登入',
+            text: abc,
+            icon: 'info',
+            loader: true,       
+            loaderBg: '#9EC600' ,
+            showHideTransition: 'fade',
+            position:"top-center",
+			afterHidden: function () {
+				// console.log(p)
+				if(p["responseText"]!="請輸入帳號與密碼" && p["responseText"]!="帳號或密碼輸入錯誤"){
+					location.reload()
+				}
+			}
+        })
+		// if(p["responseText"]!="請輸入帳號與密碼" && p["responseText"]!="帳號或密碼輸入錯誤"){
+		// 	location.reload()
+		// }
 		
 	})
 
@@ -172,9 +199,23 @@ $(function() {
 		}
 		var p = AjaxlogoutRegister(dataToServer)
 		var result = p;
-		alert(eval(result).responseText);
-		window.location.href = "../index.html";
-		document.location.reload(true);
+		// alert(eval(result).responseText);
+		abc = eval(result).responseText;
+		$.toast({
+            heading: '登出',
+            text: abc,
+            icon: 'info',
+            loader: true,       
+            loaderBg: '#9EC600' ,
+            showHideTransition: 'fade',
+            position:"top-center",
+			afterHidden: function () {
+				window.location.href = "../index.html";
+				document.location.reload(true);
+			}
+        })
+		// window.location.href = "../index.html";
+		// document.location.reload(true);
 	})
 
 	$("#changeMember").on("click", function() {
@@ -186,7 +227,17 @@ $(function() {
 		var p = AjaxchangeRegister(dataToServer)
 		console.log(p)
 		var result = p;
-		alert(eval(result).responseText);
+		// alert(eval(result).responseText);
+		abc = eval(result).responseText;
+		$.toast({
+            heading: '更新資料',
+            text: abc,
+            icon: 'info',
+            loader: true,       
+            loaderBg: '#9EC600' ,
+            showHideTransition: 'fade',
+            position:"top-center",
+        })
 	})
 
 	$("#forgetBtn").on("click", function() {
@@ -195,6 +246,16 @@ $(function() {
 		}
 		var p = AjaxforgetRegister(dataToServer)
 		var result = p;
-		alert(eval(result).responseText);
+		// alert(eval(result).responseText);
+		abc = eval(result).responseText;
+		$.toast({
+            heading: '更新資料',
+            text: abc,
+            icon: 'info',
+            loader: true,       
+            loaderBg: '#9EC600' ,
+            showHideTransition: 'fade',
+            position:"top-center",
+        })
 	})
 })
