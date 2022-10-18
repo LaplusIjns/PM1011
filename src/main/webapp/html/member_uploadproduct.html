@@ -16,11 +16,11 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container-fluid">
+    <!-- <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-11" >
+            <div class="col-11"> -->
                 <!-- top-navbar navbar navbar-expand-sm navbar-dark bg-dark -->
-                <nav class="navbar navbar-expand bg-info text-white">
+                <nav class="navbar navbar-expand bg-info text-white px-5">
                     <div class="container-fluid">
                         <a class="navbar-brand" href="../index.html">
                             <img src="../img/LOGO03.png" style="height:50px; width:auto;">
@@ -126,10 +126,14 @@
                     </div>
                 </nav>
                 <!-- main-body -->
-                <div class="row justify-content-center">
+                <div class="container-fluid">
+                    <div class="row justify-content-center mainbody vh-100">
+                        <div class="col-1 sidemainbody"></div>
+                        <div class="col-10">
+                            <div class="row justify-content-center vh-100">
                     <!-- 左側導覽列 -->
-                    <div class="col-2 ">
-                        <div class="mx-3 my-3 px-3 py-3 border border-3 border-dark" style="border-radius: 15px;" >
+                    <div class="col-3 sidemainbody fs-3 ">
+                        <div class="mx-3 my-3 px-3 py-3 ">
                             <ul class="nav flex-column nav-pills nav-fill">
                                 <ul class="nav flex-column nav-pills nav-fill">
                                     <li class="nav-item ">
@@ -159,7 +163,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link"   href="./member_myorder.html" aria-selected="false">下訂訂單</a>
                                     </li>
-                                    <li class="nav-item" id="backstage" hidden>
+                                    <li class="nav-item normal" id="backstage" >
                                         <a class="nav-link"   href="./member_backstage.html" aria-selected="false">管理者後台</a>
                                     </li>
                                 </ul>
@@ -236,6 +240,7 @@
                     </footer>
                 </a>
             </div>
+            <div class="col-1"></div>
         </div>
     </div>
     <!-- function 區域 -->

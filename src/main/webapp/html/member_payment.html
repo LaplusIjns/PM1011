@@ -14,6 +14,8 @@
     <link href="../css/jquery.toast.css" rel="stylesheet">
     <link href="../css/main.css" rel="stylesheet">
     <!-- <script src = "../js/profiles.js"></script> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+    integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" crossorigin="anonymous">
     
     <style>
         .addNewCardBox,
@@ -36,11 +38,11 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <!-- <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-11" >
+            <div class="col-11"> -->
                 <!-- top-navbar navbar navbar-expand-sm navbar-dark bg-dark -->
-                <nav class="navbar navbar-expand bg-info text-white">
+                <nav class="navbar navbar-expand bg-info text-white px-5">
                     <div class="container-fluid">
                         <a class="navbar-brand" href="../index.html">
                             <img src="../img/LOGO03.png" style="height:50px; width:auto;">
@@ -146,10 +148,14 @@
                     </div>
                 </nav>
                 <!-- main-body -->
-                <div class="row justify-content-center">
+                <div class="container-fluid">
+                    <div class="row justify-content-center mainbody vh-100">
+                        <div class="col-1 sidemainbody"></div>
+                        <div class="col-10">
+                            <div class="row justify-content-center vh-100">
                     <!-- 左側導覽列 -->
-                    <div class="col-2 ">
-                        <div class="mx-3 my-3 px-3 py-3 border border-3 border-dark" style="border-radius: 15px;">
+                    <div class="col-3 sidemainbody fs-3 ">
+                        <div class="mx-3 my-3 px-3 py-3 ">
                             <ul class="nav flex-column nav-pills nav-fill">
                                 <li class="nav-item ">
                                     <a class="nav-link" id="nav-member-tab" aria-controls="tab1" href="./member_profile.html"
@@ -190,7 +196,7 @@
                     <div class="col-9 ">
                         <div class="mx-3 my-3 px-3 py-3 text-dark" id="myTab">
                             <div>
-                                <button class="addPaymentData btn btn-primary my-1">新增信用卡</button>
+                                <button class="addPaymentData btn btn-primary my-1"><i class="bi bi-credit-card-fill"></i>新增</button>
                             </div>
                             <div class="addNewCardBox">
                                 <input type="text" placeholder="姓" class="member_lastname">
@@ -299,6 +305,7 @@
                     </footer>
                 </a>
             </div>
+            <div class="col-1"></div>
         </div>
     </div>
     <!-- function 區域 -->
