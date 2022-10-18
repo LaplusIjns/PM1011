@@ -1,11 +1,11 @@
 var type = 1;
 var list = [];
 var len;
-allforthcol=[]
-allforthcol[0]=document.getElementById('firstcol')
-allforthcol[1]=document.getElementById('secondcol')
-allforthcol[2]=document.getElementById('thirdcol')
-allforthcol[3]=document.getElementById('forthcol')
+allforthcol = []
+allforthcol[0] = document.getElementById('firstcol')
+allforthcol[1] = document.getElementById('secondcol')
+allforthcol[2] = document.getElementById('thirdcol')
+allforthcol[3] = document.getElementById('forthcol')
 async function accessAndRefresh() {
     switch (type) {
         case 1:
@@ -43,16 +43,16 @@ function fillUI() {
         for (var k = 0; k < 4; k++) {
             var index = k + i * 4;
             // console.log(allforthcol[k])
-            tmp='<div class="card mb-3"><div>'
-            +'<img src="../img/big2.jpg" class="card-img-top col-12" alt="...">'
-            // +'</div></div>'
-            +'<div class="card-body" id="'+list[index].wishlist_id+'">'
-            +'<p class="card-text">'+list[index].item_name+'</p>'
-            +'<p class="card-text">'+list[index].item_description+'</p>'
-            +'<img src="../img/like.png" alt="" width="20px" height="20px"'
-            +'style="display: inline;" class="like">'
-            +'<p style="display: inline;">'+list[index].item_likes+'</p>'
-            +'</div></div>'+'</div></div>'
+            tmp = '<div class="card mb-3"><div>'
+                + '<img src="' + list[index].item_photo_url + '" class="card-img-top col-12" alt="...">'
+                // +'</div></div>'
+                + '<div class="card-body" id="' + list[index].wishlist_id + '">'
+                + '<p class="card-text">' + list[index].item_name + '</p>'
+                + '<p class="card-text">' + list[index].item_description + '</p>'
+                + '<img src="../img/like.png" alt="" width="20px" height="20px"'
+                + 'style="display: inline;" class="like">'
+                + '<p style="display: inline;">' + list[index].item_likes + '</p>'
+                + '</div></div>' + '</div></div>'
 
             // $tmp=$(tmp)
             // $(`#col${i}`).append($tmp)
@@ -60,7 +60,7 @@ function fillUI() {
             // allforthcol[k].appendChild(tmp)
             // console.log(allforthcol[k])
             // console.log(k)
-            allforthcol[k].insertAdjacentHTML("beforeend",tmp)
+            allforthcol[k].insertAdjacentHTML("beforeend", tmp)
             // console.log(allforthcol[k])
         }
 
@@ -95,17 +95,17 @@ function refreshUI() {
             // row.insertAdjacentHTML('beforeend', `<div class="col-3 mb-3 " id = "col${i + 3}"></div>`)
             for (var k = 0; k < 4; k++) {
                 var index = k + i * 4;
-                var creatediv = 
-                tmp='<div class="card mb-3"><div>'
-                +'<img src="../img/big2.jpg" class="card-img-top col-12" alt="...">'
-                // +'</div></div>'
-                +'<div class="card-body" id="'+newlist['responseJSON'][index + 12]['wishlist_id']+'">'
-                +'<p class="card-text">'+newlist['responseJSON'][index + 12]['item_name']+'</p>'
-                +'<p class="card-text">'+newlist['responseJSON'][index + 12]['item_description']+'</p>'
-                +'<img src="../img/like.png" alt="" width="20px" height="20px"'
-                +'style="display: inline;" class="like">'
-                +'<p style="display: inline;">'+newlist['responseJSON'][index + 12]["item_likes"]+'</p>'
-                +'</div></div>'+'</div></div>'
+                var creatediv =
+                    tmp = '<div class="card mb-3"><div>'
+                    + '<img src="../img/big2.jpg" class="card-img-top col-12" alt="...">'
+                    // +'</div></div>'
+                    + '<div class="card-body" id="' + newlist['responseJSON'][index + 12]['wishlist_id'] + '">'
+                    + '<p class="card-text">' + newlist['responseJSON'][index + 12]['item_name'] + '</p>'
+                    + '<p class="card-text">' + newlist['responseJSON'][index + 12]['item_description'] + '</p>'
+                    + '<img src="../img/like.png" alt="" width="20px" height="20px"'
+                    + 'style="display: inline;" class="like">'
+                    + '<p style="display: inline;">' + newlist['responseJSON'][index + 12]["item_likes"] + '</p>'
+                    + '</div></div>' + '</div></div>'
 
                 // $tmp=$(tmp)
                 // console.log(i)
@@ -113,7 +113,7 @@ function refreshUI() {
                 // $(`#col${i + 3}`).append($tmp)
                 // allforthcol[i+3].appendChild(tmp)
                 // allforthcol[i+3].appendChild("beforeend",tmp)
-                allforthcol[k].insertAdjacentHTML("beforeend",tmp)
+                allforthcol[k].insertAdjacentHTML("beforeend", tmp)
                 // document.getElementById('forthcol').appendChild(tmp)
                 // $(allforthcol[i+3]).append($tmp)
             }
@@ -145,6 +145,17 @@ function showToast(heading, message) {
     });
 }
 
+$(".row").on("click", ".like", async function () {
+
+    var temp = $.ajax({
+        type: "put",
+        url: "/api/wishpool/like/" + this.parentNode.id
+    })
+
+    // var r = await temp;
+    accessAndRefresh();
+})
+
 $(function () {
 
     $("#recent").click(function () {
@@ -155,50 +166,12 @@ $(function () {
         type = 2;
         accessAndRefresh();
     })
-    $("#insert").click(function () {
-        $("#nameTextBox").val("");
-        $("#descriptionTextBox").val("");
-        $("#priceTextBox").val("");
-        $("#newsModal").modal({ backdrop: "static" });
+    $("#addwish").click(function () {
+        location.href="./member_addwishlists.html"
     })
-    $("#okButton").click(function () {
-        var newItem = {
-            item_name: $("#nameTextBox").val(),
-            item_description: $("#descriptionTextBox").val(),
-            expect_price: $("#priceTextBox").val()
-        };
-        $.ajax({
-            type: "post",
-            url: "/home/news",
-            data: newItem
-        })
-            .then(function (e) {
-                $.get("/api/wishpool/recent", function (e) {
-                    newsList = e;
-                    accessAndRefresh();
-                })
-            })
-        $("#newsModal").modal("hide");
-    }
-    )
-
     accessAndRefresh();
     window.addEventListener('scroll', refreshUI);
 
-    $(".row").on("click", ".like", async function () {
 
-        var temp = $.ajax({
-            type: "put",
-            url: "/api/wishpool/like/" + this.parentNode.id
-        })
 
-        var r = await temp;
-        accessAndRefresh();
-        showToast("已按讚", "讚！");
-    })
-
-    // 使用方式:
-    // showToast("標題", "提示文字") 例如:
-    // showToast("Hint", "請點一下正確的圖案");
-
-})  // end of init.
+})  

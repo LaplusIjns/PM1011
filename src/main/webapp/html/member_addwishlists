@@ -139,10 +139,7 @@
                                         <a class="nav-link " href="./member_traderecord.html" aria-selected="false">交易紀錄</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link " href="./member_wishlist.html" aria-selected="false">願望清單</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link " href="./member_addwishlists.html" aria-selected="false">發表願望</a>
+                                        <a class="nav-link "   href="./member_wishlist.html" aria-selected="false">許願清單</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link"   href="./member_myproduct.html" aria-selected="false">我的商品</a>
@@ -174,7 +171,7 @@
                                 <form method="post" class="test" action="/uploadFile" enctype="Multipart/Form-Data"  >
                                     <div class="mx-3 my-3">
                                         <div class="my-2">
-                                            <label class="form-label">商品名稱</label><br/>
+                                            <label class="form-label">願望物品名稱</label><br/>
                                             <input class="form-text" type="text" name="item_name" >
                                         </div>
                                         <div>
@@ -183,8 +180,7 @@
                                         </div>
                     
                                         <div class="mx-1 my-1" id="searchByCategory">
-                                            <label class="mx-1 my-1">分類搜尋</label><br />
-                                            <label class="mx-1 my-1">商品類別<br />
+                                            <label class="mx-1 my-1">物品類別<br />
                                                 <input type="radio" name="category_type" value="漫畫">
                                                   <label for="漫畫">漫畫</label>
                                                 <input type="radio" name="category_type" value="小說">
@@ -199,21 +195,15 @@
 
 
 
-
                                         <div class="mb-3">
                                             <label for="formFile" class="form-label" >上傳圖片</label>
                                             <input class="form-control" type="file" id="formFile" name="uploadImg">
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="formFile" class="form-label">選擇上架日期</label>
-                                            <input class="form-control" type="date" id="productdate" name="item_date">
-                                        </div>
+                                        
                                         <div class="">
-                                            <label for="typeNumber" class="form-label">輸入金額</label>
+                                            <label for="typeNumber" class="form-label">期望價格</label>
                                             <input type="number" id="typeNumber" class="form-control" placeholder="輸入單位金額"  name="item_price" />
                                         </div>
-
-                                        <button class="btn btn-info text-white border-3 border-dark my-3 uploading" type="submit">上架</button>
                                         <button class="btn btn-primary text-white border-3 border-dark my-3 mx-5">發表到願望池</button>
                                     </div>
                                 </form>
@@ -236,9 +226,47 @@
         </div>
     </div>
     <!-- function 區域 -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script>
         //強制頁面不要跳轉
 $(".test").attr("target","rfFrame")
+
+// 上傳圖片到imgur
+var file = document.getElementById("upload");
+        var form = new FormData();
+        file.addEventListener("change", ev => {
+            form.append("image", ev.target.files[0])
+        })
+        // form.append('image', 'wavinfo.png');
+        form.append('type', 'file');
+
+
+
+        $(".btn").on("click", function () {
+            console.log($("#upload").val());
+            var settings = {
+                async: true,
+                crossDomain: true,
+                url: 'https://api.imgur.com/3/image',
+                method: 'POST',
+                headers: {
+                    authorization: 'Bearer 7bd51cbe0e6e4455fdfc08ddc2743a83d34fea81',
+                },
+                processData: false,
+                contentType: false,
+                mimeType: 'multipart/form-data',
+                data: form,
+            };
+
+            $.ajax(settings).done(function (response) {
+                console.log(JSON.parse(response).data.link);
+                $("#imgsrc").append(
+                    `<img src="${JSON.parse(response).data.link}" title="source: imgur.com"/ >`
+                )
+            });
+        })
+
 
 $("[name='category_type']").change(function () {
         $("#itemName").val("");

@@ -21,4 +21,6 @@ public interface wishlistsRepository extends JpaRepository<wishlists, Integer>{
 	@Query("select w from wishlists w order by w.item_likes desc")
 	List<wishlists> orderByLikes();
 	
+	@Query("select w from wishlists w where w.member_id = :mID")
+	List<wishlists> selectByMemberId(@Param("mID") Integer mID);
 }

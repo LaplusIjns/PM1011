@@ -53,6 +53,17 @@ public class wishlists {
 	@Column(name = "item_comment")
 	private String 	item_comment;
 
+	@Column(name = "addwish_date")
+	private String 	addwish_date;
+	
+	public String getAddwish_date() {
+		return addwish_date;
+	}
+
+	public void setAddwish_date(String addwish_date) {
+		this.addwish_date = addwish_date;
+	}
+
 	public Integer getWishlist_id() {
 		return wishlist_id;
 	}

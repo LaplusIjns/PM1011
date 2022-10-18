@@ -1,0 +1,11 @@
+Client ID:
+9dec10d8dd01d44
+
+Client secret:
+1d334d5790b9de79548725cb74e047bf448814b9
+
+Access Token:
+7bd51cbe0e6e4455fdfc08ddc2743a83d34fea81
+
+jinathanhsu2b48@outlook.com
+shittero48

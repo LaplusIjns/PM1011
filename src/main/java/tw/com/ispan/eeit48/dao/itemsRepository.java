@@ -66,4 +66,22 @@ public interface itemsRepository extends JpaRepository<items, Integer> {
 	@Query(value = "select * from items where item_id = ?1",nativeQuery = true)
 	items queryByrated_item_id(Integer id);
 	
+//	圖表分析用
+	@Query("select i from items i where i.category_id like '1%'")
+	List<items> selectMangaItem();
+	
+	@Query("select i from items i where i.category_id like '2%'")
+	List<items> selectNovelItem();
+	
+	@Query("select i from items i where i.category_id like '3%'")
+	List<items> selectBoardItem();
+	
+	@Query("select i from items i where i.category_id like '4%'")
+	List<items> selectConsoleItem();
+	
+	@Query(value = "SELECT i.category_id from items i GROUP BY i.category_id ORDER BY SUM(i.item_times_rent_out) desc limit 8",nativeQuery = true)
+	List<Integer> selectPopularCategories();
+	
+	@Query(value = "SELECT SUM(i.item_times_rent_out) s from items i GROUP BY i.category_id ORDER BY s desc limit 8",nativeQuery = true)
+	List<Integer> selectPopularCategoriesRentOutTimes();
 }

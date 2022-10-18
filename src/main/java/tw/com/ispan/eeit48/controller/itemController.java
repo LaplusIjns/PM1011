@@ -230,7 +230,7 @@ public product product(@PathVariable(name="item_id")String item_id) {
     	
     	
     	
-    	  var member=(members)session.getAttribute("member");
+    	var member=(members)session.getAttribute("member");
   	    Integer memberID=member.getMember_id();
 //    	var memberID=2;測試用
     	item.setMember_id(memberID);
