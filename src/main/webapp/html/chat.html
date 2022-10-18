@@ -135,7 +135,7 @@
                         <div class="mx-3 my-3 border-end border-3 border-primary">
                             <ul class="chat-list list-unstyled" id="chatroomlist">
                                 <!-- 使用者 -->
-                                <li class="p-1 ">
+                                <!-- <li class="p-1 ">
                                     <a href="#" class="card ">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center mb-1 justify-content-between ">
@@ -153,10 +153,10 @@
                                             </div>
                                         </div>
                                     </a>
-                                </li>
+                                </li> -->
                                 <!-- 使用者 -->
                                 <!-- 使用者 -->
-                                <li class="p-1 ">
+                                <!-- <li class="p-1 ">
                                     <a href="#" class="card ">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center mb-1 justify-content-between ">
@@ -174,7 +174,7 @@
                                             </div>
                                         </div>
                                     </a>
-                                </li>
+                                </li> -->
                                 <!-- 使用者 -->
                                 <ul>
                         </div>
@@ -183,7 +183,7 @@
                     <div class="col-7">
                         <div class="px-4 py-4" id="MessageBoard" data-bs-spy="scroll" style="height:300px">
                             <!-- 對方聊天訊息 -->
-                            <div class="d-flex flex-row justify-content-start">
+                            <!-- <div class="d-flex flex-row justify-content-start">
                                 <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
                                     alt="avatar 1" style="width: 45px; height: 100%;">
                                 <div>
@@ -191,17 +191,17 @@
                                     </p>
                                     <p class="small ms-3 mb-3 rounded-3 text-muted float-end">12:00 PM | Aug 13</p>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- 對方訊息結束 -->
                             <!-- 我方訊息開始 -->
-                            <div class="d-flex flex-row justify-content-end">
+                            <!-- <div class="d-flex flex-row justify-content-end">
                                 <div>
                                     <p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">這是我方訊息</p>
                                     <p class="small me-3 mb-3 rounded-3 text-muted">12:00 PM | Aug 13</p>
                                 </div>
                                 <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
                                     alt="avatar 1" style="width: 45px; height: 100%;">
-                            </div>
+                            </div> -->
                             <!-- 我方訊息結束 -->
                         </div>
                         <!--             			輸入訊息區 -->
@@ -249,8 +249,20 @@
     <!-- function 區域 -->
     <script>
         if (userid == 0) {
-            alert("請先登入")
-            window.location.replace("../index.html");
+            $.toast({
+            heading: '提示',
+            text: "請先登入",
+            icon: 'info',
+            loader: true,       
+            loaderBg: '#9EC600' ,
+            showHideTransition: 'fade',
+            position:"top-center",
+			afterHidden: function () {
+				// console.log(p)
+                window.location.replace("../index.html");
+			}
+        })
+            // window.location.replace("../index.html");
         }
 
     </script>
