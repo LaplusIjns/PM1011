@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh-TW">
 <head>
+	<meta charset="UTF-8">
 	<script src="../js/jquery.js"></script>
-</head>
+	<link href="../css/main.css" rel="stylesheet">
+	<link href="../bootstrap5/css/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+        integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" crossorigin="anonymous">
+	<title>Document</title>
 <style>
 	.calendar {
-		width: 450px;
-		height: 350px;
+
 		background: #fff;
 		box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
 	}
@@ -21,22 +24,22 @@
 
 	.body-list ul li {
 		width: 14.28%;
-		height: 36px;
-		line-height: 36px;
+		height: 72px;
+		line-height: 72px;
 		list-style-type: none;
 		display: block;
 		box-sizing: border-box;
 		float: left;
 		text-align: center;
 	}
-
+	/* color: #a8a8a8; */
 	.lightgrey {
-		color: #a8a8a8;
+		color: #81808c;
 		/*浅灰色*/
 	}
 
 	.darkgrey {
-		color: #565656;
+		color: #000000;
 		/*深灰色*/
 	}
 
@@ -62,42 +65,35 @@
 		/*浅绿色背景*/
 	}
 </style>
-
-<head>
-
 </head>
-
-<body>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=<div class=" calendar">
-	<div class="title">
-		<h1 class="green" id="calendar-title">Month</h1>
-		<h2 class="green small" id="calendar-year">Year</h2>
-		<a href="" id="prev">Prev Month</a>
-		<a href="" id="next">Next Month</a>
+<body class="mainbody  p-5">
+	<div class="title ">
+		<p class="green m-1" id="calendar-title" style="font-size: 64px;">Month</p>
+		<p class="green m-1" id="calendar-year" style="font-size: 64px;">Year</p>
+		<a href="" id="prev" class="btn btn-primary fs-3 m-1 px-4"><i class="bi bi-calendar-minus-fill"></i><br>上月</a>
+		<a href="" id="next" class="btn btn-primary fs-3 m-1 px-4"><i class="bi bi-calendar-plus-fill"></i><br>下月</a>
+		<a href="./product.html" class="btn btn-primary fs-3 m-1 px-4"><i class="bi bi-bag-fill"></i><br>商品</a>
 	</div>
 	<div class="body">
 		<div class="lightgrey body-list">
-			<ul>
-				<li>MON</li>
-				<li>TUE</li>
-				<li>WED</li>
-				<li>THU</li>
-				<li>FRI</li>
-				<li>SAT</li>
-				<li>SUN</li>
+			<ul class="fs-2 ">
+				<li>星期一</li>
+				<li>星期二</li>
+				<li>星期三</li>
+				<li>星期四</li>
+				<li>星期五</li>
+				<li>星期六</li>
+				<li>星期日</li>
 			</ul>
 		</div>
-		<div class="darkgrey body-list">
-			<ul id="days">
+		<div class="darkgrey body-list fs-2">
+			<ul id="days" class="fs-2">
 			</ul>
 		</div>
 	</div>
 
-	<a href="./product.html">Back to product</a>
+	
 	</div>
-	<title>Document</title>
 	<script>
 		var item_id = localStorage.getItem("item_id");
 		var item;
@@ -121,7 +117,7 @@
 
 		var month_olympic = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 		var month_normal = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-		var month_name = ["January", "Febrary", "March", "April", "May", "June", "July", "Auguest", "September", "October", "November", "December"];
+		var month_name = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
 		var holder = document.getElementById("days");
 		var prev = document.getElementById("prev");
 		var next = document.getElementById("next");
@@ -151,7 +147,7 @@
 			var firstDay = dayStart(my_month, my_year); //获取该月第一天是星期几
 			var myclass;
 			for (var i = 1; i < firstDay; i++) {
-				str += "<li></li>"; //为起始日之前的日期创建空白节点
+				str += "<li class=''></li>"; //为起始日之前的日期创建空白节点
 			}
 			//時間區間
 			// var start = "2022-10-1";

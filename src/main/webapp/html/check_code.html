@@ -7,19 +7,20 @@
     <script src="../bootstrap5/js/bootstrap.js"></script>
     <script src="../js/jquery.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../css/main.css" rel="stylesheet">
     <style>
 
       </style>
 </head>
 
-<body>
+<body class="mainbody p-5 fs-3">
     <label class="mx-2 my-1">請輸入帳號:　　　　</label>
     <input class="mx-2 my-1" type="text" id="checkAccount" placeholder=""><br>
     <label class="mx-2 my-1">請輸入驗證碼:　　　</label>
     <input class="mx-2 my-1" type="text" id="checkCode" placeholder=""><br>
     <label class="mx-2 my-1">請輸入新的帳號密碼:</label>
-    <input class="mx-2 my-1" type="text" id="newPassword" placeholder="請輸入大小寫英數字"><br>
-    <button type="button" id="sentCode" class="btn btn-primary">送出</button>
+    <input class="mx-2 my-1" type="password" id="newPassword" placeholder="請輸入大小寫英數字"><br>
+    <button type="button" id="sentCode" class="btn btn-primary"><span class="fs-3">送出</span></button>
 </body>
 
 <script>

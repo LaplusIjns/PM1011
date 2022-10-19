@@ -12,10 +12,12 @@
     <link href="../css/jquery.toast.css" rel="stylesheet">
     <link href="../css/main.css" rel="stylesheet">
     <!-- <script src="../js/logIn.js"></script> -->
+    <script src="../js/logIn.js"></script>
 
-<!--     <script src = "../js/profiles.js"></script> -->
+    <!--     <script src = "../js/profiles.js"></script> -->
     <title>Document</title>
 </head>
+
 
 <body>
     <!-- <div class="container-fluid">
@@ -23,117 +25,114 @@
             <div class="col-11" > -->
     <!-- top-navbar navbar navbar-expand-sm navbar-dark bg-dark -->
     <nav class="navbar navbar-expand bg-info text-white px-5">
-                    <div class="container-fluid">
-                        <a class="navbar-brand" href="../index.html">
-                            <img src="../img/LOGO03.png" style="height:50px; width:auto;">
-                        </a>
-                        <ul class="nav nav-pills me-auto te mx-1">
-                            <!-- nav nav-pills -->
-                            <!-- data-bs-toggle="pill" -->
-                            <li class="nav-item">
-                            <a class="nav-link text-white fs-4" href="../index.html">首頁</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white fs-4" href="./rentflow.html">租借流程</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white fs-4" href="./chat.html">聊天室</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white fs-4" href="./wishpool.html">許願池</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link text-white fs-4"  href="./member.html">會員</a>
-                            </li>                
-                            <li class="nav-item">
-                            <a class="nav-link text-white active fs-4"  href="./cart.html">購物車</a>
-                            </li>
-                        </ul>
-                        <!-- 靠右 -->
-                        <div class="d-flex">
-                            <div class="btn-group" role="group">
-                                <!-- 第一顆按鈕 -->
-                                <button id="loginBtn" type="button" class="btn btn-primary fs-4" data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop">登入</button>
-                                <button id="logoutBtn" type="submit" style="display:none" class="btn btn-primary fs-4"
-                                    data-bs-target="#staticBackdrop">登出</button>
-                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title text-dark" id="staticBackdropLabel">登入</h5>
-                                                <button type="button" class="btn-close fs-4" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <form class="text-dark">
-                                                <div class="modal-body" id="loginBox">
-                                                    <label class="mx-2 my-1">帳號</label>
-                                                    <input class="mx-2 my-1" type="text" id="loginAccountTextBox"
-                                                        placeholder="請輸入大小寫英數字"><br>
-                                                    <label class="mx-2 my-1">密碼 </label>
-                                                    <input class="mx-2 my-1" type="password" id="loginPasswordMTextBox"
-                                                        placeholder="請輸入大小寫英數字"><br>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn fs-4" id="forgetBtn">忘記密碼？</button>
-                                                    <button type="button" class="btn btn-secondary fs-4"
-                                                        data-bs-dismiss="modal">關閉</button>
-                                                    <button type="button" id="loginMember" class="btn btn-primary"
-                                                        data-bs-dismiss="modal">送出</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../img/LOGO03.png" style="height:50px; width:auto;">
+            </a>
+            <ul class="nav nav-pills me-auto te mx-1">
+                <!-- nav nav-pills -->
+                <!-- data-bs-toggle="pill" -->
+                <li class="nav-item">
+                    <a class="nav-link text-white fs-4" href="../index.html">首頁</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white fs-4" href="./rentflow.html">租借流程</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white fs-4" href="./chat.html">聊天室</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white fs-4" href="./wishpool.html">許願池</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white fs-4" href="./member.html">會員</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white active fs-4" href="./cart.html">購物車</a>
+                </li>
+            </ul>
+            <!-- 靠右 -->
+            <div class="d-flex">
+                <div class="btn-group" role="group">
+                    <!-- 第一顆按鈕 -->
+                    <button id="loginBtn" type="button" class="btn btn-primary fs-4" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop">登入</button>
+                    <button id="logoutBtn" type="submit" style="display:none" class="btn btn-primary fs-4"
+                        data-bs-target="#staticBackdrop">登出</button>
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-dark" id="staticBackdropLabel">登入</h5>
+                                    <button type="button" class="btn-close fs-4" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
-                                <!-- 第二顆按鈕 -->
-                                <button id="createBtn" type="button" class="btn btn-primary fs-4" data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop2">註冊</button>
-                                <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static"
-                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title text-dark" id="staticBackdropLabel2">註冊</h5>
-                                                <button type="button" class="btn-close fs-4" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-
-                                            <form class="text-dark">
-                                                <div class="modal-body">
-                                                    <label class="mx-2 my-1">帳號</label>
-                                                    <input class="mx-2 my-1" type="text" id="createAccountTextBox"
-                                                        placeholder="請輸入大小寫英數字"><br>
-                                                    <label class="mx-2 my-1">密碼</label>
-                                                    <input class="mx-2 my-1" type="password" id="createPasswordMTextBox"
-                                                        placeholder="請輸入大小寫英數字"><br>
-                                                    <label class="mx-2 my-1">信箱</label>
-                                                    <input class="mx-2 my-1" type="text" id="createMailTextBox"
-                                                        placeholder=""><br>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary fs-4"
-                                                        data-bs-dismiss="modal">關閉</button>
-                                                    <button type="button" id="createMember" class="btn btn-primary fs-4"
-                                                        data-bs-dismiss="modal">送出</button>
-                                                </div>
-                                            </form>
-                                        </div>
+                                <form class="text-dark">
+                                    <div class="modal-body" id="loginBox">
+                                        <label class="mx-2 my-1">帳號</label>
+                                        <input class="mx-2 my-1" type="text" id="loginAccountTextBox"
+                                            placeholder="請輸入大小寫英數字"><br>
+                                        <label class="mx-2 my-1">密碼 </label>
+                                        <input class="mx-2 my-1" type="password" id="loginPasswordMTextBox"
+                                            placeholder="請輸入大小寫英數字"><br>
                                     </div>
-                                </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn fs-4" id="forgetBtn">忘記密碼？</button>
+                                        <button type="button" class="btn btn-secondary fs-4"
+                                            data-bs-dismiss="modal">關閉</button>
+                                        <button type="button" id="loginMember" class="btn btn-primary"
+                                            data-bs-dismiss="modal">送出</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-                </nav>
-                    <!-- main-body -->
-                    <div class="container-fluid ">
-                        <div class="row justify-content-center mainbody">
-                            <div class="col-11">
-                                <div>
-                                    <div class="row">
-                    <div class="col-11 mx-auto table-responsive py-3 ">
+                    <!-- 第二顆按鈕 -->
+                    <button id="createBtn" type="button" class="btn btn-primary fs-4" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop2">註冊</button>
+                    <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-dark" id="staticBackdropLabel2">註冊</h5>
+                                    <button type="button" class="btn-close fs-4" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+
+                                <form class="text-dark">
+                                    <div class="modal-body">
+                                        <label class="mx-2 my-1">帳號</label>
+                                        <input class="mx-2 my-1" type="text" id="createAccountTextBox"
+                                            placeholder="請輸入大小寫英數字"><br>
+                                        <label class="mx-2 my-1">密碼</label>
+                                        <input class="mx-2 my-1" type="password" id="createPasswordMTextBox"
+                                            placeholder="請輸入大小寫英數字"><br>
+                                        <label class="mx-2 my-1">信箱</label>
+                                        <input class="mx-2 my-1" type="text" id="createMailTextBox" placeholder=""><br>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary fs-4"
+                                            data-bs-dismiss="modal">關閉</button>
+                                        <button type="button" id="createMember" class="btn btn-primary fs-4"
+                                            data-bs-dismiss="modal">送出</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- main-body -->
+    <div class="container-fluid ">
+        <div class="row justify-content-center mainbody">
+            <div class="col-11">
+                <div>
+                    <div class="row">
+                        <div class="col-11 mx-auto table-responsive py-3 ">
                             <div class="row d-flex justify-content-between align-items-center px-3">
                                 <div class="col-1">
                                     <p>商品圖片</p>
@@ -166,161 +165,151 @@
                                     <p>從購物車刪除</p>
                                 </div>
                             </div>
-                        <form class="commodityDetail">
+                            <form class="commodityDetail">
 
-                            <!-- 一個商品 -->
-                            <div class="card rounded-3 mb-4">
-                                <div class="card-body p-2 ">
-                                    <div class="row d-flex justify-content-between align-items-center px-3">
-                                        <img class="img-fluid rounded-3" style="height:100px;width:auto;"
-                                            src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/3.webp">
-                                        <div class="col-1">
-                                            <p class="lead fw-normal mb-2">我是商品名字</p>
-                                            <p class="text-muted">我是上架者</p>
-                                        </div>
-                                        <div class="col-1">
-                                            <p class="lead fw-normal mb-2">狀態</p>
-                                            <p class="text-muted">可購買</p>
-                                        </div>
-                                        <div class="col-1 d-flex">
-                                            <select class="form-select">
-                                                <option>運送方式</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-1 d-flex">
-                                            <select class="form-select">
-                                                <option>歸還方式</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-1 d-flex px-1 ">
-                                            <select class="form-select">
-                                                <option>租借日期</option>
-                                                <option>7天</option>
-                                                <option>14天</option>
-                                                <option>1月</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-1 offset-lg-1">
-                                            $1000
-                                        </div>
-                                        <div class="col-1">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                style="width: 30px; height: 30px;">
-                                        </div>
-                                        <div class="col-1 text-end">
-                                            <button class="btn border-1 border-dark bg-info text-white" value="">刪除</button>
+                                <!-- 一個商品 -->
+                                <div class="card rounded-3 mb-4">
+                                    <div class="card-body p-2 ">
+                                        <div class="row d-flex justify-content-between align-items-center px-3">
+                                            <img class="img-fluid rounded-3" style="height:100px;width:auto;"
+                                                src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/3.webp">
+                                            <div class="col-1">
+                                                <p class="lead fw-normal mb-2">我是商品名字</p>
+                                                <p class="text-muted">我是上架者</p>
+                                            </div>
+                                            <div class="col-1">
+                                                <p class="lead fw-normal mb-2">狀態</p>
+                                                <p class="text-muted">可購買</p>
+                                            </div>
+                                            <div class="col-1 d-flex">
+                                                <select class="form-select">
+                                                    <option>運送方式</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-1 d-flex">
+                                                <select class="form-select">
+                                                    <option>歸還方式</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-1 d-flex px-1 ">
+                                                <select class="form-select">
+                                                    <option>租借日期</option>
+                                                    <option>7天</option>
+                                                    <option>14天</option>
+                                                    <option>1月</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-1 offset-lg-1">
+                                                $1000
+                                            </div>
+                                            <div class="col-1">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    style="width: 30px; height: 30px;">
+                                            </div>
+                                            <div class="col-1 text-end">
+                                                <button class="btn border-1 border-dark bg-info text-white"
+                                                    value="">刪除</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!--商品結束  -->
-                            <!-- 一個商品 -->
-                            <div class="card rounded-3 mb-4">
-                                <div class="card-body p-2 ">
-                                    <div class="row d-flex justify-content-between align-items-center px-3">
-                                        <img class="img-fluid rounded-3" style="height:100px;width:auto;"
-                                            src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/3.webp">
-                                        <div class="col-1">
-                                            <p class="lead fw-normal mb-2">我是商品名字</p>
-                                            <p class="text-muted">我是上架者</p>
-                                        </div>
-                                        <div class="col-1">
-                                            <p class="lead fw-normal mb-2">狀態</p>
-                                            <p class="text-muted">可購買</p>
-                                        </div>
-                                        <div class="col-1 d-flex">
-                                            <select class="form-select">
-                                                <option>運送方式</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-1 d-flex">
-                                            <select class="form-select">
-                                                <option>歸還方式</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-1 d-flex px-1 ">
-                                            <select class="form-select">
-                                                <option>租借日期</option>
-                                                <option>7天</option>
-                                                <option>14天</option>
-                                                <option>1月</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-1 offset-lg-1">
-                                            $1000
-                                        </div>
-                                        <div class="col-1">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                style="width: 30px; height: 30px;">
-                                        </div>
-                                        <div class="col-1 text-end">
-                                            <button class="btn border-1 border-dark bg-info text-white" value="">刪除</button>
+                                <!--商品結束  -->
+                                <!-- 一個商品 -->
+                                <div class="card rounded-3 mb-4">
+                                    <div class="card-body p-2 ">
+                                        <div class="row d-flex justify-content-between align-items-center px-3">
+                                            <img class="img-fluid rounded-3" style="height:100px;width:auto;"
+                                                src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/3.webp">
+                                            <div class="col-1">
+                                                <p class="lead fw-normal mb-2">我是商品名字</p>
+                                                <p class="text-muted">我是上架者</p>
+                                            </div>
+                                            <div class="col-1">
+                                                <p class="lead fw-normal mb-2">狀態</p>
+                                                <p class="text-muted">可購買</p>
+                                            </div>
+                                            <div class="col-1 d-flex">
+                                                <select class="form-select">
+                                                    <option>運送方式</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-1 d-flex">
+                                                <select class="form-select">
+                                                    <option>歸還方式</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-1 d-flex px-1 ">
+                                                <select class="form-select">
+                                                    <option>租借日期</option>
+                                                    <option>7天</option>
+                                                    <option>14天</option>
+                                                    <option>1月</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-1 offset-lg-1">
+                                                $1000
+                                            </div>
+                                            <div class="col-1">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    style="width: 30px; height: 30px;">
+                                            </div>
+                                            <div class="col-1 text-end">
+                                                <button class="btn border-1 border-dark bg-info text-white"
+                                                    value="">刪除</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!--商品結束  -->
-                        
-                        </form>
-                        <div class="mt-auto position-absolute border-top border-3 bottom-0 end-0  py-2  col-12 px-5">
-                            <div class="container-fluid">
+                                <!--商品結束  -->
 
-                                <div class="d-flex justify-content-between align-items-center mb-4">
-                                    <div>　</div>
-                                    <h3>價格</h3>
-                                    <button type="button" class="btn btn-primary rounded-3 my-2 py-2 px-3 sendcart">
-                                        <span class="d-none d-md-inline-block me-2">確定租借</span>
-                                    </button>
+                            </form>
+                            <div
+                                class="mt-auto position-absolute border-top border-3 bottom-0 end-0  py-2  col-12 px-5">
+                                <div class="container-fluid">
+
+                                    <div class="d-flex justify-content-between align-items-center mb-4">
+                                        <div>　</div>
+                                        <h3>價格</h3>
+                                        <button type="button" class="btn btn-primary rounded-3 my-2 py-2 px-3 sendcart">
+                                            <span class="d-none d-md-inline-block me-2">確定租借</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            <div id="ECpay" style="display: none;"></div>
+                    <div id="ECpay" style="display: none;"></div>
 
-                <!-- foot -->
-                <a href="javascript:window.scrollTo(0,0)">
-                    <footer class="footer bg-secondary text-center text-white mt-auto fixed-bottom">
-                        <div class="container-fluid">
-                            <span class="">2022 EEIT48 </span>
-                        </div>
-                    </footer>
-                </a>
+                    <!-- foot -->
+                    <a href="javascript:window.scrollTo(0,0)">
+                        <footer class="footer bg-secondary text-center text-white mt-auto fixed-bottom">
+                            <div class="container-fluid">
+                                <span class="">2022 EEIT48 </span>
+                            </div>
+                        </footer>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- function 區域 -->
-    <script>
-        var total_price = 0;
-        var c;
-        //送出訂單 建立order list 跟 order detail
-        $(".sendcart").click(async function sendOrder() {
-            var cartAll = document.getElementsByClassName("cartt");
-            var p = $.ajax({
-                type: "post",
-                url: "/sendorderlist/",
-                data: {                  
-                    order_total_price: parseInt(total_price)
-                }
-            });
-            orderlist = await p;
-            console.log(orderlist);
-            if(item!=''){
-                for (let i = 0; i < item.lcclass.length; i++) {
-                    var datas = {
-                        order_id: orderlist.order_id,
-                        item_id: item.items[i].item_id,
-                        item_receive_date: $(`.item_receive_date${i}`).val(),
-                        item_return_date: $(`.item_return_date${i}`).val(),
-                        deliver_place: $(`.deliver_place${i}`).val(),
-                        return_place: $(`.return_place${i}`).val(),
-                        item_price: item.items[i].item_price,
-
-                    };
-                    var p = $.ajax({
-                        type: "post",
-                        url: "/sendorderdetail/",
-                        data: {
+        <!-- function 區域 -->
+        <script>
+            var total_price = 0;
+            var c;
+            //送出訂單 建立order list 跟 order detail
+            $(".sendcart").click(async function sendOrder() {
+                var cartAll = document.getElementsByClassName("cartt");
+                var p = $.ajax({
+                    type: "post",
+                    url: "/sendorderlist/",
+                    data: {
+                        order_total_price: parseInt(total_price)
+                    }
+                });
+                orderlist = await p;
+                console.log(orderlist);
+                if (item != '') {
+                    for (let i = 0; i < item.lcclass.length; i++) {
+                        var datas = {
                             order_id: orderlist.order_id,
                             item_id: item.items[i].item_id,
                             item_receive_date: $(`.item_receive_date${i}`).val(),
@@ -328,14 +317,27 @@
                             deliver_place: $(`.deliver_place${i}`).val(),
                             return_place: $(`.return_place${i}`).val(),
                             item_price: item.items[i].item_price,
-                            order_payment: $(`.payText${i}`).val(),
-                            order_detail_state:"等待接受"
-                        }
-                    })
 
-                    //刪除訂單
-                    let cart_id = item.lcclass[i].cart_id;
-                    var p = $.ajax({
+                        };
+                        var p = $.ajax({
+                            type: "post",
+                            url: "/sendorderdetail/",
+                            data: {
+                                order_id: orderlist.order_id,
+                                item_id: item.items[i].item_id,
+                                item_receive_date: $(`.item_receive_date${i}`).val(),
+                                item_return_date: $(`.item_return_date${i}`).val(),
+                                deliver_place: $(`.deliver_place${i}`).val(),
+                                return_place: $(`.return_place${i}`).val(),
+                                item_price: item.items[i].item_price,
+                                order_payment: $(`.payText${i}`).val(),
+                                order_detail_state: "等待接受"
+                            }
+                        })
+
+                        //刪除訂單
+                        let cart_id = item.lcclass[i].cart_id;
+                        var p = $.ajax({
                             type: "delete",
                             url: "/deleteCart",
                             data: {
@@ -344,114 +346,114 @@
                         })
 
 
-                    console.log("orderdetailsend");
-                    console.log(datas);
-                }
-            }
-            setTimeout(function(){location.href="./member_myorder.html"},2000);
-            
-        
-          
-          
-            var date = new Date();           
-            var dateStr = date.getFullYear() + "/" + (date.getMonth() + 1).toString().padStart(2, "0") + "/" + date.getDate().toString().padStart(2, "0")
-                + " " + date.getHours().toString().padStart(2, "0") + ":" + date.getMinutes().toString().padStart(2, "0") + ":" + date.getSeconds().toString().padStart(2, "0");
-            
-            var date2 = date.getFullYear() + (date.getMonth() + 1).toString().padStart(2, "0") + date.getDate().toString().padStart(2, "0");
-            var randomID = date2 + "PR" + 0 + 0 + parseInt((Math.random())*100000000)
-            
-            var allItemName="";
-                for(s=0;s< item.items.length;s++){
-                allItemName+= item.items[s].item_name;
-                allItemName+=" ";
-             }
-              console.log(dateStr);
-              console.log(randomID);
-              console.log(parseInt(total_price));
-              console.log(allItemName);
-                var postData = {
-                orderID: randomID,
-                orderDate: dateStr,
-                amount: parseInt(total_price),
-                Item: allItemName
-            }
-
-            var temp = $.ajax({
-                type: "post",
-                url: "/pay/",
-                data: postData
-            });
-            var r = await temp;
-            console.log(r);
-            $("#ECpay").empty();
-            $("#ECpay").text(r);
-            window.open("receive_payment.html");   
-        })
-
-            ;
-
-        var item;
-        async function downloadAndRefreshUI() {
-            var p = $.ajax({
-                type: "post",
-                url: "/getcart/",
-                data: {
-                    member_id: 2
-                }
-            })
-            item = await p;
-            console.log(item);
-            refreshUI();
-        }
-        downloadAndRefreshUI()
-
-
-        function refreshUI() {
-             $(".commodityDetail").empty();
-             console.log(item)
-             if(item!=''){
-                for (let i = 0; i < item.lcclass.length; i++) {
-
-                    //商品圖片URL
-                    let url = `${item.llipclass[i].picture_url}`;
-                    //商品名稱
-                    let item_name = `${item.items[i].item_name}`;
-                    //我是上架者
-                    let owner_account = `${item.lcclass[i].owner_account}`;
-                    //商品狀態
-                    let item_state = `${item.items[i].item_state}`;
-                    //商品價格
-                    let item_price = `${item.items[i].item_price}`
-                    //買家711
-                    let buyerseven11_address = `${item.buymember[0].seven11_address}`;
-                    //買家ok
-                    let buyerok_address = `${item.buymember[0].ok_address}`;
-                    //買家全家
-                    let buyefamily_address = `${item.buymember[0].family_address}`;
-
-                    //賣家711
-                    let ownseven11_address = `${item.ownermember[i].seven11_address}`;
-                    //賣家ok
-                    let ownok_address = `${item.ownermember[i].ok_address}`;
-                    //賣家全家
-                    let ownfamily_address = `${item.ownermember[i].family_address}`;
-
-                    //Cart編號 用來刪除用 放置在刪除鍵的NAME
-                    let cart_id = item.lcclass[i].cart_id
-
-                    let payText = "";
-                    for (j = 0; j < item.listmember_payment_detail.length; j++) {
-                        //買家信用卡
-                        let creditcard_number = item.listmember_payment_detail[j].creditcard_number;
-                        payText += `<option>信用卡${creditcard_number}</option>`
-
+                        console.log("orderdetailsend");
+                        console.log(datas);
                     }
-                    //商品持有人的帳戶
-                    console.log(item.ownermember[i].bank_account)
-                    let bank_account = item.ownermember[i].bank_account;
-                    payText += `<option>帳戶${bank_account}</option>`;
+                }
+                setTimeout(function () { location.href = "./member_myorder.html" }, 2000);
 
-                    let liTemplate = ` <div class="card rounded-3 mb-4 cartt num${i}">
+
+
+
+                var date = new Date();
+                var dateStr = date.getFullYear() + "/" + (date.getMonth() + 1).toString().padStart(2, "0") + "/" + date.getDate().toString().padStart(2, "0")
+                    + " " + date.getHours().toString().padStart(2, "0") + ":" + date.getMinutes().toString().padStart(2, "0") + ":" + date.getSeconds().toString().padStart(2, "0");
+
+                var date2 = date.getFullYear() + (date.getMonth() + 1).toString().padStart(2, "0") + date.getDate().toString().padStart(2, "0");
+                var randomID = date2 + "PR" + 0 + 0 + parseInt((Math.random()) * 100000000)
+
+                var allItemName = "";
+                for (s = 0; s < item.items.length; s++) {
+                    allItemName += item.items[s].item_name;
+                    allItemName += " ";
+                }
+                console.log(dateStr);
+                console.log(randomID);
+                console.log(parseInt(total_price));
+                console.log(allItemName);
+                var postData = {
+                    orderID: randomID,
+                    orderDate: dateStr,
+                    amount: parseInt(total_price),
+                    Item: allItemName
+                }
+
+                var temp = $.ajax({
+                    type: "post",
+                    url: "/pay/",
+                    data: postData
+                });
+                var r = await temp;
+                console.log(r);
+                $("#ECpay").empty();
+                $("#ECpay").text(r);
+                window.open("receive_payment.html");
+            })
+
+                ;
+
+            var item;
+            async function downloadAndRefreshUI() {
+                var p = $.ajax({
+                    type: "post",
+                    url: "/getcart/",
+                    data: {
+                        member_id: 2
+                    }
+                })
+                item = await p;
+                console.log(item);
+                refreshUI();
+            }
+            downloadAndRefreshUI()
+
+
+            function refreshUI() {
+                $(".commodityDetail").empty();
+                console.log(item)
+                if (item != '') {
+                    for (let i = 0; i < item.lcclass.length; i++) {
+
+                        //商品圖片URL
+                        let url = `${item.llipclass[i].picture_url}`;
+                        //商品名稱
+                        let item_name = `${item.items[i].item_name}`;
+                        //我是上架者
+                        let owner_account = `${item.lcclass[i].owner_account}`;
+                        //商品狀態
+                        let item_state = `${item.items[i].item_state}`;
+                        //商品價格
+                        let item_price = `${item.items[i].item_price}`
+                        //買家711
+                        let buyerseven11_address = `${item.buymember[0].seven11_address}`;
+                        //買家ok
+                        let buyerok_address = `${item.buymember[0].ok_address}`;
+                        //買家全家
+                        let buyefamily_address = `${item.buymember[0].family_address}`;
+
+                        //賣家711
+                        let ownseven11_address = `${item.ownermember[i].seven11_address}`;
+                        //賣家ok
+                        let ownok_address = `${item.ownermember[i].ok_address}`;
+                        //賣家全家
+                        let ownfamily_address = `${item.ownermember[i].family_address}`;
+
+                        //Cart編號 用來刪除用 放置在刪除鍵的NAME
+                        let cart_id = item.lcclass[i].cart_id
+
+                        let payText = "";
+                        for (j = 0; j < item.listmember_payment_detail.length; j++) {
+                            //買家信用卡
+                            let creditcard_number = item.listmember_payment_detail[j].creditcard_number;
+                            payText += `<option>信用卡${creditcard_number}</option>`
+
+                        }
+                        //商品持有人的帳戶
+                        console.log(item.ownermember[i].bank_account)
+                        let bank_account = item.ownermember[i].bank_account;
+                        payText += `<option>帳戶${bank_account}</option>`;
+
+                        let liTemplate = ` <div class="card rounded-3 mb-4 cartt num${i}">
                         <div class="card-body p-2 ">
                             <div class="row d-flex justify-content-between align-items-center px-1">
                                 <img class="img-fluid rounded-3" style="height:100px;width:auto;" src="../img/${url}">
@@ -501,37 +503,64 @@
                             </div>
                         </div>
                     </div>`;
-                    $(".commodityDetail").append(liTemplate);
-                    total_price += parseInt(item_price);
-                    console.log(total_price);
-                    //刪除購物車的一筆訂單
-                    $(".deleteCart").click(function () {
-                    
-                        var cart_id = $(this).attr("name");
-                        console.log(cart_id);
-                        var p = $.ajax({
-                            type: "delete",
-                            url: "/deleteCart",
-                            data: {
-                                cart_id: cart_id
-                            }
-                        })
-                        setTimeout(downloadAndRefreshUI,500);
-                        setTimeout(alert("此商品已從購物車刪除"),500);
-                        
+                        $(".commodityDetail").append(liTemplate);
+                        total_price += parseInt(item_price);
+                        console.log(total_price);
+                        //刪除購物車的一筆訂單
+                        $(".deleteCart").click(function () {
+
+                            var cart_id = $(this).attr("name");
+                            console.log(cart_id);
+                            var p = $.ajax({
+                                type: "delete",
+                                url: "/deleteCart",
+                                data: {
+                                    cart_id: cart_id
+                                }
+                            })
+                            setTimeout(downloadAndRefreshUI, 500);
+                            setTimeout(alert("此商品已從購物車刪除"), 500);
+
+                        }
+                        )
                     }
-                    )
                 }
             }
-        }
-    </script>
-    <script src="../js/logIn.js"></script>
-    <script>
-        if(AjaxgetRegister()["responseJSON"]["member_id"]==0){
-            alert("請先登入")
-        window.location.replace("../index.html");
-        }
-    </script>
+        </script>
+        <script>
+            function AjaxgetRegister() {
+                return $.ajax({
+                    type: "get",
+                    url: "/getRegister",
+                    //            dataType:"json",
+                    async: !1,
+                    success: function (res) {
+                        //			console.log(res["member_nickname"])
+                    },
+                    error: function (err) { console.log(err) },
+                })
+            }
+            userid = AjaxgetRegister()["responseJSON"]["member_id"]
+            console.log(userid)
+            if (userid == 0) {
+                $.toast({
+                    heading: '提示',
+                    text: "請先登入",
+                    icon: 'info',
+                    loader: true,
+                    loaderBg: '#9EC600',
+                    showHideTransition: 'fade',
+                    position: "top-center",
+                    afterHidden: function () {
+                        // console.log(p)
+                        window.location.replace("../index.html");
+                    }
+                })
+                // window.location.replace("../index.html");
+            }
+        </script>
+
+
 </body>
 
 </html>

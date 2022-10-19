@@ -1,12 +1,11 @@
 :root{
-    --apple:red;
     --bee:blue;
     --color01:#fad0c4;
     --color02:#39b348;
     --color03:#C4EAFF;
     --color04:#5FBDF5;
     --color05:#FFA374;
-    --color06:#CC3511;
+
     --color07:#303A54;
     --color08:#2af598;
 
@@ -14,7 +13,7 @@
     --color10:#953c2b;
 
     --color11:#33e8db;
-    --color12:#e21320;
+
 
     --color13:#F2CDAC;
 
@@ -33,10 +32,6 @@
 
 }
 
-.card{
-    /* background-color: var(--apple);
-    color: var(--color01); */
-}
 
 .btn-primary{
     background-color:var(--color02);
